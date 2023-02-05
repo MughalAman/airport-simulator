@@ -38,45 +38,60 @@ public class OmaMoottori extends Moottori{
 	@Override
 	protected void suoritaTapahtuma(Tapahtuma t){  // B-vaiheen tapahtumat
 
-		Asiakas a;
-		switch (t.getTyyppi()){
-			
-			case ENTRANCE: palvelupisteet[0].lisaaJonoon(new Asiakas());	
-				       saapumisprosessi.generoiSeuraava();	
-				break;
-			case INFO: a = palvelupisteet[0].otaJonosta();
-				   	   palvelupisteet[1].lisaaJonoon(a);
-				break;
-			case CHECKINAUTO: a = palvelupisteet[1].otaJonosta();
-				   	   palvelupisteet[2].lisaaJonoon(a); 
-				break;  
-			case CHECKINMANUAL: a = palvelupisteet[2].otaJonosta();
-		   	   palvelupisteet[3].lisaaJonoon(a); 
-				      
-			     break;
-			case SECURITY:a = palvelupisteet[3].otaJonosta();
-		   	   palvelupisteet[4].lisaaJonoon(a); 
-				
-				break;
-				
-			case SECURITYGATE:a = palvelupisteet[4].otaJonosta();
-		   	   palvelupisteet[5].lisaaJonoon(a); 
-			
-				break;
-				
-			case GATE:a = palvelupisteet[5].otaJonosta();
-		   	   palvelupisteet[6].lisaaJonoon(a); 
-					
-				break;
-			
-			case PLANE:
-				 a = palvelupisteet[6].otaJonosta();
-				   a.setPoistumisaika(Kello.getInstance().getAika());
-		           a.raportti(); 
-				break;
-				
-		}	
+	    Asiakas a;
+	    switch (t.getTyyppi()){
+	        
+	        case ENTRANCE: palvelupisteet[0].lisaaJonoon(new Asiakas());      
+	                   saapumisprosessi.generoiSeuraava();    
+	            int randomCheck = (int) (Math.random() * 3); // generates a random number between 0 and 2
+	            switch (randomCheck) {
+	                case 0: t.setTyyppi(TapahtumanTyyppi.INFO);
+	                        break;
+	                case 1: t.setTyyppi(TapahtumanTyyppi.CHECKINAUTO);
+	                        break;
+	                case 2: t.setTyyppi(TapahtumanTyyppi.CHECKINMANUAL);
+	                        break;
+	            }
+	            break;
+	        case INFO: a = palvelupisteet[0].otaJonosta();
+	                    int randosmCheck = (int) (Math.random() * 3); // generates a random number between 0 and 2
+	    	            switch (randosmCheck) {
+	    	             
+	    	                case 0: t.setTyyppi(TapahtumanTyyppi.CHECKINAUTO);
+	    	                        break;
+	    	                case 1: t.setTyyppi(TapahtumanTyyppi.CHECKINMANUAL);
+	    	                        break;
+	    	            }
+	                    palvelupisteet[1].lisaaJonoon(a);
+
+	            break;
+	        case CHECKINAUTO: a = palvelupisteet[0].otaJonosta();
+	                    palvelupisteet[2].lisaaJonoon(a); 
+	            break;  
+	        case CHECKINMANUAL: a = palvelupisteet[0].otaJonosta();
+	                    palvelupisteet[3].lisaaJonoon(a); 
+	            break;
+	        case SECURITY:a = palvelupisteet[1].otaJonosta();
+	                    palvelupisteet[4].lisaaJonoon(a); 
+	            break;
+	            
+	        case SECURITYGATE:a = palvelupisteet[4].otaJonosta();
+	                    palvelupisteet[5].lisaaJonoon(a); 
+	            break;
+	            
+	        case GATE:a = palvelupisteet[5].otaJonosta();
+	                    palvelupisteet[6].lisaaJonoon(a); 
+	                break;
+	        
+	        case PLANE:
+	             a = palvelupisteet[6].otaJonosta();
+	               a.setPoistumisaika(Kello.getInstance().getAika());
+	               a.raportti(); 
+	            break;
+	            
+	    }   
 	}
+
 
 	
 	@Override
