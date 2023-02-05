@@ -2,7 +2,6 @@ package testi;
 import simu.framework.*;
 import simu.framework.Trace.Level;
 import simu.model.OmaMoottori;
-import org.junit.Test;
 
 public class Simulaattori { //Tekstipohjainen
 
