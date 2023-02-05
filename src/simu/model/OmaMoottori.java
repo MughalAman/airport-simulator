@@ -22,7 +22,7 @@ public class OmaMoottori extends Moottori{
 		palvelupisteet[3]=new Palvelupiste(new Normal(5,3), tapahtumalista, TapahtumanTyyppi.CHECKINMANUAL);
 		palvelupisteet[4]=new Palvelupiste(new Normal(5,3), tapahtumalista, TapahtumanTyyppi.SECURITY);
 		palvelupisteet[5]=new Palvelupiste(new Normal(5,3), tapahtumalista, TapahtumanTyyppi.SECURITYGATE);
-		palvelupisteet[6]=new Palvelupiste(new Normal(5,3), tapahtumalista, TapahtumanTyyppi.GATE);
+		palvelupisteet[6]=new Palvelupiste(new Normal(20,3), tapahtumalista, TapahtumanTyyppi.GATE);
 		palvelupisteet[7]=new Palvelupiste(new Normal(5,3), tapahtumalista, TapahtumanTyyppi.PLANE);
 		
 		saapumisprosessi = new Saapumisprosessi(new Negexp(15,5), tapahtumalista, TapahtumanTyyppi.ENTRANCE);
@@ -41,19 +41,40 @@ public class OmaMoottori extends Moottori{
 		Asiakas a;
 		switch (t.getTyyppi()){
 			
-			case ARR1: palvelupisteet[0].lisaaJonoon(new Asiakas());	
+			case ENTRANCE: palvelupisteet[0].lisaaJonoon(new Asiakas());	
 				       saapumisprosessi.generoiSeuraava();	
 				break;
-			case DEP1: a = palvelupisteet[0].otaJonosta();
+			case INFO: a = palvelupisteet[0].otaJonosta();
 				   	   palvelupisteet[1].lisaaJonoon(a);
 				break;
-			case DEP2: a = palvelupisteet[1].otaJonosta();
+			case CHECKINAUTO: a = palvelupisteet[1].otaJonosta();
 				   	   palvelupisteet[2].lisaaJonoon(a); 
 				break;  
-			case DEP3: 
-				       a = palvelupisteet[2].otaJonosta();
-					   a.setPoistumisaika(Kello.getInstance().getAika());
-			           a.raportti(); 
+			case CHECKINMANUAL: a = palvelupisteet[2].otaJonosta();
+		   	   palvelupisteet[3].lisaaJonoon(a); 
+				      
+			     break;
+			case SECURITY:a = palvelupisteet[3].otaJonosta();
+		   	   palvelupisteet[4].lisaaJonoon(a); 
+				
+				break;
+				
+			case SECURITYGATE:a = palvelupisteet[4].otaJonosta();
+		   	   palvelupisteet[5].lisaaJonoon(a); 
+			
+				break;
+				
+			case GATE:a = palvelupisteet[5].otaJonosta();
+		   	   palvelupisteet[6].lisaaJonoon(a); 
+					
+				break;
+			
+			case PLANE:
+				 a = palvelupisteet[6].otaJonosta();
+				   a.setPoistumisaika(Kello.getInstance().getAika());
+		           a.raportti(); 
+				break;
+				
 		}	
 	}
 
