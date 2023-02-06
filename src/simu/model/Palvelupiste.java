@@ -21,6 +21,9 @@ public class Palvelupiste {
 	//JonoStartegia strategia; //optio: asiakkaiden järjestys
 	
 	private boolean varattu = false;
+	
+	private int aktiiviaika = 0;
+	private int oleskeluaika = 0;
 
 
 	public Palvelupiste(ContinuousGenerator generator, Tapahtumalista tapahtumalista, TapahtumanTyyppi tyyppi){
@@ -38,6 +41,8 @@ public class Palvelupiste {
 
 	public Asiakas otaJonosta(){  // Poistetaan palvelussa ollut
 		varattu = false;
+		Asiakas a = jono.peek();
+		oleskeluaika += (int) (a.getPoistumisaika()-a.getSaapumisaika());
 		return jono.poll();
 	}
 
@@ -47,6 +52,7 @@ public class Palvelupiste {
 		
 		varattu = true;
 		double palveluaika = generator.sample();
+		aktiiviaika += palveluaika;
 		tapahtumalista.lisaa(new Tapahtuma(skeduloitavanTapahtumanTyyppi,Kello.getInstance().getAika()+palveluaika));
 	}
 
@@ -58,6 +64,18 @@ public class Palvelupiste {
 
 	public boolean onJonossa(){
 		return jono.size() != 0;
+	}
+	
+	public int getAktiiviaika() {
+		return aktiiviaika;
+	}
+	
+	public int getOleskeluaika() {
+		return oleskeluaika;
+	}
+	
+	public int getViiveaika() {
+		return oleskeluaika-aktiiviaika;
 	}
 
 }

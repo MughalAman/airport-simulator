@@ -11,6 +11,8 @@ public class OmaMoottori extends Moottori{
 	
 	private Saapumisprosessi saapumisprosessi;
 	
+	private int C = 1, B = 1, T = 1, Ri = 1, W = 1;
+	
 	
 	public OmaMoottori(){
 			
@@ -54,7 +56,7 @@ public class OmaMoottori extends Moottori{
 	            }
 	            break;
 	        case INFO: a = palvelupisteet[0].otaJonosta();
-	                    int randosmCheck = (int) (Math.random() * 3); // generates a random number between 0 and 2
+	        			int randosmCheck = (int) (Math.random() * 3); // generates a random number between 0 and 2
 	    	            switch (randosmCheck) {
 	    	             
 	    	                case 0: t.setTyyppi(TapahtumanTyyppi.CHECKINAUTO);
@@ -87,6 +89,7 @@ public class OmaMoottori extends Moottori{
 	             a = palvelupisteet[6].otaJonosta();
 	               a.setPoistumisaika(Kello.getInstance().getAika());
 	               a.raportti(); 
+	               C++;
 	            break;
 	            
 	    }   
@@ -96,8 +99,28 @@ public class OmaMoottori extends Moottori{
 	
 	@Override
 	protected void tulokset() {	
+		T = (int)Kello.getInstance().getAika();
+		B = palvelupisteet[2].getAktiiviaika() + palvelupisteet[3].getAktiiviaika(); 
+		Ri = palvelupisteet[4].getViiveaika();
+		W = palvelupisteet[4].getOleskeluaika();
+		
 		System.out.println("Simulointi päättyi kello " + Kello.getInstance().getAika());
 		System.out.println("Tulokset ... puuttuvat vielä");
+		System.out.println("Määrä asiakkaita, jotka pääsivät lentokoneeseen: "+C);
+		System.out.println("Check-in aktiiviaika: "+B);
+		System.out.println("Simuloinnin kokonaisaika: "+T);
+		System.out.println("Check-in käyttöaste: "+(B/T));
+		System.out.println("Lentokentän suoritusteho: "+(C/T));
+		System.out.println("Check-in keskimääräinen palveluaika: "+(B/C));
+		System.out.println("Aika asiakkaan turvatarkastuksen jonoon saapumisesta turvatarkastuksen päättymiseen: "+Ri);
+		System.out.println("Kokonaisoleskeluaika turvatarkastuksessa. Tämä on asiakkaiden läpimenoaikojen summa turvatarkastuksesta: "+W);
+		System.out.println("Aika asiakkaan turvatarkastuksen jonoon saapumisesta turvatarkastuksen päättymiseen: "+(W/C));
+		System.out.println("Turvatarkastuksen keskimääräinen jononpituus: "+(W/T));
+		
+	}
+	
+	public void addBusyTime(int time) {
+		B += time;
 	}
 
 	
