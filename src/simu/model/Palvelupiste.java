@@ -8,8 +8,6 @@ import simu.framework.Tapahtuma;
 import simu.framework.Tapahtumalista;
 import simu.framework.Trace;
 
-// TODO:
-// Palvelupistekohtaiset toiminnallisuudet, laskutoimitukset (+ tarvittavat muuttujat) ja raportointi koodattava
 public class Palvelupiste {
 
 	private LinkedList<Asiakas> jono = new LinkedList<Asiakas>(); // Tietorakennetoteutus

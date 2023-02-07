@@ -12,7 +12,8 @@ public class OmaMoottori extends Moottori{
 	private Saapumisprosessi saapumisprosessi;
 	
 	private double B, T, Ri, W;
-	private int C = 0;
+	private int C;
+	
 	
 	public OmaMoottori(){
 			
@@ -43,7 +44,7 @@ public class OmaMoottori extends Moottori{
 	    switch (t.getTyyppi()){
 	        
 	        case ENTRANCE: palvelupisteet[0].lisaaJonoon(new Asiakas());      
-	                   saapumisprosessi.generoiSeuraava();    
+	                   saapumisprosessi.generoiSeuraava();
 	            break;
 	        case INFO: a = palvelupisteet[0].otaJonosta();
 	                    palvelupisteet[1].lisaaJonoon(a);
