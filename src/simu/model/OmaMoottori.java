@@ -16,16 +16,15 @@ public class OmaMoottori extends Moottori{
 	
 	public OmaMoottori(){
 			
-		palvelupisteet = new Palvelupiste[8];
+		palvelupisteet = new Palvelupiste[7];
 	
-		palvelupisteet[0]=new Palvelupiste(new Normal(10,6), tapahtumalista, TapahtumanTyyppi.ENTRANCE);	
-		palvelupisteet[1]=new Palvelupiste(new Normal(15,8), tapahtumalista, TapahtumanTyyppi.INFO);
-		palvelupisteet[2]=new Palvelupiste(new Normal(5,3), tapahtumalista, TapahtumanTyyppi.CHECKINAUTO);
-		palvelupisteet[3]=new Palvelupiste(new Normal(5,3), tapahtumalista, TapahtumanTyyppi.CHECKINMANUAL);
-		palvelupisteet[4]=new Palvelupiste(new Normal(15,3), tapahtumalista, TapahtumanTyyppi.SECURITY);
-		palvelupisteet[5]=new Palvelupiste(new Normal(18,3), tapahtumalista, TapahtumanTyyppi.SECURITYGATE);
-		palvelupisteet[6]=new Palvelupiste(new Normal(20,3), tapahtumalista, TapahtumanTyyppi.GATE);
-		palvelupisteet[7]=new Palvelupiste(new Normal(5,3), tapahtumalista, TapahtumanTyyppi.PLANE);
+		palvelupisteet[0]=new Palvelupiste(new Normal(5,3), tapahtumalista, TapahtumanTyyppi.INFO);
+		palvelupisteet[1]=new Palvelupiste(new Normal(5,3), tapahtumalista, TapahtumanTyyppi.CHECKINAUTO);
+		palvelupisteet[2]=new Palvelupiste(new Normal(5,3), tapahtumalista, TapahtumanTyyppi.CHECKINMANUAL);
+		palvelupisteet[3]=new Palvelupiste(new Normal(15,3), tapahtumalista, TapahtumanTyyppi.SECURITY);
+		palvelupisteet[4]=new Palvelupiste(new Normal(18,3), tapahtumalista, TapahtumanTyyppi.SECURITYGATE);
+		palvelupisteet[5]=new Palvelupiste(new Normal(20,3), tapahtumalista, TapahtumanTyyppi.GATE);
+		palvelupisteet[6]=new Palvelupiste(new Normal(5,3), tapahtumalista, TapahtumanTyyppi.PLANE);
 		
 		saapumisprosessi = new Saapumisprosessi(new Negexp(15,5), tapahtumalista, TapahtumanTyyppi.ENTRANCE);
 
@@ -45,33 +44,17 @@ public class OmaMoottori extends Moottori{
 	        
 	        case ENTRANCE: palvelupisteet[0].lisaaJonoon(new Asiakas());      
 	                   saapumisprosessi.generoiSeuraava();    
-	            int randomCheck = (int) (Math.random() * 2); // generates a random number between 0 and 2
-	            switch (randomCheck) {
-	                case 0: t.setTyyppi(TapahtumanTyyppi.INFO);
-	                        break;
-	                case 1: t.setTyyppi(TapahtumanTyyppi.CHECKINAUTO);
-	                        break;
-	                case 2: t.setTyyppi(TapahtumanTyyppi.CHECKINMANUAL);
-	                        break;
-	            }
 	            break;
 	        case INFO: a = palvelupisteet[0].otaJonosta();
-	        			palvelupisteet[1].lisaaJonoon(a);
-	        			int randomCheck2 = (int) (Math.random() * 1); // generates a random number between 0 and 2
-	    	            switch (randomCheck2) {
-	    	                case 0: t.setTyyppi(TapahtumanTyyppi.CHECKINAUTO);
-	    	                        break;
-	    	                case 1: t.setTyyppi(TapahtumanTyyppi.CHECKINMANUAL);
-	    	                        break;
-	    	            }
+	                    palvelupisteet[1].lisaaJonoon(a);
 	            break;
-	        case CHECKINAUTO: a = palvelupisteet[0].otaJonosta();
+	        case CHECKINAUTO: a = palvelupisteet[1].otaJonosta();
 	                    palvelupisteet[2].lisaaJonoon(a); 
 	            break;  
-	        case CHECKINMANUAL: a = palvelupisteet[0].otaJonosta();
+	        case CHECKINMANUAL: a = palvelupisteet[2].otaJonosta();
 	                    palvelupisteet[3].lisaaJonoon(a); 
 	            break;
-	        case SECURITY: a = palvelupisteet[2].otaJonosta();
+	        case SECURITY:a = palvelupisteet[3].otaJonosta();
 	                    palvelupisteet[4].lisaaJonoon(a); 
 	            break;
 	            
@@ -97,12 +80,15 @@ public class OmaMoottori extends Moottori{
 	
 	@Override
 	protected void tulokset() {	
-		T = (double)Kello.getInstance().getAika();
-		B = palvelupisteet[2].getAktiiviaika() + palvelupisteet[3].getAktiiviaika(); 
-		Ri = palvelupisteet[4].getViiveaika();
-		W = palvelupisteet[4].getOleskeluaika();
+		T = Kello.getInstance().getAika();
+		System.out.println("T: "+T);
+		B = palvelupisteet[1].getAktiiviaika() + palvelupisteet[2].getAktiiviaika(); 
+		System.out.println("B: "+B);
+		Ri = palvelupisteet[3].getViiveaika();
+		W = palvelupisteet[3].getOleskeluaika();
 		
 		System.out.println("Simulointi päättyi kello " + Kello.getInstance().getAika());
+		System.out.println("Tulokset: ");
 		System.out.println("Määrä asiakkaita, jotka pääsivät lentokoneeseen: "+C);
 		System.out.println("Check-in aktiiviaika: "+B);
 		System.out.println("Simuloinnin kokonaisaika: "+T);
@@ -116,9 +102,6 @@ public class OmaMoottori extends Moottori{
 		
 	}
 	
-	public void addBusyTime(int time) {
-		B += time;
-	}
 
 	
 }

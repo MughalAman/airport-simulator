@@ -42,7 +42,7 @@ public class Palvelupiste {
 	public Asiakas otaJonosta(){  // Poistetaan palvelussa ollut
 		varattu = false;
 		Asiakas a = jono.peek();
-		oleskeluaika += (int) (a.getPoistumisaika()-a.getSaapumisaika());
+		oleskeluaika += (int) (Kello.getInstance().getAika()-a.getSaapumisaika());
 		return jono.poll();
 	}
 
