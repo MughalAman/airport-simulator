@@ -11,7 +11,7 @@ public class OmaMoottori extends Moottori{
 	
 	private Saapumisprosessi saapumisprosessi;
 	
-	private int C = 1, B = 1, T = 1, Ri = 1, W = 1;
+	private double C, B, T, Ri, W;
 	
 	
 	public OmaMoottori(){
@@ -45,7 +45,7 @@ public class OmaMoottori extends Moottori{
 	        
 	        case ENTRANCE: palvelupisteet[0].lisaaJonoon(new Asiakas());      
 	                   saapumisprosessi.generoiSeuraava();    
-	            int randomCheck = (int) (Math.random() * 3); // generates a random number between 0 and 2
+	            int randomCheck = (int) (Math.random() * 2); // generates a random number between 0 and 2
 	            switch (randomCheck) {
 	                case 0: t.setTyyppi(TapahtumanTyyppi.INFO);
 	                        break;
@@ -56,16 +56,14 @@ public class OmaMoottori extends Moottori{
 	            }
 	            break;
 	        case INFO: a = palvelupisteet[0].otaJonosta();
-	        			int randosmCheck = (int) (Math.random() * 3); // generates a random number between 0 and 2
-	    	            switch (randosmCheck) {
-	    	             
+	        			palvelupisteet[1].lisaaJonoon(a);
+	        			int randomCheck2 = (int) (Math.random() * 1); // generates a random number between 0 and 2
+	    	            switch (randomCheck2) {
 	    	                case 0: t.setTyyppi(TapahtumanTyyppi.CHECKINAUTO);
 	    	                        break;
 	    	                case 1: t.setTyyppi(TapahtumanTyyppi.CHECKINMANUAL);
 	    	                        break;
 	    	            }
-	                    palvelupisteet[1].lisaaJonoon(a);
-
 	            break;
 	        case CHECKINAUTO: a = palvelupisteet[0].otaJonosta();
 	                    palvelupisteet[2].lisaaJonoon(a); 
@@ -73,11 +71,11 @@ public class OmaMoottori extends Moottori{
 	        case CHECKINMANUAL: a = palvelupisteet[0].otaJonosta();
 	                    palvelupisteet[3].lisaaJonoon(a); 
 	            break;
-	        case SECURITY:a = palvelupisteet[1].otaJonosta();
+	        case SECURITY: a = palvelupisteet[2].otaJonosta();
 	                    palvelupisteet[4].lisaaJonoon(a); 
 	            break;
 	            
-	        case SECURITYGATE:a = palvelupisteet[4].otaJonosta();
+	        case SECURITYGATE: a = palvelupisteet[4].otaJonosta();
 	                    palvelupisteet[5].lisaaJonoon(a); 
 	            break;
 	            
@@ -88,8 +86,8 @@ public class OmaMoottori extends Moottori{
 	        case PLANE:
 	             a = palvelupisteet[6].otaJonosta();
 	               a.setPoistumisaika(Kello.getInstance().getAika());
-	               a.raportti(); 
 	               C++;
+	               a.raportti();
 	            break;
 	            
 	    }   
@@ -99,13 +97,12 @@ public class OmaMoottori extends Moottori{
 	
 	@Override
 	protected void tulokset() {	
-		T = (int)Kello.getInstance().getAika();
+		T = (double)Kello.getInstance().getAika();
 		B = palvelupisteet[2].getAktiiviaika() + palvelupisteet[3].getAktiiviaika(); 
 		Ri = palvelupisteet[4].getViiveaika();
 		W = palvelupisteet[4].getOleskeluaika();
 		
 		System.out.println("Simulointi päättyi kello " + Kello.getInstance().getAika());
-		System.out.println("Tulokset ... puuttuvat vielä");
 		System.out.println("Määrä asiakkaita, jotka pääsivät lentokoneeseen: "+C);
 		System.out.println("Check-in aktiiviaika: "+B);
 		System.out.println("Simuloinnin kokonaisaika: "+T);
