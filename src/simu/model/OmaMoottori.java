@@ -11,8 +11,8 @@ public class OmaMoottori extends Moottori{
 	
 	private Saapumisprosessi saapumisprosessi;
 	
-	private double C, B, T, Ri, W;
-	
+	private double B, T, Ri, W;
+	private int C = 0;
 	
 	public OmaMoottori(){
 			
