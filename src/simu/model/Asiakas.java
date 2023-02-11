@@ -17,7 +17,7 @@ public class Asiakas {
 	    id = i++;
 	    
 		saapumisaika = Kello.getInstance().getAika();
-		Trace.out(Trace.Level.INFO, "Uusi asiakas nro " + id + " saapui klo "+saapumisaika);
+		Trace.out(Trace.Level.INFO, "Uusi asiakas:" + id + ":"+saapumisaika);
 	}
 
 	public double getPoistumisaika() {
@@ -36,18 +36,13 @@ public class Asiakas {
 		this.saapumisaika = saapumisaika;
 	}
 	
-	public int getId() {
-		return id;
-	}
-	
 	public void raportti(){
-		Trace.out(Trace.Level.INFO, "\nAsiakas "+id+ " valmis! ");
-		Trace.out(Trace.Level.INFO, "Asiakas "+id+ " saapui: " +saapumisaika);
-		Trace.out(Trace.Level.INFO,"Asiakas "+id+ " poistui: " +poistumisaika);
-		Trace.out(Trace.Level.INFO,"Asiakas "+id+ " viipyi: " +(poistumisaika-saapumisaika));
+		Trace.out(Trace.Level.INFO, "Asiakas "+id+ " saapui:" +saapumisaika);
+		Trace.out(Trace.Level.INFO,"Asiakas "+id+ " poistui:" +poistumisaika);
+		Trace.out(Trace.Level.INFO,"Asiakas "+id+ " viipyi:" +(poistumisaika-saapumisaika));
 		sum += (poistumisaika-saapumisaika);
 		double keskiarvo = sum/id;
-		System.out.println("Asiakkaiden läpimenoaikojen keskiarvo tähän asti "+ keskiarvo);
+		System.out.println("Asiakkaiden läpimenoaikojen keskiarvo "+ keskiarvo);
 	}
 
 }

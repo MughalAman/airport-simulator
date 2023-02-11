@@ -1,5 +1,6 @@
 package simu.model;
 
+import controller.IKontrolleri;
 import eduni.distributions.Negexp;
 import eduni.distributions.Normal;
 import simu.framework.Kello;
@@ -7,26 +8,23 @@ import simu.framework.Moottori;
 import simu.framework.Saapumisprosessi;
 import simu.framework.Tapahtuma;
 
+
 public class OmaMoottori extends Moottori{
 	
 	private Saapumisprosessi saapumisprosessi;
 	
-	private double B, T, Ri, W;
-	private int C = 0;
 	
-	public OmaMoottori(){
-			
-		palvelupisteet = new Palvelupiste[7];
-	
-		palvelupisteet[0]=new Palvelupiste(new Normal(5,3), tapahtumalista, TapahtumanTyyppi.INFO);
-		palvelupisteet[1]=new Palvelupiste(new Normal(5,3), tapahtumalista, TapahtumanTyyppi.CHECKINAUTO);
-		palvelupisteet[2]=new Palvelupiste(new Normal(5,3), tapahtumalista, TapahtumanTyyppi.CHECKINMANUAL);
-		palvelupisteet[3]=new Palvelupiste(new Normal(15,3), tapahtumalista, TapahtumanTyyppi.SECURITY);
-		palvelupisteet[4]=new Palvelupiste(new Normal(18,3), tapahtumalista, TapahtumanTyyppi.SECURITYGATE);
-		palvelupisteet[5]=new Palvelupiste(new Normal(20,3), tapahtumalista, TapahtumanTyyppi.GATE);
-		palvelupisteet[6]=new Palvelupiste(new Normal(5,3), tapahtumalista, TapahtumanTyyppi.PLANE);
+	public OmaMoottori(IKontrolleri kontrolleri){ // UUSI
+
+		super(kontrolleri); //UUSI
 		
-		saapumisprosessi = new Saapumisprosessi(new Negexp(15,5), tapahtumalista, TapahtumanTyyppi.ENTRANCE);
+		palvelupisteet = new Palvelupiste[3];
+	
+		palvelupisteet[0]=new Palvelupiste(new Normal(10,6), tapahtumalista, TapahtumanTyyppi.DEP1);	
+		palvelupisteet[1]=new Palvelupiste(new Normal(10,10), tapahtumalista, TapahtumanTyyppi.DEP2);
+		palvelupisteet[2]=new Palvelupiste(new Normal(5,3), tapahtumalista, TapahtumanTyyppi.DEP3);
+		
+		saapumisprosessi = new Saapumisprosessi(new Negexp(15,5), tapahtumalista, TapahtumanTyyppi.ARR1);
 
 	}
 
@@ -36,72 +34,42 @@ public class OmaMoottori extends Moottori{
 		saapumisprosessi.generoiSeuraava(); // Ensimmäinen saapuminen järjestelmään
 	}
 	
+	
 	@Override
 	protected void suoritaTapahtuma(Tapahtuma t){  // B-vaiheen tapahtumat
 
-	    Asiakas a;
-	    switch (t.getTyyppi()){
-	        
-	        case ENTRANCE: palvelupisteet[0].lisaaJonoon(new Asiakas());      
-	                   saapumisprosessi.generoiSeuraava();    
-	            break;
-	        case INFO: a = palvelupisteet[0].otaJonosta();
-	                    palvelupisteet[1].lisaaJonoon(a);
-	            break;
-	        case CHECKINAUTO: a = palvelupisteet[1].otaJonosta();
-	                    palvelupisteet[2].lisaaJonoon(a); 
-	            break;  
-	        case CHECKINMANUAL: a = palvelupisteet[2].otaJonosta();
-	                    palvelupisteet[3].lisaaJonoon(a); 
-	            break;
-	        case SECURITY:a = palvelupisteet[3].otaJonosta();
-	                    palvelupisteet[4].lisaaJonoon(a); 
-	            break;
-	            
-	        case SECURITYGATE: a = palvelupisteet[4].otaJonosta();
-	                    palvelupisteet[5].lisaaJonoon(a); 
-	            break;
-	            
-	        case GATE:a = palvelupisteet[5].otaJonosta();
-	                    palvelupisteet[6].lisaaJonoon(a); 
-	                break;
-	        
-	        case PLANE:
-	             a = palvelupisteet[6].otaJonosta();
-	               a.setPoistumisaika(Kello.getInstance().getAika());
-	               C++;
-	               a.raportti();
-	            break;
-	            
-	    }   
+		Asiakas a;
+		switch (t.getTyyppi()){
+			
+			case ARR1: palvelupisteet[0].lisaaJonoon(new Asiakas());	
+				       saapumisprosessi.generoiSeuraava();	
+				       kontrolleri.visualisoiAsiakas(); // UUSI
+				break;
+			case DEP1: a = palvelupisteet[0].otaJonosta();
+				   	   palvelupisteet[1].lisaaJonoon(a);
+				break;
+			case DEP2: a = palvelupisteet[1].otaJonosta();
+				   	   palvelupisteet[2].lisaaJonoon(a); 
+				break;  
+			case DEP3: 
+				       a = palvelupisteet[2].otaJonosta();
+					   a.setPoistumisaika(Kello.getInstance().getAika());
+			           a.raportti(); 
+		}	
 	}
-
 
 	
 	@Override
-	protected void tulokset() {	
-		T = Kello.getInstance().getAika();
-		System.out.println("T: "+T);
-		B = palvelupisteet[1].getAktiiviaika() + palvelupisteet[2].getAktiiviaika(); 
-		System.out.println("B: "+B);
-		Ri = palvelupisteet[3].getViiveaika();
-		W = palvelupisteet[3].getOleskeluaika();
+	protected void tulokset() {
 		
-		System.out.println("Simulointi päättyi kello " + Kello.getInstance().getAika());
-		System.out.println("Tulokset: ");
-		System.out.println("Määrä asiakkaita, jotka pääsivät lentokoneeseen: "+C);
-		System.out.println("Check-in aktiiviaika: "+B);
-		System.out.println("Simuloinnin kokonaisaika: "+T);
-		System.out.println("Check-in käyttöaste: "+(B/T));
-		System.out.println("Lentokentän suoritusteho: "+(C/T));
-		System.out.println("Check-in keskimääräinen palveluaika: "+(B/C));
-		System.out.println("Aika asiakkaan turvatarkastuksen jonoon saapumisesta turvatarkastuksen päättymiseen: "+Ri);
-		System.out.println("Kokonaisoleskeluaika turvatarkastuksessa. Tämä on asiakkaiden läpimenoaikojen summa turvatarkastuksesta: "+W);
-		System.out.println("Aika asiakkaan turvatarkastuksen jonoon saapumisesta turvatarkastuksen päättymiseen: "+(W/C));
-		System.out.println("Turvatarkastuksen keskimääräinen jononpituus: "+(W/T));
+		// VANHAA tekstipohjaista
+		// System.out.println("Simulointi päättyi kello " + Kello.getInstance().getAika());
+		// System.out.println("Tulokset ... puuttuvat vielä");
+		
+		// UUTTA graafista
+		kontrolleri.naytaLoppuaika(Kello.getInstance().getAika());
 		
 	}
-	
 
 	
 }
