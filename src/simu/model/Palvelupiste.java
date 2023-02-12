@@ -21,6 +21,8 @@ public class Palvelupiste {
 	
 	private boolean varattu = false;
 
+	private int aktiiviaika = 0;
+	private int oleskeluaika = 0;
 
 	public Palvelupiste(ContinuousGenerator generator, Tapahtumalista tapahtumalista, TapahtumanTyyppi tyyppi){
 		this.tapahtumalista = tapahtumalista;
@@ -32,17 +34,20 @@ public class Palvelupiste {
 
 	public void lisaaJonoon(Asiakas a){   // Jonon 1. asiakas aina palvelussa
 		jono.add(a);
-		
 	}
 
 	public Asiakas otaJonosta(){  // Poistetaan palvelussa ollut
 		varattu = false;
+		Asiakas a = jono.peek();
+		oleskeluaika += (int) (Kello.getInstance().getAika()-a.getSaapumisaika());
 		return jono.poll();
+		
 	}
 
 	public void aloitaPalvelu(){  //Aloitetaan uusi palvelu, asiakas on jonossa palvelun aikana
 		varattu = true;
 		double palveluaika = generator.sample();
+		aktiiviaika += palveluaika;
 		tapahtumalista.lisaa(new Tapahtuma(skeduloitavanTapahtumanTyyppi,Kello.getInstance().getAika()+palveluaika));
 	}
 
@@ -51,9 +56,20 @@ public class Palvelupiste {
 		return varattu;
 	}
 
-
 	public boolean onJonossa(){
 		return jono.size() != 0;
+	}
+	
+	public int getAktiiviaika() {
+		return aktiiviaika;
+	}
+
+	public int getOleskeluaika() {
+		return oleskeluaika;
+	}
+
+	public int getViiveaika() {
+		return oleskeluaika-aktiiviaika;
 	}
 
 }
