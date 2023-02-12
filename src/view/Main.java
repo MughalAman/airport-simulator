@@ -1,3 +1,5 @@
+package view; 
+
 public class Main { // Simulaattorin käynnistyspääohjelma
 	
 	public static void main(String args[]) {
