@@ -11,6 +11,8 @@ public interface IKontrolleri {
 		// Rajapinta, joka tarjotaan moottorille:
 		
 		public void naytaLoppuaika(double aika);
+		
+		public void naytaLoppuTuloste(String LoppuTuloste);
 		public void visualisoiAsiakas();
 
 }

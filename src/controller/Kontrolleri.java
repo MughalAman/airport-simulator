@@ -2,6 +2,7 @@ package controller;
 
 import javafx.application.Platform;
 import simu.framework.IMoottori;
+import simu.framework.Kello;
 import simu.model.OmaMoottori;
 import view.ISimulaattorinUI;
 
@@ -9,6 +10,7 @@ public class Kontrolleri implements IKontrolleri{   // UUSI
 	
 	private IMoottori moottori; 
 	private ISimulaattorinUI ui;
+
 	
 	public Kontrolleri(ISimulaattorinUI ui) {
 		this.ui = ui;
@@ -45,6 +47,7 @@ public class Kontrolleri implements IKontrolleri{   // UUSI
 	@Override
 	public void naytaLoppuaika(double aika) {
 		Platform.runLater(()->ui.setLoppuaika(aika)); 
+	
 	}
 
 	
@@ -56,7 +59,9 @@ public class Kontrolleri implements IKontrolleri{   // UUSI
 			}
 		});
 	}
+	
+	public void naytaLoppuTuloste(String LoppuTuloste) {
+		Platform.runLater(()->ui.setLoppuTuloste(LoppuTuloste)); 
 
-
-
-}
+	}
+	}

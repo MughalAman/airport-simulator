@@ -9,6 +9,9 @@ public interface ISimulaattorinUI {
 	//Kontrolleri antaa käyttöliittymälle tuloksia, joita Moottori tuottaa 
 	public void setLoppuaika(double aika);
 	
+	//Tuloste
+	public void setLoppuTuloste(String Tuloste);
+	
 	// Kontrolleri tarvitsee  
 	public IVisualisointi getVisualisointi();
 

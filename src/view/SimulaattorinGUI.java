@@ -25,7 +25,9 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI{
 
 	//Kontrollerin esittely (tarvitaan käyttöliittymässä)
 	private IKontrolleri kontrolleri;
-
+	
+	
+	
 	// Käyttöliittymäkomponentit:
 	private TextField aika;
 	private TextField viive;
@@ -33,6 +35,7 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI{
 	private Label aikaLabel;
 	private Label viiveLabel;
 	private Label tulosLabel;
+	private Label Tulosta;
 	
 	private Button kaynnistaButton;
 	private Button hidastaButton;
@@ -61,7 +64,27 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI{
 			        System.exit(0);
 			    }
 			});
-						
+			
+		
+
+			
+			
+//			Button Tulosta = new Button("Tulosta");
+	
+//
+//			
+//			Tulosta.setOnAction(new EventHandler<ActionEvent>() {
+//				@Override
+//				public void handle(ActionEvent event){
+//					//Tulosteet
+//			       
+//
+////			        txtTulosteet.setText();
+//				
+//				
+//			}
+//			});
+//						
 			
 			primaryStage.setTitle("Simulaattori");
 
@@ -100,6 +123,11 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI{
 	        tulos = new Label();
 	        tulos.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
 	        tulos.setPrefWidth(150);
+	        
+	 
+	        
+	        
+	        
 
 	        HBox hBox = new HBox();
 	        hBox.setPadding(new Insets(15, 12, 15, 12)); // marginaalit ylä, oikea, ala, vasen
@@ -120,7 +148,15 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI{
 	        grid.add(nopeutaButton, 0, 4);   // sarake, rivi
 	        grid.add(hidastaButton, 1, 4);   // sarake, rivi
 	        
-	        naytto = new Visualisointi(400,200);
+	        
+	        Tulosta = new Label("Tulostukset: ");
+
+	        grid.add(Tulosta, 0 , 56);
+
+	        
+	        
+	        
+	        naytto = new Visualisointi(600,700);
 
 	        // Täytetään boxi:
 	        hBox.getChildren().addAll(grid, (Canvas)naytto);
@@ -167,6 +203,14 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI{
 	public static void main(String[] args) {
 		launch(args);
 	}
+
+	@Override
+	public void setLoppuTuloste(String Tuloste) {
+
+		this.Tulosta.setText(Tuloste);
+	}
+
+
 
 	
 }
