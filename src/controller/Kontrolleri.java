@@ -46,7 +46,22 @@ public class Kontrolleri implements IKontrolleri{   // UUSI
 	public void naytaLoppuaika(double aika) {
 		Platform.runLater(()->ui.setLoppuaika(aika)); 
 	}
-
+	
+	public void naytaAsiakasMaara(int C) {
+		Platform.runLater(()->ui.setAsiakasMaara(C)); 
+	}
+	
+	public void checkAktiiviAika(double B) {
+		Platform.runLater(()->ui.setCheckAktiiviAika(B)); 
+	}
+	
+	public void turvaTarkastus(double Ri) {
+		Platform.runLater(()->ui.setTurvaTarkastus(Ri)); 
+	}
+	
+	public void oleskeluAikaTurvaTarkastus(double W) {
+		Platform.runLater(()->ui.setOleskeluAikaTurvaTarkastus(W)); 
+	}
 	
 	@Override
 	public void visualisoiAsiakas() {
@@ -56,7 +71,5 @@ public class Kontrolleri implements IKontrolleri{   // UUSI
 			}
 		});
 	}
-
-
 
 }

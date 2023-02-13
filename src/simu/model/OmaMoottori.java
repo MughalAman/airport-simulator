@@ -113,8 +113,42 @@ public class OmaMoottori extends Moottori{
 		
 		// UUTTA graafista
 		kontrolleri.naytaLoppuaika(Kello.getInstance().getAika());
+		kontrolleri.naytaAsiakasMaara(C);
+		kontrolleri.checkAktiiviAika(B);
+		kontrolleri.turvaTarkastus(Ri);
+		kontrolleri.oleskeluAikaTurvaTarkastus(W);
 		
 	}
-
 	
+	public int getC() {
+		return C;
+	}
+	
+	public double getB() {
+		return B;
+	}
+	
+	public double getRi() {
+		return Ri;
+	}
+	
+	public double getW() {
+		return W;
+	}
+	
+	public void setC(int C){
+		this.C = C;
+	}
+	
+	public void setB(double B){
+		this.B = B;
+	}
+	
+	public void setRi(double Ri){
+		this.Ri = Ri;
+	}
+	
+	public void setW(double W){
+		this.W = W;
+	}
 }

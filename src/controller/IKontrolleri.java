@@ -12,5 +12,10 @@ public interface IKontrolleri {
 		
 		public void naytaLoppuaika(double aika);
 		public void visualisoiAsiakas();
+		
+		public void naytaAsiakasMaara(int C);
+		public void checkAktiiviAika(double B);
+		public void turvaTarkastus(double Ri);
+		public void oleskeluAikaTurvaTarkastus(double W);
 
 }
