@@ -2,6 +2,8 @@ package simu.model;
 
 import eduni.distributions.Negexp;
 import eduni.distributions.Normal;
+import eduni.distributions.Binomial;
+import eduni.distributions.Bernoulli;
 import simu.framework.Kello;
 import simu.framework.Moottori;
 import simu.framework.Saapumisprosessi;
@@ -10,8 +12,11 @@ import simu.framework.Tapahtuma;
 public class OmaMoottori extends Moottori{
 	
 	private Saapumisprosessi saapumisprosessi;
-	
+
 	private double C, B, T, Ri, W;
+	private double B, T, Ri, W;
+	private int C = 0;
+	private double checkinJakauma = 0.5, sisaankayntiJakauma = 0.5; // Jakaumat oletuksena 50/50
 	
 	
 	public OmaMoottori(){
@@ -54,6 +59,48 @@ public class OmaMoottori extends Moottori{
 	        case CHECKINMANUAL: a = palvelupisteet[2].otaJonosta();
 	                    palvelupisteet[3].lisaaJonoon(a); 
 	            break;
+		Asiakas a;
+		switch (t.getTyyppi()){
+			
+        	case ENTRANCE:
+        			switch((int)(new Bernoulli(sisaankayntiJakauma).sample())) {
+        			case 0: 
+        				palvelupisteet[0].lisaaJonoon(new Asiakas());    
+						break;
+					case 1:
+						switch((int)(new Bernoulli(checkinJakauma).sample())) {
+						case 0: 
+							palvelupisteet[1].lisaaJonoon(new Asiakas());
+							break;
+						case 1:
+							palvelupisteet[2].lisaaJonoon(new Asiakas());
+							break;
+						}
+						break;
+        			}  
+        			saapumisprosessi.generoiSeuraava();	
+        			kontrolleri.visualisoiAsiakas(); // UUSI
+				break;
+				
+			case INFO: a = palvelupisteet[0].otaJonosta();
+					switch((int)(new Bernoulli(checkinJakauma).sample())) {
+					case 0: 
+						palvelupisteet[1].lisaaJonoon(a);
+						break;
+					case 1:
+						palvelupisteet[2].lisaaJonoon(a);
+						break;
+					}
+				break;
+				
+			case CHECKINAUTO: a = palvelupisteet[1].otaJonosta();
+					palvelupisteet[3].lisaaJonoon(a); 
+				break;
+				
+			case CHECKINMANUAL: a = palvelupisteet[2].otaJonosta();
+            		palvelupisteet[3].lisaaJonoon(a); 
+            	break;
+     
 	        case SECURITY:a = palvelupisteet[3].otaJonosta();
 	                    palvelupisteet[4].lisaaJonoon(a); 
 	            break;
@@ -101,7 +148,16 @@ public class OmaMoottori extends Moottori{
 		System.out.println("Turvatarkastuksen keskimääräinen jononpituus: "+(W/T));
 		
 	}
+
+	// Sisäänkäyti jakauma INFO/Check-in
+	public void setSisaankayntiJakauma(double jakauma) {
+		sisaankayntiJakauma = jakauma;
+	}
 	
+	// Check-in jakauma CHECKINAUTO/CHECKIMANUAL
+	public void setCheckinJakauma(double jakauma) {
+		checkinJakauma = jakauma;
+	}
 
 	
 }
