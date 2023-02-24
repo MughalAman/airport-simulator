@@ -43,7 +43,7 @@ public class OmaMoottori extends Moottori{
 	}
 	
 	
-		@Override
+	@Override
 	protected void suoritaTapahtuma(Tapahtuma t){  // B-vaiheen tapahtumat
 
 		Asiakas a;
