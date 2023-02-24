@@ -13,7 +13,6 @@ public class OmaMoottori extends Moottori{
 	
 	private Saapumisprosessi saapumisprosessi;
 
-	private double C, B, T, Ri, W;
 	private double B, T, Ri, W;
 	private int C = 0;
 	private double checkinJakauma = 0.5, sisaankayntiJakauma = 0.5; // Jakaumat oletuksena 50/50
