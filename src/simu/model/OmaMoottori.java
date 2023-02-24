@@ -43,72 +43,72 @@ public class OmaMoottori extends Moottori{
 	}
 	
 	
-	@Override
+		@Override
 	protected void suoritaTapahtuma(Tapahtuma t){  // B-vaiheen tapahtumat
 
 		Asiakas a;
 		switch (t.getTyyppi()){
-			
-        	case ENTRANCE:
-        			switch((int)(new Bernoulli(sisaankayntiJakauma).sample())) {
-        			case 0: 
-        				palvelupisteet[0].lisaaJonoon(new Asiakas());    
+
+		case ENTRANCE:
+				switch((int)(new Bernoulli(sisaankayntiJakauma).sample())) {
+						
+        			case 0: palvelupisteet[0].lisaaJonoon(new Asiakas());    
+					break;
+
+				case 1: switch((int)(new Bernoulli(checkinJakauma).sample())) {
+						
+					case 0: palvelupisteet[1].lisaaJonoon(new Asiakas());
 						break;
-					case 1:
-						switch((int)(new Bernoulli(checkinJakauma).sample())) {
-						case 0: 
-							palvelupisteet[1].lisaaJonoon(new Asiakas());
-							break;
-						case 1:
-							palvelupisteet[2].lisaaJonoon(new Asiakas());
-							break;
-						}
+						
+					case 1: palvelupisteet[2].lisaaJonoon(new Asiakas());
 						break;
+					}
+					break;
         			}  
         			saapumisprosessi.generoiSeuraava();	
         			kontrolleri.visualisoiAsiakas(); // UUSI
 				break;
 				
-			case INFO: a = palvelupisteet[0].otaJonosta();
-					switch((int)(new Bernoulli(checkinJakauma).sample())) {
-					case 0: 
-						palvelupisteet[1].lisaaJonoon(a);
-						break;
-					case 1:
-						palvelupisteet[2].lisaaJonoon(a);
-						break;
-					}
+		case INFO: a = palvelupisteet[0].otaJonosta();
+			switch((int)(new Bernoulli(checkinJakauma).sample())) {
+					
+			case 0: palvelupisteet[1].lisaaJonoon(a);
+				break;
+					
+			case 1: palvelupisteet[2].lisaaJonoon(a);
+				break;
+			}
+			break;
+				
+		case CHECKINAUTO: a = palvelupisteet[1].otaJonosta();
+				palvelupisteet[3].lisaaJonoon(a); 
 				break;
 				
-			case CHECKINAUTO: a = palvelupisteet[1].otaJonosta();
-					palvelupisteet[3].lisaaJonoon(a); 
-				break;
-				
-			case CHECKINMANUAL: a = palvelupisteet[2].otaJonosta();
-            		palvelupisteet[3].lisaaJonoon(a); 
-            	break;
-            	
-	        case SECURITY:a = palvelupisteet[3].otaJonosta();
+		case CHECKINMANUAL: a = palvelupisteet[2].otaJonosta();
+            			palvelupisteet[3].lisaaJonoon(a); 
+            			break;
+         
+	        case SECURITY: a = palvelupisteet[3].otaJonosta();
             		palvelupisteet[4].lisaaJonoon(a); 
-            	break;
+            		break;
             	
 	        case SECURITYGATE: a = palvelupisteet[4].otaJonosta();
             		palvelupisteet[5].lisaaJonoon(a); 
-            	break;
+            		break;
     
-	        case GATE:a = palvelupisteet[5].otaJonosta();
+	        case GATE: a = palvelupisteet[5].otaJonosta();
             		palvelupisteet[6].lisaaJonoon(a); 
-            	break;
+            		break;
 
-	        case PLANE:
-	        		a = palvelupisteet[6].otaJonosta();
-	        		a.setPoistumisaika(Kello.getInstance().getAika());
-	        		C++;
-	        		a.raportti();
+	        case PLANE: a = palvelupisteet[6].otaJonosta();
+	        	a.setPoistumisaika(Kello.getInstance().getAika());
+	        	C++;
+	        	a.raportti();
 	        	break;
 		}	
 	}
-
+	
+	
 	@Override
 	public void tulokset() {
 		
