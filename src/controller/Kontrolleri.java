@@ -2,7 +2,6 @@ package controller;
 
 import javafx.application.Platform;
 import simu.framework.IMoottori;
-import simu.framework.Kello;
 import simu.model.OmaMoottori;
 import view.ISimulaattorinUI;
 
@@ -94,8 +93,4 @@ public class Kontrolleri implements IKontrolleri{   // UUSI
 			}
 		});
 	}
-	
-	public void naytaLoppuTuloste(String LoppuTuloste) {
-		Platform.runLater(()->ui.setLoppuTuloste(LoppuTuloste)); 
-
 }

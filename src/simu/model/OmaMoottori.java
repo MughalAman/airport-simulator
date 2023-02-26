@@ -86,7 +86,7 @@ public class OmaMoottori extends Moottori{
 	}
 
 	@Override
-	public void tulokset() {
+	protected void tulokset() {
 		
 		// VANHAA tekstipohjaista
 		// System.out.println("Simulointi päättyi kello " + Kello.getInstance().getAika());
@@ -127,15 +127,6 @@ public class OmaMoottori extends Moottori{
 		kontrolleri.checkinPalveluaika(P);
 		kontrolleri.turvatarkastusJono(A);
 		kontrolleri.turvatarkastusJononPituus(R);
-		
-		String 	tulosStr = "Simulointi päättyi kello " + Kello.getInstance().getAika() + "\n" +  "Tulokset: " + "\n" + "Määrä asiakkaita, jotka pääsivät lentokoneeseen: "+C + "\n"  +  "Check-in aktiiviaika: "+B + "\n"
-				+ "Simuloinnin kokonaisaika: "+T + "\n"	+ "Check-in käyttöaste: "+(B/T) + "\n" + "Lentokentän suoritusteho: "+(C/T) + "\n" + "Check-in keskimääräinen palveluaika: "+(B/C) +  "\n" + "Aika asiakkaan turvatarkastuksen jonoon saapumisesta turvatarkastuksen päättymiseen: "+Ri + "\n"+
-				"Kokonaisoleskeluaika turvatarkastuksessa. Tämä on asiakkaiden läpimenoaikojen summa turvatarkastuksesta: "+W + "\n"
-				+ "Aika asiakkaan turvatarkastuksen jonoon saapumisesta turvatarkastuksen päättymiseen: "+(W/C) + "\n" + "Turvatarkastuksen keskimääräinen jononpituus: "+(W/T);
-		
-		
-		kontrolleri.naytaLoppuTuloste(tulosStr);
-		
 		
 	}
 	

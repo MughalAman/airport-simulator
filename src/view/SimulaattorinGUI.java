@@ -232,14 +232,6 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI{
 	        grid.add(nopeutaButton, 0, 13);   // sarake, rivi
 	        grid.add(hidastaButton, 1, 13);   // sarake, rivi
 	        
-	        
-	        Tulosta = new Label("Tulostukset: ");
-
-	        grid.add(Tulosta, 0 , 56);
-
-	        
-	        
-	        
 	        naytto = new Visualisointi(600,700);
 
 	        // Täytetään boxi:
