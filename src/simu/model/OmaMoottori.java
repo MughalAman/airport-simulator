@@ -13,7 +13,7 @@ public class OmaMoottori extends Moottori{
 	
 	private Saapumisprosessi saapumisprosessi;
 	
-	private double B, T, Ri, W;
+	private double B, T, Ri, W, K, S, P, A, R;
 	private int C = 0;
 	
 	public OmaMoottori(IKontrolleri kontrolleri){ // UUSI
@@ -97,19 +97,24 @@ public class OmaMoottori extends Moottori{
 		System.out.println("B: "+B);
 		Ri = palvelupisteet[3].getViiveaika();
 		W = palvelupisteet[3].getOleskeluaika();
+		K = B/T;
+		S = C/T;
+		P = B/C;
+		A = W/C;
+		R = W/T;
 		
 		System.out.println("Simulointi päättyi kello " + Kello.getInstance().getAika());
 		System.out.println("Tulokset: ");
 		System.out.println("Määrä asiakkaita, jotka pääsivät lentokoneeseen: "+C);
 		System.out.println("Check-in aktiiviaika: "+B);
 		System.out.println("Simuloinnin kokonaisaika: "+T);
-		System.out.println("Check-in käyttöaste: "+(B/T));
-		System.out.println("Lentokentän suoritusteho: "+(C/T));
-		System.out.println("Check-in keskimääräinen palveluaika: "+(B/C));
+		System.out.println("Check-in käyttöaste: "+(K));
+		System.out.println("Lentokentän suoritusteho: "+(S));
+		System.out.println("Check-in keskimääräinen palveluaika: "+(P));
 		System.out.println("Aika asiakkaan turvatarkastuksen jonoon saapumisesta turvatarkastuksen päättymiseen: "+Ri);
 		System.out.println("Kokonaisoleskeluaika turvatarkastuksessa. Tämä on asiakkaiden läpimenoaikojen summa turvatarkastuksesta: "+W);
-		System.out.println("Aika asiakkaan turvatarkastuksen jonoon saapumisesta turvatarkastuksen päättymiseen: "+(W/C));
-		System.out.println("Turvatarkastuksen keskimääräinen jononpituus: "+(W/T));
+		System.out.println("Aika asiakkaan turvatarkastuksen jonoon saapumisesta turvatarkastuksen päättymiseen: "+(A));
+		System.out.println("Turvatarkastuksen keskimääräinen jononpituus: "+(R));
 		
 		// UUTTA graafista
 		kontrolleri.naytaLoppuaika(Kello.getInstance().getAika());
@@ -117,6 +122,11 @@ public class OmaMoottori extends Moottori{
 		kontrolleri.checkAktiiviAika(B);
 		kontrolleri.turvaTarkastus(Ri);
 		kontrolleri.oleskeluAikaTurvaTarkastus(W);
+		kontrolleri.checkInKayttoaste(K);
+		kontrolleri.lentokentanTeho(S);
+		kontrolleri.checkinPalveluaika(P);
+		kontrolleri.turvatarkastusJono(A);
+		kontrolleri.turvatarkastusJononPituus(R);
 		
 	}
 	
@@ -136,6 +146,26 @@ public class OmaMoottori extends Moottori{
 		return W;
 	}
 	
+	public double getK() {
+		return K;
+	}
+	
+	public double getS() {
+		return S;
+	}
+	
+	public double getP() {
+		return P;
+	}
+	
+	public double getA() {
+		return A;
+	}
+
+	public double getR() {
+		return R;
+	}
+	
 	public void setC(int C){
 		this.C = C;
 	}
@@ -150,5 +180,25 @@ public class OmaMoottori extends Moottori{
 	
 	public void setW(double W){
 		this.W = W;
+	}
+	
+	public void setK(double K) {
+		this.K = K;
+	}
+
+	public void setS(double S) {
+		this.S = S;
+	}
+
+	public void setP(double P) {
+		this.P = P;
+	}
+
+	public void setA(double A) {
+		this.A = A;
+	}
+
+	public void setR(double R) {
+		this.R = R;
 	}
 }

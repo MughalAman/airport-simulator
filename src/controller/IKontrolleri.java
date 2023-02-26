@@ -17,5 +17,11 @@ public interface IKontrolleri {
 		public void checkAktiiviAika(double B);
 		public void turvaTarkastus(double Ri);
 		public void oleskeluAikaTurvaTarkastus(double W);
+		
+		public void checkInKayttoaste(double K);
+		public void lentokentanTeho(double S);
+		public void checkinPalveluaika(double P);
+		public void turvatarkastusJono(double A);
+		public void turvatarkastusJononPituus(double R);
 
 }

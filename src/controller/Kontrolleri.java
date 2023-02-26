@@ -63,6 +63,26 @@ public class Kontrolleri implements IKontrolleri{   // UUSI
 		Platform.runLater(()->ui.setOleskeluAikaTurvaTarkastus(W)); 
 	}
 	
+	public void checkInKayttoaste(double K) {
+		Platform.runLater(()->ui.setCheckInKayttoaste(K)); 
+	}
+	
+	public void lentokentanTeho(double S) {
+		Platform.runLater(()->ui.setLentokentanTeho(S)); 
+	}
+	
+	public void checkinPalveluaika(double P) {
+		Platform.runLater(()->ui.setCheckinPalveluaika(P)); 
+	}
+	
+	public void turvatarkastusJono(double A) {
+		Platform.runLater(()->ui.setTurvatarkastusJono(A)); 
+	}
+	
+	public void turvatarkastusJononPituus(double R) {
+		Platform.runLater(()->ui.setTurvatarkastusJononPituus(R)); 
+	}
+
 	@Override
 	public void visualisoiAsiakas() {
 		Platform.runLater(new Runnable(){

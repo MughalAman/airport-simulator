@@ -161,7 +161,7 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI{
 	        tulos8.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
 	        tulos8.setPrefWidth(150);
 	        
-	        tulosLabel9 = new Label("Aika asiakkaan turvatarkastuksen jonoon saapumisesta turvatarkastuksen päättymiseen:");
+	        tulosLabel9 = new Label("Turvatarkastuksen keskimääräinen läpimenoaika:");
 			tulosLabel9.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
 	        tulos9 = new Label();
 	        tulos9.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
@@ -260,6 +260,31 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI{
 	}
 	
 	@Override
+	public double getK() {
+		return Double.parseDouble(tulos6.getText());
+	}
+	
+	@Override
+	public double getS() {
+		return Double.parseDouble(tulos7.getText());
+	}
+	
+	@Override
+	public double getP() {
+		return Double.parseDouble(tulos8.getText());
+	}
+	
+	@Override
+	public double getA() {
+		return Double.parseDouble(tulos9.getText());
+	}
+	
+	@Override
+	public double getR() {
+		return Double.parseDouble(tulos10.getText());
+	}
+	
+	@Override
 	public void setLoppuaika(double aika){
 		 DecimalFormat formatter = new DecimalFormat("#0.00");
 		 this.tulos.setText(formatter.format(aika));
@@ -287,6 +312,36 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI{
 	public void setOleskeluAikaTurvaTarkastus(double W) {
 		DecimalFormat formatter = new DecimalFormat("#0.00");
 		this.tulos5.setText(formatter.format(W));
+	}
+	
+	@Override
+	public void setCheckInKayttoaste(double K) {
+		DecimalFormat formatter = new DecimalFormat("#0.00");
+		this.tulos6.setText(formatter.format(K));
+	}
+	
+	@Override
+	public void setLentokentanTeho(double S) {
+		DecimalFormat formatter = new DecimalFormat("#0.00");
+		this.tulos7.setText(formatter.format(S));
+	}
+	
+	@Override
+	public void setCheckinPalveluaika(double P) {
+		DecimalFormat formatter = new DecimalFormat("#0.00");
+		this.tulos8.setText(formatter.format(P));
+	}
+	
+	@Override
+	public void setTurvatarkastusJono(double A) {
+		DecimalFormat formatter = new DecimalFormat("#0.00");
+		this.tulos9.setText(formatter.format(A));
+	}
+	
+	@Override
+	public void setTurvatarkastusJononPituus(double R) {
+		DecimalFormat formatter = new DecimalFormat("#0.00");
+		this.tulos10.setText(formatter.format(R));
 	}
 	
 	// tee laskutulokset lopulle 5:delle suureelle
