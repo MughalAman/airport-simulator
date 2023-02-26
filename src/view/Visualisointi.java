@@ -2,7 +2,9 @@ package view;
 
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.ImagePattern;
 
 public class Visualisointi extends Canvas implements IVisualisointi{
 
@@ -11,16 +13,17 @@ public class Visualisointi extends Canvas implements IVisualisointi{
 	double i = 0;
 	double j = 10;
 	
-	
+
 	public Visualisointi(int w, int h) {
 		super(w, h);
 		gc = this.getGraphicsContext2D();
 		tyhjennaNaytto();
-	}
+		}
 	
 
 	public void tyhjennaNaytto() {
-		gc.setFill(Color.YELLOW);
+		Image img = new Image("/img/airport.png");
+		gc.setFill(new ImagePattern(img));
 		gc.fillRect(0, 0, this.getWidth(), this.getHeight());
 	}
 	

@@ -232,10 +232,11 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI{
 	        grid.add(nopeutaButton, 0, 13);   // sarake, rivi
 	        grid.add(hidastaButton, 1, 13);   // sarake, rivi
 	        
-	        naytto = new Visualisointi(600,700);
+	        naytto = new Visualisointi(1000,900);
 
+	        hBox.getChildren().addAll(grid,(Canvas)naytto);
 	        // Täytetään boxi:
-	        hBox.getChildren().addAll(grid, (Canvas)naytto);
+//	        hBox.getChildren().addAll(grid, (Canvas)naytto);
 	        
 	        Scene scene = new Scene(hBox);
 	        primaryStage.setScene(scene);
