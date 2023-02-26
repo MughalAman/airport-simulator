@@ -1,6 +1,5 @@
 package view;
 
-
 import java.text.DecimalFormat;
 import controller.*;
 import javafx.application.Application;
@@ -18,8 +17,6 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.scene.text.*;
-
-
 
 public class SimulaattorinGUI extends Application implements ISimulaattorinUI{
 
@@ -80,28 +77,7 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI{
 			        Platform.exit();
 			        System.exit(0);
 			    }
-			});
-			
-		
-
-			
-			
-//			Button Tulosta = new Button("Tulosta");
-	
-//
-//			
-//			Tulosta.setOnAction(new EventHandler<ActionEvent>() {
-//				@Override
-//				public void handle(ActionEvent event){
-//					//Tulosteet
-//			       
-//
-////			        txtTulosteet.setText();
-//				
-//				
-//			}
-//			});
-//						
+			});					
 			
 			primaryStage.setTitle("Simulaattori");
 
@@ -365,8 +341,6 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI{
 		DecimalFormat formatter = new DecimalFormat("#0.00");
 		this.tulos10.setText(formatter.format(R));
 	}
-	
-	// tee laskutulokset lopulle 5:delle suureelle
 
 	@Override
 	public IVisualisointi getVisualisointi() {

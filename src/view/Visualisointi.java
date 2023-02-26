@@ -20,7 +20,7 @@ public class Visualisointi extends Canvas implements IVisualisointi{
 	
 
 	public void tyhjennaNaytto() {
-		gc.setFill(Color.YELLOW);
+		gc.setFill(Color.BLUE);
 		gc.fillRect(0, 0, this.getWidth(), this.getHeight());
 	}
 	
