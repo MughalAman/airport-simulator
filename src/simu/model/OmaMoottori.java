@@ -16,6 +16,7 @@ public class OmaMoottori extends Moottori{
 	
 	private double B, T, Ri, W, K, S, P, A, R;
 	private int C = 0;
+	private double checkinJakauma = 0.5, sisaankayntiJakauma = 0.5; // Jakaumat oletuksena 50/50
 	
 	public OmaMoottori(IKontrolleri kontrolleri){ // UUSI
 
