@@ -2,7 +2,9 @@ package view;
 
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.ImagePattern;
 
 public class Visualisointi extends Canvas implements IVisualisointi{
 
@@ -20,7 +22,8 @@ public class Visualisointi extends Canvas implements IVisualisointi{
 	
 
 	public void tyhjennaNaytto() {
-		gc.setFill(Color.BLUE);
+		Image img = new Image("/img/airport.png");
+		gc.setFill(new ImagePattern(img));
 		gc.fillRect(0, 0, this.getWidth(), this.getHeight());
 	}
 	
