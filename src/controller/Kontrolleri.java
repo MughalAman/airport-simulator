@@ -49,8 +49,43 @@ public class Kontrolleri implements IKontrolleri{   // UUSI
 		Platform.runLater(()->ui.setLoppuaika(aika)); 
 	
 	}
-
 	
+	public void naytaAsiakasMaara(int C) {
+		Platform.runLater(()->ui.setAsiakasMaara(C)); 
+	}
+	
+	public void checkAktiiviAika(double B) {
+		Platform.runLater(()->ui.setCheckAktiiviAika(B)); 
+	}
+	
+	public void turvaTarkastus(double Ri) {
+		Platform.runLater(()->ui.setTurvaTarkastus(Ri)); 
+	}
+	
+	public void oleskeluAikaTurvaTarkastus(double W) {
+		Platform.runLater(()->ui.setOleskeluAikaTurvaTarkastus(W)); 
+	}
+	
+	public void checkInKayttoaste(double K) {
+		Platform.runLater(()->ui.setCheckInKayttoaste(K)); 
+	}
+	
+	public void lentokentanTeho(double S) {
+		Platform.runLater(()->ui.setLentokentanTeho(S)); 
+	}
+	
+	public void checkinPalveluaika(double P) {
+		Platform.runLater(()->ui.setCheckinPalveluaika(P)); 
+	}
+	
+	public void turvatarkastusJono(double A) {
+		Platform.runLater(()->ui.setTurvatarkastusJono(A)); 
+	}
+	
+	public void turvatarkastusJononPituus(double R) {
+		Platform.runLater(()->ui.setTurvatarkastusJononPituus(R)); 
+	}
+
 	@Override
 	public void visualisoiAsiakas() {
 		Platform.runLater(new Runnable(){
@@ -63,5 +98,4 @@ public class Kontrolleri implements IKontrolleri{   // UUSI
 	public void naytaLoppuTuloste(String LoppuTuloste) {
 		Platform.runLater(()->ui.setLoppuTuloste(LoppuTuloste)); 
 
-	}
-	}
+}
