@@ -1,10 +1,13 @@
 package view;
+import simu.model.*;
 
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 
 public class Visualisointi extends Canvas implements IVisualisointi{
 
@@ -25,6 +28,99 @@ public class Visualisointi extends Canvas implements IVisualisointi{
 		Image img = new Image("/img/airport.png");
 		gc.setFill(new ImagePattern(img));
 		gc.fillRect(0, 0, this.getWidth(), this.getHeight());
+		
+		
+		gc.setFont(Font.font("Tahoma", FontWeight.BOLD, 20));
+	    gc.setFill(Color.BLACK);
+	    
+	    
+//	    
+//	    switch(a.getTapahtuma()) {
+//	    
+//	    case ENTRANCE:
+//	    	 gc.fillText("1. ", 120, 450);
+//	    	 break;
+//	    	
+//	    	
+//	    	
+//
+//	    	
+//	    	
+//	    	
+//	    }
+	    HaeAsiakas a = new HaeAsiakas();
+
+	    //Aman korjaa jos pystyt
+	    
+	    if(a.getTapahtuma() == TapahtumanTyyppi.ENTRANCE) {
+	    	
+	        gc.fillText("1. ", 120, 450);
+
+	    	
+	        
+	        
+	    }
+	    
+     if(a.getTapahtuma() == TapahtumanTyyppi.INFO) {
+	    	
+         gc.fillText("2. ", 120, 300);
+
+	    	
+	    }
+     
+     
+     if(a.getTapahtuma() == TapahtumanTyyppi.INFO) {
+	    	
+    	 gc.fillText("3. ", 200, 730);
+
+	    	
+	    }
+     
+     
+     if(a.getTapahtuma() == TapahtumanTyyppi.INFO) {
+	    	
+    	 gc.fillText("4. ", 260, 220);
+
+	    	
+	    }
+     
+     
+     if(a.getTapahtuma() == TapahtumanTyyppi.INFO) {
+	    	
+    	 gc.fillText("5. ", 350, 580);
+
+	    	
+	    }
+     
+
+     if(a.getTapahtuma() == TapahtumanTyyppi.INFO) {
+	    	
+    	 gc.fillText("6. ", 450, 580);
+
+	    	
+	    }
+     
+
+     if(a.getTapahtuma() == TapahtumanTyyppi.INFO) {
+	    	
+    	 gc.fillText("7. ", 700, 700);
+
+	    	
+	    }
+     
+
+     if(a.getTapahtuma() == TapahtumanTyyppi.INFO) {
+	    	
+    	 gc.fillText("8. ", 760, 650);
+
+	    	
+	    }
+     
+
+
+
+
+	   
 	}
 	
 	public void uusiAsiakas() {
