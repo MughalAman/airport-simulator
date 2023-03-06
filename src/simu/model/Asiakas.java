@@ -12,6 +12,7 @@ public class Asiakas {
 	private int id;
 	private static int i = 1;
 	private static long sum = 0;
+	private TapahtumanTyyppi tyyppi;
 	
 	public Asiakas(){
 	    id = i++;
@@ -43,6 +44,14 @@ public class Asiakas {
 		sum += (poistumisaika-saapumisaika);
 		double keskiarvo = sum/id;
 		System.out.println("Asiakkaiden läpimenoaikojen keskiarvo "+ keskiarvo);
+	}
+	
+	public void setTapahtuma(TapahtumanTyyppi tyyppi) {
+		this.tyyppi = tyyppi;
+	}
+	
+	public TapahtumanTyyppi getTapahtuma() {
+		return tyyppi;
 	}
 
 }
