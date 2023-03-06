@@ -5,7 +5,6 @@ import eduni.distributions.ContinuousGenerator;
 import simu.framework.Kello;
 import simu.framework.Tapahtuma;
 import simu.framework.Tapahtumalista;
-import simu.framework.Trace;
 
 // TODO:
 // Palvelupistekohtaiset toiminnallisuudet, laskutoimitukset (+ tarvittavat muuttujat) ja raportointi koodattava
@@ -20,17 +19,12 @@ public class Palvelupiste implements Comparable<Palvelupiste>{
 	//JonoStartegia strategia; //optio: asiakkaiden järjestys
 	
 	private boolean varattu = false;
-	
+
 	private int aktiiviaika = 0;
 	private int oleskeluaika = 0;
-<<<<<<< Updated upstream
-
-
-=======
 	
 	private int id = 0;
 	
->>>>>>> Stashed changes
 	public Palvelupiste(ContinuousGenerator generator, Tapahtumalista tapahtumalista, TapahtumanTyyppi tyyppi){
 		this.tapahtumalista = tapahtumalista;
 		this.generator = generator;
@@ -41,25 +35,17 @@ public class Palvelupiste implements Comparable<Palvelupiste>{
 
 	public void lisaaJonoon(Asiakas a){   // Jonon 1. asiakas aina palvelussa
 		jono.add(a);
-		
 	}
 
 	public Asiakas otaJonosta(){  // Poistetaan palvelussa ollut
 		Asiakas a = jono.poll();
 		varattu = false;
 		oleskeluaika += (int) (Kello.getInstance().getAika()-a.getSaapumisaika());
-<<<<<<< Updated upstream
-		return jono.poll();
-=======
 		return a;		
->>>>>>> Stashed changes
 	}
 
 	
 	public void aloitaPalvelu(){  //Aloitetaan uusi palvelu, asiakas on jonossa palvelun aikana
-		
-		Trace.out(Trace.Level.INFO, "Aloitetaan uusi palvelu asiakkaalle " + jono.peek().getId());
-		
 		varattu = true;
 		double palveluaika = generator.sample();
 		aktiiviaika += palveluaika;
@@ -71,7 +57,6 @@ public class Palvelupiste implements Comparable<Palvelupiste>{
 		return varattu;
 	}
 
-
 	public boolean onJonossa(){
 		return jono.size() != 0;
 	}
@@ -79,11 +64,11 @@ public class Palvelupiste implements Comparable<Palvelupiste>{
 	public int getAktiiviaika() {
 		return aktiiviaika;
 	}
-	
+
 	public int getOleskeluaika() {
 		return oleskeluaika;
 	}
-	
+
 	public int getViiveaika() {
 		return oleskeluaika-aktiiviaika;
 	}
