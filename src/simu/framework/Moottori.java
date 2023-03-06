@@ -1,6 +1,7 @@
 package simu.framework;
 
 import simu.model.Palvelupiste;
+import simu.model.Palvelupisteryhma;
 
 public abstract class Moottori {
 	
@@ -9,7 +10,7 @@ public abstract class Moottori {
 	private Kello kello;
 	
 	protected Tapahtumalista tapahtumalista;
-	protected Palvelupiste[] palvelupisteet;
+	protected Palvelupisteryhma[] palvelupisteet;
 	
 
 	public Moottori(){
@@ -52,10 +53,19 @@ public abstract class Moottori {
 		}
 	}
 
+<<<<<<< Updated upstream
 	private void yritaCTapahtumat(){
 		for (Palvelupiste p: palvelupisteet){
 			if (!p.onVarattu() && p.onJonossa()){
 				p.aloitaPalvelu();
+=======
+	protected void yritaCTapahtumat(){    // määrittele protectediksi, josa haluat ylikirjoittaa
+		for (Palvelupisteryhma r: palvelupisteet){
+			for (Palvelupiste p: r.getList()) {
+				if (!p.onVarattu() && p.onJonossa()){
+					p.aloitaPalvelu();
+				}
+>>>>>>> Stashed changes
 			}
 		}
 	}

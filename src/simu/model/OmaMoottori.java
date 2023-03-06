@@ -10,6 +10,7 @@ import simu.framework.Saapumisprosessi;
 import simu.framework.Tapahtuma;
 
 
+
 public class OmaMoottori extends Moottori{
 	
 	private Saapumisprosessi saapumisprosessi;
@@ -22,23 +23,25 @@ public class OmaMoottori extends Moottori{
 
 		super(kontrolleri); //UUSI
 		
-		palvelupisteet = new Palvelupiste[7];
-	
-		palvelupisteet[0]=new Palvelupiste(new Normal(5,3), tapahtumalista, TapahtumanTyyppi.INFO);
-		palvelupisteet[1]=new Palvelupiste(new Normal(5,3), tapahtumalista, TapahtumanTyyppi.CHECKINAUTO);
-		palvelupisteet[2]=new Palvelupiste(new Normal(5,3), tapahtumalista, TapahtumanTyyppi.CHECKINMANUAL);
-		palvelupisteet[3]=new Palvelupiste(new Normal(15,3), tapahtumalista, TapahtumanTyyppi.SECURITY);
-		palvelupisteet[4]=new Palvelupiste(new Normal(18,3), tapahtumalista, TapahtumanTyyppi.SECURITYGATE);
-		palvelupisteet[5]=new Palvelupiste(new Normal(20,3), tapahtumalista, TapahtumanTyyppi.GATE);
-		palvelupisteet[6]=new Palvelupiste(new Normal(5,3), tapahtumalista, TapahtumanTyyppi.PLANE);
+		palvelupisteet = new Palvelupisteryhma[7];
+
+		palvelupisteet[0]=new Palvelupisteryhma(new Normal(5,3), tapahtumalista, TapahtumanTyyppi.INFO);
+		palvelupisteet[1]=new Palvelupisteryhma(new Normal(5,3), tapahtumalista, TapahtumanTyyppi.CHECKINAUTO);
+		palvelupisteet[2]=new Palvelupisteryhma(new Normal(5,3), tapahtumalista, TapahtumanTyyppi.CHECKINMANUAL);
+		palvelupisteet[3]=new Palvelupisteryhma(new Normal(15,3), tapahtumalista, TapahtumanTyyppi.SECURITY);
+		palvelupisteet[4]=new Palvelupisteryhma(new Normal(18,3), tapahtumalista, TapahtumanTyyppi.SECURITYGATE);
+		palvelupisteet[5]=new Palvelupisteryhma(new Normal(20,3), tapahtumalista, TapahtumanTyyppi.GATE);
+		palvelupisteet[6]=new Palvelupisteryhma(new Normal(5,3), tapahtumalista, TapahtumanTyyppi.PLANE);
 		
-		saapumisprosessi = new Saapumisprosessi(new Negexp(15,5), tapahtumalista, TapahtumanTyyppi.ENTRANCE);
+		saapumisprosessi = new Saapumisprosessi(new Negexp(15,3), tapahtumalista, TapahtumanTyyppi.ENTRANCE);
 
 	}
 
 	
 	@Override
 	protected void alustukset() {
+		//Tänne lisäpalvelupisteet esim.
+		palvelupisteet[2].setPalvelupisteetLkm(5);
 		saapumisprosessi.generoiSeuraava(); // Ensimmäinen saapuminen järjestelmään
 	}
 	
@@ -69,6 +72,7 @@ public class OmaMoottori extends Moottori{
         			kontrolleri.visualisoiAsiakas(); // UUSI
 				break;
 				
+<<<<<<< Updated upstream
 			case INFO: a = palvelupisteet[0].otaJonosta();
 					switch((int)(new Bernoulli(checkinJakauma).sample())) {
 					case 0: 
@@ -89,6 +93,28 @@ public class OmaMoottori extends Moottori{
             	break;
             	
 	        case SECURITY:a = palvelupisteet[3].otaJonosta();
+=======
+		case INFO: a = palvelupisteet[0].otaJonosta();
+			switch((int)(new Bernoulli(checkinJakauma).sample())) {
+					
+			case 0: palvelupisteet[1].lisaaJonoon(a);
+				break;
+					
+			case 1: palvelupisteet[2].lisaaJonoon(a);
+				break;
+			}
+			break;
+				
+		case CHECKINAUTO: a = palvelupisteet[1].otaJonosta();
+					palvelupisteet[3].lisaaJonoon(a); 
+				break;
+				
+		case CHECKINMANUAL: a = palvelupisteet[2].otaJonosta();
+            		palvelupisteet[3].lisaaJonoon(a); 
+            	break;
+         
+	        case SECURITY: a = palvelupisteet[3].otaJonosta();
+>>>>>>> Stashed changes
             		palvelupisteet[4].lisaaJonoon(a); 
             	break;
             	
