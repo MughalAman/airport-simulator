@@ -41,87 +41,44 @@ public class Visualisointi extends Canvas implements IVisualisointi{
 //	    case ENTRANCE:
 //	    	 gc.fillText("1. ", 120, 450);
 //	    	 break;
-//
-//
-//
-//
-//
-//
-//
 //	    }
+
 	    HaeAsiakas a = new HaeAsiakas();
 
 	    //Aman korjaa jos pystyt
 
 	    if(a.getTapahtuma() == TapahtumanTyyppi.ENTRANCE) {
-
 	        gc.fillText("1. ", 120, 450);
-
-
-
-
 	    }
 
-     if(a.getTapahtuma() == TapahtumanTyyppi.INFO) {
-
-         gc.fillText("2. ", 120, 300);
-
-
+	    if(a.getTapahtuma() == TapahtumanTyyppi.INFO) {
+	    	gc.fillText("2. ", 120, 300);
 	    }
 
-
-     if(a.getTapahtuma() == TapahtumanTyyppi.INFO) {
-
-    	 gc.fillText("3. ", 200, 730);
-
-
+	    if(a.getTapahtuma() == TapahtumanTyyppi.CHECKINAUTO) {
+	    	gc.fillText("3. ", 200, 730);
 	    }
 
-
-     if(a.getTapahtuma() == TapahtumanTyyppi.INFO) {
-
-    	 gc.fillText("4. ", 260, 220);
-
-
+	    if(a.getTapahtuma() == TapahtumanTyyppi.CHECKINMANUAL) {
+	    	gc.fillText("4. ", 260, 220);
 	    }
 
-
-     if(a.getTapahtuma() == TapahtumanTyyppi.INFO) {
-
-    	 gc.fillText("5. ", 350, 580);
-
-
+	    if(a.getTapahtuma() == TapahtumanTyyppi.SECURITY) {
+	    	gc.fillText("5. ", 350, 580);
 	    }
 
-
-     if(a.getTapahtuma() == TapahtumanTyyppi.INFO) {
-
-    	 gc.fillText("6. ", 450, 580);
-
-
+	    if(a.getTapahtuma() == TapahtumanTyyppi.SECURITYGATE) {
+	    	gc.fillText("6. ", 450, 580);
 	    }
 
-
-     if(a.getTapahtuma() == TapahtumanTyyppi.INFO) {
-
-    	 gc.fillText("7. ", 700, 700);
-
-
+	    if(a.getTapahtuma() == TapahtumanTyyppi.GATE) {
+	    	gc.fillText("7. ", 700, 700);
 	    }
 
-
-     if(a.getTapahtuma() == TapahtumanTyyppi.INFO) {
-
-    	 gc.fillText("8. ", 760, 650);
-
-
+	    if(a.getTapahtuma() == TapahtumanTyyppi.PLANE) {
+	    	gc.fillText("8. ", 760, 650);
 	    }
-
-
-
-
-
-
+     
 	}
 
 	@Override
