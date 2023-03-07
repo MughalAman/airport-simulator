@@ -14,12 +14,15 @@ import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import simu.framework.Trace;
@@ -120,7 +123,15 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI{
 	                GridPane addPane = new GridPane();
 	                TableView tableView = new TableView();
 
+	                Text text = new Text();
+	                text.setText("Entiset Tulokset: ");
 
+	                addPane.add(text,2,2);
+	               
+	                TableColumn firstNameCol = new TableColumn<>("First Name");
+	                firstNameCol.setCellValueFactory(new PropertyValueFactory<>("firstName"));
+	                
+	                
 
 	                Stage addStage = new Stage();
 	                Scene addScene = new Scene(addPane, 300, 250);
@@ -273,10 +284,19 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI{
 
 	        naytto = new Visualisointi(1000,900);
 
+
 	        // Täytetään boxi:
 	        hBox.getChildren().addAll(grid, (Canvas)naytto);
+	        
 
+	        
+	        
 	        Scene scene = new Scene(hBox);
+	        
+	        scene.getStylesheets().add("view/style.css");
+
+	        
+	        
 	        primaryStage.setScene(scene);
 	        primaryStage.show();
 
