@@ -6,6 +6,8 @@ import controller.IKontrolleri;
 import controller.Kontrolleri;
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -14,15 +16,20 @@ import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import simu.framework.Trace;
 import simu.framework.Trace.Level;
+import simu.model.Tulos;
 
 public class SimulaattorinGUI extends Application implements ISimulaattorinUI{
 
@@ -89,6 +96,8 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI{
 
 			kaynnistaButton = new Button();
 			kaynnistaButton.setText("Käynnistä simulointi");
+			kaynnistaButton.setFont(Font.font("Tahoma", FontWeight.BOLD, 20));
+
 			kaynnistaButton.setOnAction(new EventHandler<ActionEvent>() {
 	            @Override
 	            public void handle(ActionEvent event) {
@@ -96,85 +105,187 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI{
 	                kaynnistaButton.setDisable(true);
 	            }
 	        });
+			
+			//UUS NÄKYMÄ
+			
+			Button uus = new Button();
+			uus.setText("Historia");
+			uus.setFont(Font.font("Tahoma", FontWeight.BOLD, 20));
+			
+			
+			
+			Button tallenna = new Button();
+			tallenna.setText("Tallenna");
+			tallenna.setFont(Font.font("Tahoma", FontWeight.BOLD, 20));
+
+
+			
+			uus.setOnAction(new EventHandler<ActionEvent>() {
+	            @Override
+	            public void handle(ActionEvent event) {
+	                GridPane addPane = new GridPane();
+	                TableView tableView = new TableView();
+
+	                Text text = new Text();
+	                text.setText("Entiset Tulokset: ");
+
+	                addPane.add(text,2,2);
+	               
+	                TableColumn<Tulos, Double> Loppuaika = new TableColumn<>("Loppuaika: ");
+	                TableColumn<Tulos, Integer> AsiakasMaara = new TableColumn<>("AsiakasMaara:");
+	                TableColumn<Tulos, Double> CheckAktiiviAika = new TableColumn<>("CheckAktiiviAika");
+	                TableColumn<Tulos, Double> TurvaTarkastus = new TableColumn<>("TurvaTarkastus: ");
+	                TableColumn<Tulos, Double> OleskeluAikaTurvaTarkastus = new TableColumn<>("OleskeluAikaTurvaTarkastus:");
+	                TableColumn<Tulos, Double> CheckInKayttoaste = new TableColumn<>("CheckInKayttoaste");
+	                TableColumn<Tulos, Double> LentokentanTeho = new TableColumn<>("LentokentanTeho: ");
+	                TableColumn<Tulos, Double> CheckinPalveluaika = new TableColumn<>("CheckinPalveluaika:");
+	                TableColumn<Tulos, Double> TurvatarkastusJono = new TableColumn<>("TurvatarkastusJono"); 
+	                TableColumn<Tulos, Double> TurvatarkastusJononPituus = new TableColumn<>("TurvatarkastusJononPituus: ");
+	               
+	                
+	                tableView.getColumns().addAll(Loppuaika, AsiakasMaara, CheckAktiiviAika, TurvaTarkastus, OleskeluAikaTurvaTarkastus,
+	                		CheckInKayttoaste, LentokentanTeho, CheckinPalveluaika, TurvatarkastusJono, TurvatarkastusJononPituus);
+
+
+	                
+	                
+//	                ObservableList<Tulos> data = FXCollections.observableArrayList(
+//	                		  new Tulos("John", "Doe", 30),
+//	                		    new Tulos("Jane", "Doe", 25),
+//	                		    new Tulos("Bob", "Smith", 40)
+//	                	);
+
+	                	// Set the cell value factories for each column
+	                 Loppuaika.setCellValueFactory(new PropertyValueFactory<>("Loppuaika:"));
+	                AsiakasMaara.setCellValueFactory(new PropertyValueFactory<>("AsiakasMaara:"));
+	                CheckAktiiviAika.setCellValueFactory(new PropertyValueFactory<>("CheckAktiiviAika:"));
+	                TurvaTarkastus.setCellValueFactory(new PropertyValueFactory<>("TurvaTarkastus:"));
+	                OleskeluAikaTurvaTarkastus.setCellValueFactory(new PropertyValueFactory<>("OleskeluAikaTurvaTarkastus:"));
+	                CheckInKayttoaste.setCellValueFactory(new PropertyValueFactory<>("CheckInKayttoaste:"));
+	                LentokentanTeho.setCellValueFactory(new PropertyValueFactory<>("LentokentanTeho:"));
+	                CheckinPalveluaika.setCellValueFactory(new PropertyValueFactory<>("CheckinPalveluaika:"));
+	                TurvatarkastusJono.setCellValueFactory(new PropertyValueFactory<>("TurvatarkastusJono:"));
+	                TurvatarkastusJononPituus.setCellValueFactory(new PropertyValueFactory<>("TurvatarkastusJononPituus:"));
+
+
+	                	// Add the data to the table
+//	                	tableView.setItems(data);
+	       
+
+
+
+	                
+	                
+	                
+	                Stage addStage = new Stage();
+	                Scene addScene = new Scene(addPane, 500, 350);
+	                
+	                
+	                
+	                addStage.setTitle("SQL HISTORIA");
+	                addStage.setScene(addScene);
+	                addScene.getStylesheets().add("view/style.css");
+
+	                addStage.show();
+	            }
+	        });
+			
+
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
 
 			hidastaButton = new Button();
 			hidastaButton.setText("Hidasta");
+			hidastaButton.setFont(Font.font("Tahoma", FontWeight.BOLD, 20));
+
 			hidastaButton.setOnAction(e -> kontrolleri.hidasta());
 
 			nopeutaButton = new Button();
 			nopeutaButton.setText("Nopeuta");
+			nopeutaButton.setFont(Font.font("Tahoma", FontWeight.BOLD, 20));
+
 			nopeutaButton.setOnAction(e -> kontrolleri.nopeuta());
 
 			aikaLabel = new Label("Simulointiaika:");
-			aikaLabel.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
+			
+			
+			aikaLabel.setFont(Font.font("Tahoma", FontWeight.BOLD, 20));
 	        aika = new TextField("Syötä aika");
-	        aika.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
+	        aika.setFont(Font.font("Tahoma", FontWeight.BOLD, 20));
 	        aika.setPrefWidth(150);
 
 	        viiveLabel = new Label("Viive:");
-			viiveLabel.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
+			viiveLabel.setFont(Font.font("Tahoma", FontWeight.BOLD, 20));
 	        viive = new TextField("Syötä viive");
-	        viive.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
+	        viive.setFont(Font.font("Tahoma", FontWeight.BOLD, 20));
 	        viive.setPrefWidth(150);
 
 	        tulosLabel = new Label("Kokonaisaika:");
-			tulosLabel.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
+			tulosLabel.setFont(Font.font("Tahoma", FontWeight.BOLD, 20));
 	        tulos = new Label();
-	        tulos.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
+	        tulos.setFont(Font.font("Tahoma", FontWeight.BOLD, 20));
 	        tulos.setPrefWidth(150);
 
 	        tulosLabel2 = new Label("Asiakas määrä:");
-			tulosLabel2.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
+			tulosLabel2.setFont(Font.font("Tahoma", FontWeight.BOLD, 20));
 	        tulos2 = new Label();
-	        tulos2.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
+	        tulos2.setFont(Font.font("Tahoma", FontWeight.BOLD, 20));
 	        tulos2.setPrefWidth(150);
 
 	        tulosLabel3 = new Label("Check-in aktiiviaika:");
-			tulosLabel3.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
+			tulosLabel3.setFont(Font.font("Tahoma", FontWeight.BOLD, 20));
 	        tulos3 = new Label();
-	        tulos3.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
+	        tulos3.setFont(Font.font("Tahoma", FontWeight.BOLD, 20));
 	        tulos3.setPrefWidth(150);
 
 	        tulosLabel4 = new Label("Turvatarkastuksen läpimenoaika:");
-			tulosLabel4.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
+			tulosLabel4.setFont(Font.font("Tahoma", FontWeight.BOLD, 20));
 	        tulos4 = new Label();
-	        tulos4.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
+	        tulos4.setFont(Font.font("Tahoma", FontWeight.BOLD, 20));
 	        tulos4.setPrefWidth(150);
 
 	        tulosLabel5 = new Label("Turvatarkastuksen oleskeluaika:");
-			tulosLabel5.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
+			tulosLabel5.setFont(Font.font("Tahoma", FontWeight.BOLD, 20));
 	        tulos5 = new Label();
-	        tulos5.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
+	        tulos5.setFont(Font.font("Tahoma", FontWeight.BOLD, 20));
 	        tulos5.setPrefWidth(150);
 
 	        tulosLabel6 = new Label("Check-in käyttöaste:");
-			tulosLabel6.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
+			tulosLabel6.setFont(Font.font("Tahoma", FontWeight.BOLD, 20));
 	        tulos6 = new Label();
-	        tulos6.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
+	        tulos6.setFont(Font.font("Tahoma", FontWeight.BOLD, 20));
 	        tulos6.setPrefWidth(150);
 
 	        tulosLabel7 = new Label("Lentokentän suoritusteho:");
-			tulosLabel7.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
+			tulosLabel7.setFont(Font.font("Tahoma", FontWeight.BOLD, 20));
 	        tulos7 = new Label();
-	        tulos7.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
+	        tulos7.setFont(Font.font("Tahoma", FontWeight.BOLD, 20));
 	        tulos7.setPrefWidth(150);
 
 	        tulosLabel8 = new Label("Check-in keskimääräinen palveluaika:");
-			tulosLabel8.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
+			tulosLabel8.setFont(Font.font("Tahoma", FontWeight.BOLD, 20));
 	        tulos8 = new Label();
-	        tulos8.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
+	        tulos8.setFont(Font.font("Tahoma", FontWeight.BOLD, 20));
 	        tulos8.setPrefWidth(150);
 
 	        tulosLabel9 = new Label("Turvatarkastuksen keskimääräinen läpimenoaika:");
-			tulosLabel9.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
+			tulosLabel9.setFont(Font.font("Tahoma", FontWeight.BOLD, 20));
 	        tulos9 = new Label();
-	        tulos9.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
+	        tulos9.setFont(Font.font("Tahoma", FontWeight.BOLD, 20));
 	        tulos9.setPrefWidth(150);
 
 	        tulosLabel10 = new Label("Turvatarkastuksen keskimääräinen jononpituus:");
-			tulosLabel10.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
+			tulosLabel10.setFont(Font.font("Tahoma", FontWeight.BOLD, 20));
 	        tulos10 = new Label();
-	        tulos10.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
+	        tulos10.setFont(Font.font("Tahoma", FontWeight.BOLD, 20));
 	        tulos10.setPrefWidth(150);
 
 	        HBox hBox = new HBox();
@@ -213,13 +324,27 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI{
 	        grid.add(kaynnistaButton,0, 12);  // sarake, rivi
 	        grid.add(nopeutaButton, 0, 13);   // sarake, rivi
 	        grid.add(hidastaButton, 1, 13);   // sarake, rivi
+	        grid.add(uus, 1 , 17);   // sarake, rivi
+	        
+	        grid.add(tallenna, 1 , 18);   // sarake, rivi
+
+
 
 	        naytto = new Visualisointi(1000,900);
 
+
 	        // Täytetään boxi:
 	        hBox.getChildren().addAll(grid, (Canvas)naytto);
+	        
 
+	        
+	        
 	        Scene scene = new Scene(hBox);
+	        
+	        scene.getStylesheets().add("view/style.css");
+
+	        
+	        
 	        primaryStage.setScene(scene);
 	        primaryStage.show();
 
