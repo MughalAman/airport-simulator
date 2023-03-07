@@ -7,8 +7,8 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Java FX"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/JavaFX Library"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/MariaDBConnectorJ"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Java FX"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
