@@ -12,20 +12,22 @@ public class Tulos {
 	private double TurvatarkastusJono;
 	private double TurvatarkastusJononPituus;
 
-	public Tulos(double Loppuaika, int AsiakasMaara, double CheckAktiiviAika, double TurvaTarkastus, double OleskeluAikaTurvaTarkastus, double CheckInKayttoaste, double LentokentanTeho, double CheckinPalveluaika, double TurvatarkastusJono, double TurvatarkastusJononPituus) {
-		this.Loppuaika = Loppuaika;
-		this.AsiakasMaara = AsiakasMaara;
-		this.CheckAktiiviAika = CheckAktiiviAika;
-		this.TurvaTarkastus = TurvaTarkastus;
-		this.OleskeluAikaTurvaTarkastus = OleskeluAikaTurvaTarkastus;
-		this.CheckInKayttoaste = CheckInKayttoaste;
-		this.LentokentanTeho = LentokentanTeho;
-		this.CheckinPalveluaika = CheckinPalveluaika;
-		this.TurvatarkastusJono = TurvatarkastusJono;
-		this.TurvatarkastusJononPituus = TurvatarkastusJononPituus;
-	}
 
 	public Tulos() {
+
+	}
+
+	public Tulos(double Loppuaika, int AsiakasMaara, double CheckAktiiviAika, double TurvaTarkastus, double OleskeluAikaTurvaTarkastus, double CheckInKayttoaste, double LentokentanTeho, double CheckinPalveluaika, double TurvatarkastusJono, double TurvatarkastusJononPituus) {
+		this.setLoppuaika(Loppuaika);
+		this.setAsiakasMaara(AsiakasMaara);
+		this.setCheckAktiiviAika(CheckAktiiviAika);
+		this.setTurvaTarkastus(TurvaTarkastus);
+		this.setOleskeluAikaTurvaTarkastus(OleskeluAikaTurvaTarkastus);
+		this.setCheckInKayttoaste(CheckInKayttoaste);
+		this.setLentokentanTeho(LentokentanTeho);
+		this.setCheckinPalveluaika(CheckinPalveluaika);
+		this.setTurvatarkastusJono(TurvatarkastusJono);
+		this.setTurvatarkastusJononPituus(TurvatarkastusJononPituus);
 	}
 
 	public double getLoppuaika() {
