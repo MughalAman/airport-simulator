@@ -50,7 +50,7 @@ public class TulosAccessObject implements ITulosDAO {
         ResultSet rs = null;
         ArrayList<Tulos> tulokset = new ArrayList<Tulos>();
         try (Statement statement = conn.createStatement();) {
-            rs = statement.executeQuery("SELECT * FROM valuutta");
+            rs = statement.executeQuery("SELECT * FROM airportsim_tulokset");
             while (rs.next()) {
                 tulokset.add(new Tulos(rs.getDouble("loppuaika"), rs.getInt("asiakasmaara"), rs.getDouble("checkaktiiviaika"), rs.getDouble("turvatarkastus"), rs.getDouble("oleskeluaitaturvatarkastus"), rs.getDouble("checkinkayttoaste"), rs.getDouble("lentokentanteho"), rs.getDouble("checkinpalveluaika"), rs.getDouble("turvatarkastusjono"), rs.getDouble("turvatarkastusjononpituus")));
             }
