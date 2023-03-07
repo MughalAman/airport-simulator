@@ -8,6 +8,21 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+<<<<<<< HEAD
+=======
+import javafx.scene.Scene;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
+>>>>>>> parent of d6cc839 (SQL WORKS)
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import simu.framework.Trace;
@@ -22,9 +37,15 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI{
 
 	//Kontrollerin esittely (tarvitaan käyttöliittymässä)
 	private IKontrolleri kontrolleri;
+<<<<<<< HEAD
 	
 	
 	
+=======
+
+
+
+>>>>>>> parent of d6cc839 (SQL WORKS)
 	// Käyttöliittymäkomponentit:
 	private TextField aika;
 	private TextField viive;
@@ -90,6 +111,69 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI{
 	                kaynnistaButton.setDisable(true);
 	            }
 	        });
+<<<<<<< HEAD
+=======
+			
+			//UUS NÄKYMÄ
+			
+			Button uus = new Button();
+			uus.setText("Historia");
+			uus.setFont(Font.font("Tahoma", FontWeight.BOLD, 20));
+			
+			
+			
+			Button tallenna = new Button();
+			tallenna.setText("Tallenna");
+			tallenna.setFont(Font.font("Tahoma", FontWeight.BOLD, 20));
+
+
+			
+			uus.setOnAction(new EventHandler<ActionEvent>() {
+	            @Override
+	            public void handle(ActionEvent event) {
+	                GridPane addPane = new GridPane();
+	                ListView<String> tulosList = new ListView<String>();
+
+	                Text text = new Text();
+	                text.setText("Entiset Tulokset: ");
+
+	                addPane.add(text,2,2);
+	               
+	                ObservableList<String> tulokset = FXCollections.observableArrayList();
+	                
+	                for (int i = 0; i < kontrolleri.naytaTulokset().length; i++) {
+	    				tulokset.add(kontrolleri.naytaTulokset()[i]);
+	    			}
+	                
+	                tulosList.setItems(tulokset);
+	                
+	                
+	                
+	                Stage addStage = new Stage();
+	                Scene addScene = new Scene(addPane, 500, 350);
+	                
+	                
+	                
+	                addStage.setTitle("SQL HISTORIA");
+	                addStage.setScene(addScene);
+	                addScene.getStylesheets().add("view/style.css");
+
+	                addStage.show();
+	            }
+	        });
+			
+
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+>>>>>>> parent of d6cc839 (SQL WORKS)
 
 			hidastaButton = new Button();
 			hidastaButton.setText("Hidasta");
@@ -100,7 +184,13 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI{
 			nopeutaButton.setOnAction(e -> kontrolleri.nopeuta());
 
 			aikaLabel = new Label("Simulointiaika:");
+<<<<<<< HEAD
 			aikaLabel.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
+=======
+			
+			
+			aikaLabel.setFont(Font.font("Tahoma", FontWeight.BOLD, 20));
+>>>>>>> parent of d6cc839 (SQL WORKS)
 	        aika = new TextField("Syötä aika");
 	        aika.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
 	        aika.setPrefWidth(150);
@@ -207,13 +297,34 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI{
 	        grid.add(kaynnistaButton,0, 12);  // sarake, rivi
 	        grid.add(nopeutaButton, 0, 13);   // sarake, rivi
 	        grid.add(hidastaButton, 1, 13);   // sarake, rivi
+<<<<<<< HEAD
 	        
+=======
+	        grid.add(uus, 1 , 17);   // sarake, rivi
+	        
+	        grid.add(tallenna, 1 , 18);   // sarake, rivi
+
+
+
+>>>>>>> parent of d6cc839 (SQL WORKS)
 	        naytto = new Visualisointi(1000,900);
 
 	        // Täytetään boxi:
 	        hBox.getChildren().addAll(grid, (Canvas)naytto);
 	        
+<<<<<<< HEAD
 	        Scene scene = new Scene(hBox);
+=======
+
+	        
+	        
+	        Scene scene = new Scene(hBox);
+	        
+	        scene.getStylesheets().add("view/style.css");
+
+	        
+	        
+>>>>>>> parent of d6cc839 (SQL WORKS)
 	        primaryStage.setScene(scene);
 	        primaryStage.show();
 
@@ -236,7 +347,11 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI{
 	public long getViive(){
 		return Long.parseLong(viive.getText());
 	}
+<<<<<<< HEAD
 	
+=======
+
+>>>>>>> parent of d6cc839 (SQL WORKS)
 	@Override
 	public int getC() {
 		return Integer.parseInt(tulos2.getText());

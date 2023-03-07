@@ -23,6 +23,11 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
+<<<<<<< HEAD
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/JavaFX Library"/>
+=======
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/MariaDBConnectorJ"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Java FX"/>
+>>>>>>> parent of d6cc839 (SQL WORKS)
 	<classpathentry kind="output" path="bin"/>
 </classpath>
