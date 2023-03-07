@@ -16,6 +16,7 @@ public class Kontrolleri implements IKontrolleri{   // UUSI
 
 	public Kontrolleri(ISimulaattorinUI ui) {
 		this.ui = ui;
+		this.tuloskone = new Tuloskone();
 	}
 
 

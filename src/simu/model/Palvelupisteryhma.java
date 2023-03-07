@@ -8,30 +8,25 @@ import simu.framework.Tapahtumalista;
 
 
 public class Palvelupisteryhma {
-	
+
 	private ContinuousGenerator generator;
 	private Tapahtumalista tapahtumalista;
-	private TapahtumanTyyppi skeduloitavanTapahtumanTyyppi; 
-	
+	private TapahtumanTyyppi skeduloitavanTapahtumanTyyppi;
+
 	private PriorityQueue<Palvelupiste> palvelupisteet;
-	private LinkedList<Integer> jono = new LinkedList<Integer>();
-	
-	private TapahtumanTyyppi asiakasPalvelupisteeseen;
-	
+	private LinkedList<Integer> jono = new LinkedList<>();
 
 	public Palvelupisteryhma(ContinuousGenerator generator, Tapahtumalista tapahtumalista, TapahtumanTyyppi tyyppi) {
 		this.tapahtumalista = tapahtumalista;
 		this.generator = generator;
 		this.skeduloitavanTapahtumanTyyppi = tyyppi;
-		
-		asiakasPalvelupisteeseen = skeduloitavanTapahtumanTyyppi;
-		
-		palvelupisteet = new PriorityQueue<Palvelupiste>();
+
+		palvelupisteet = new PriorityQueue<>();
 		palvelupisteet.add(new Palvelupiste(generator, tapahtumalista, skeduloitavanTapahtumanTyyppi));
 	}
-	
+
 	public void setPalvelupisteetLkm(int uusiMaara) {
-		palvelupisteet = new PriorityQueue<Palvelupiste>();
+		palvelupisteet = new PriorityQueue<>();
 		for(int i = 0; i<uusiMaara; i++) {
 			Palvelupiste p = new Palvelupiste(generator, tapahtumalista, skeduloitavanTapahtumanTyyppi);
 			p.setId(i);
@@ -54,40 +49,27 @@ public class Palvelupisteryhma {
 			jono.add(palvelupisteet.peek().getId());
 			palvelupisteet.peek().lisaaJonoon(a);
 		}
-		asiakasPalvelupisteeseen = a.getTapahtuma();
-		
+
 	}
-	
+
 	public Asiakas otaJonosta() {
 		int id = jono.poll();
 		for(Palvelupiste p : palvelupisteet) {
 			if(id == p.getId()) {
-				Asiakas a = p.otaJonosta();
-				a.setTapahtuma(skeduloitavanTapahtumanTyyppi);
-				return a;
+				return p.otaJonosta();
 			}
 		}
 		return null;
 	}
-	
+
 	public Palvelupiste getFirst() {
 		return palvelupisteet.peek();
 	}
-	
-	public TapahtumanTyyppi getTapahtuma() {
-		return skeduloitavanTapahtumanTyyppi;
-	}
-	
-	public TapahtumanTyyppi teeLiike() {
-		TapahtumanTyyppi tyyppi = asiakasPalvelupisteeseen;
-		asiakasPalvelupisteeseen = skeduloitavanTapahtumanTyyppi;
-		return tyyppi;
-	}
-	
+
 	public PriorityQueue<Palvelupiste> getList() {
 		return palvelupisteet;
 	}
-	
+
 	public int getAktiiviaika() {
 		int aktiiviaika = 0;
 		for(Palvelupiste p: palvelupisteet) {
@@ -107,5 +89,5 @@ public class Palvelupisteryhma {
 	public int getViiveaika() {
 		return getOleskeluaika()-getAktiiviaika();
 	}
-	
+
 }

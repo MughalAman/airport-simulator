@@ -21,6 +21,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
@@ -34,7 +35,17 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI{
 	//Kontrollerin esittely (tarvitaan käyttöliittymässä)
 	private IKontrolleri kontrolleri;
 
-
+	//Tallenusta varten
+	private double loppuaika;
+	private int asiakasmaara;
+	private double checkaktiiviaika;
+	private double turvatarkastus;
+	private double oleskeluaikaturvatarkastus;
+	private double checkinkayttoaste;
+	private double lentokentanteho;
+	private double checkinpalveluaika;
+	private double turvatarkastusjono;
+	private double turvatarkastusjononpituus;
 
 	// Käyttöliittymäkomponentit:
 	private TextField aika;
@@ -103,47 +114,43 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI{
 	                kaynnistaButton.setDisable(true);
 	            }
 	        });
-			
+
 			//UUS NÄKYMÄ
-			
+
 			Button uus = new Button();
 			uus.setText("Historia");
 			uus.setFont(Font.font("Tahoma", FontWeight.BOLD, 20));
-			
-			
-			
-			Button tallenna = new Button();
-			tallenna.setText("Tallenna");
-			tallenna.setFont(Font.font("Tahoma", FontWeight.BOLD, 20));
 
-
-			
 			uus.setOnAction(new EventHandler<ActionEvent>() {
 	            @Override
 	            public void handle(ActionEvent event) {
 	                GridPane addPane = new GridPane();
 	                ListView<String> tulosList = new ListView<String>();
 
-	                Text text = new Text();
-	                text.setText("Entiset Tulokset: ");
-
-	                addPane.add(text,2,2);
-	               
 	                ObservableList<String> tulokset = FXCollections.observableArrayList();
-	                
+
 	                for (int i = 0; i < kontrolleri.naytaTulokset().length; i++) {
 	    				tulokset.add(kontrolleri.naytaTulokset()[i]);
 	    			}
-	                
+
 	                tulosList.setItems(tulokset);
+	    			tulosList.setPrefSize(1920, 1080);
+
 	                
+	                HBox hBox = new HBox();
 	                
-	                
+	    			VBox tulosBox = new VBox();
+	    			tulosBox.getChildren().addAll(new Label("Entiset Tulokset:"), tulosList);
+	    			
+	    			addPane.add(tulosBox, 0, 0);
+	    			
+	    			hBox.getChildren().addAll(addPane);
+
 	                Stage addStage = new Stage();
-	                Scene addScene = new Scene(addPane, 500, 350);
-	                
-	                
-	                
+	                Scene addScene = new Scene(hBox);
+
+
+
 	                addStage.setTitle("SQL HISTORIA");
 	                addStage.setScene(addScene);
 	                addScene.getStylesheets().add("view/style.css");
@@ -151,18 +158,15 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI{
 	                addStage.show();
 	            }
 	        });
-			
 
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
+
+			Button tallenna = new Button();
+			tallenna.setText("Tallenna");
+			tallenna.setFont(Font.font("Tahoma", FontWeight.BOLD, 20));
+
+			tallenna.setOnAction(e -> kontrolleri.tallennaTulokset(loppuaika, asiakasmaara, checkaktiiviaika, turvatarkastus, oleskeluaikaturvatarkastus, checkinkayttoaste, lentokentanteho, checkinpalveluaika, turvatarkastusjono, turvatarkastusjononpituus));
+
+
 
 			hidastaButton = new Button();
 			hidastaButton.setText("Hidasta");
@@ -177,8 +181,8 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI{
 			nopeutaButton.setOnAction(e -> kontrolleri.nopeuta());
 
 			aikaLabel = new Label("Simulointiaika:");
-			
-			
+
+
 			aikaLabel.setFont(Font.font("Tahoma", FontWeight.BOLD, 20));
 	        aika = new TextField("Syötä aika");
 	        aika.setFont(Font.font("Tahoma", FontWeight.BOLD, 20));
@@ -287,7 +291,7 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI{
 	        grid.add(nopeutaButton, 0, 13);   // sarake, rivi
 	        grid.add(hidastaButton, 1, 13);   // sarake, rivi
 	        grid.add(uus, 1 , 17);   // sarake, rivi
-	        
+
 	        grid.add(tallenna, 1 , 18);   // sarake, rivi
 
 
@@ -297,16 +301,16 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI{
 
 	        // Täytetään boxi:
 	        hBox.getChildren().addAll(grid, (Canvas)naytto);
-	        
 
-	        
-	        
+
+
+
 	        Scene scene = new Scene(hBox);
-	        
+
 	        scene.getStylesheets().add("view/style.css");
 
-	        
-	        
+
+
 	        primaryStage.setScene(scene);
 	        primaryStage.show();
 
@@ -328,6 +332,11 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI{
 	@Override
 	public long getViive(){
 		return Long.parseLong(viive.getText());
+	}
+
+	@Override
+	public double getT() {
+		return Double.parseDouble(tulos.getText());
 	}
 
 	@Override
@@ -379,60 +388,70 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI{
 	public void setLoppuaika(double aika){
 		 DecimalFormat formatter = new DecimalFormat("#0.00");
 		 this.tulos.setText(formatter.format(aika));
+		 this.loppuaika = aika;
 	}
 
 	@Override
 	public void setAsiakasMaara(int C) {
 		DecimalFormat formatter = new DecimalFormat("#0");
 		this.tulos2.setText(formatter.format(C));
+		this.asiakasmaara = C;
 	}
 
 	@Override
 	public void setCheckAktiiviAika(double B) {
 		DecimalFormat formatter = new DecimalFormat("#0.00");
 		this.tulos3.setText(formatter.format(B));
+		this.checkaktiiviaika = B;
 	}
 
 	@Override
 	public void setTurvaTarkastus(double Ri) {
 		DecimalFormat formatter = new DecimalFormat("#0.00");
 		this.tulos4.setText(formatter.format(Ri));
+		this.turvatarkastus = Ri;
 	}
 
 	@Override
 	public void setOleskeluAikaTurvaTarkastus(double W) {
 		DecimalFormat formatter = new DecimalFormat("#0.00");
 		this.tulos5.setText(formatter.format(W));
+		this.oleskeluaikaturvatarkastus = W;
 	}
 
 	@Override
 	public void setCheckInKayttoaste(double K) {
 		DecimalFormat formatter = new DecimalFormat("#0.00");
 		this.tulos6.setText(formatter.format(K));
+		this.checkinkayttoaste = K;
 	}
 
 	@Override
 	public void setLentokentanTeho(double S) {
 		DecimalFormat formatter = new DecimalFormat("#0.00");
 		this.tulos7.setText(formatter.format(S));
+		this.lentokentanteho = S;
 	}
 
 	@Override
 	public void setCheckinPalveluaika(double P) {
 		DecimalFormat formatter = new DecimalFormat("#0.00");
 		this.tulos8.setText(formatter.format(P));
+		this.checkinpalveluaika = P;
 	}
 
 	@Override
 	public void setTurvatarkastusJono(double A) {
 		DecimalFormat formatter = new DecimalFormat("#0.00");
 		this.tulos9.setText(formatter.format(A));
+		this.turvatarkastusjono = A;
 	}
 
 	@Override
 	public void setTurvatarkastusJononPituus(double R) {
 		DecimalFormat formatter = new DecimalFormat("#0.00");
 		this.tulos10.setText(formatter.format(R));
+		this.turvatarkastusjononpituus = R;
 	}
 
 	@Override

@@ -1,6 +1,7 @@
 package simu.model;
 
 import java.util.LinkedList;
+
 import eduni.distributions.ContinuousGenerator;
 import simu.framework.Kello;
 import simu.framework.Tapahtuma;
@@ -10,28 +11,27 @@ import simu.framework.Tapahtumalista;
 // Palvelupistekohtaiset toiminnallisuudet, laskutoimitukset (+ tarvittavat muuttujat) ja raportointi koodattava
 public class Palvelupiste implements Comparable<Palvelupiste>{
 
-	private LinkedList<Asiakas> jono = new LinkedList<Asiakas>(); // Tietorakennetoteutus
-	
+	private LinkedList<Asiakas> jono = new LinkedList<>(); // Tietorakennetoteutus
+
 	private ContinuousGenerator generator;
 	private Tapahtumalista tapahtumalista;
-	private TapahtumanTyyppi skeduloitavanTapahtumanTyyppi; 
-	
+	private TapahtumanTyyppi skeduloitavanTapahtumanTyyppi;
+
 	//JonoStartegia strategia; //optio: asiakkaiden järjestys
-	
+
 	private boolean varattu = false;
 
 	private int aktiiviaika = 0;
 	private int oleskeluaika = 0;
-	
+
 	private int id = 0;
-	
+
 	public Palvelupiste(ContinuousGenerator generator, Tapahtumalista tapahtumalista, TapahtumanTyyppi tyyppi){
 		this.tapahtumalista = tapahtumalista;
 		this.generator = generator;
 		this.skeduloitavanTapahtumanTyyppi = tyyppi;
-				
-	}
 
+	}
 
 	public void lisaaJonoon(Asiakas a){   // Jonon 1. asiakas aina palvelussa
 		jono.add(a);
@@ -41,10 +41,10 @@ public class Palvelupiste implements Comparable<Palvelupiste>{
 		Asiakas a = jono.poll();
 		varattu = false;
 		oleskeluaika += (int) (Kello.getInstance().getAika()-a.getSaapumisaika());
-		return a;		
+		return a;
 	}
 
-	
+
 	public void aloitaPalvelu(){  //Aloitetaan uusi palvelu, asiakas on jonossa palvelun aikana
 		varattu = true;
 		double palveluaika = generator.sample();
@@ -60,7 +60,7 @@ public class Palvelupiste implements Comparable<Palvelupiste>{
 	public boolean onJonossa(){
 		return jono.size() != 0;
 	}
-	
+
 	public int getAktiiviaika() {
 		return aktiiviaika;
 	}
@@ -72,11 +72,11 @@ public class Palvelupiste implements Comparable<Palvelupiste>{
 	public int getViiveaika() {
 		return oleskeluaika-aktiiviaika;
 	}
-	
+
 	public void setId(int id) {
 		this.id = id;
 	}
-	
+
 	public int getId() {
 		return id;
 	}
@@ -86,6 +86,6 @@ public class Palvelupiste implements Comparable<Palvelupiste>{
 	public int compareTo(Palvelupiste arg) {
 		return arg.jono.size() - this.jono.size();
 	}
-	
+
 
 }
