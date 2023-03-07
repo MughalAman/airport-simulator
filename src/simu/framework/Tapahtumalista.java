@@ -3,7 +3,7 @@ package simu.framework;
 import java.util.PriorityQueue;
 
 public class Tapahtumalista {
-	private PriorityQueue<Tapahtuma> lista = new PriorityQueue<>();
+	private PriorityQueue<Tapahtuma> lista = new PriorityQueue<Tapahtuma>();
 
 	public Tapahtumalista(){
 
