@@ -12,12 +12,13 @@ public class Asiakas {
 	private int id;
 	private static int i = 1;
 	private static long sum = 0;
+	private TapahtumanTyyppi tyyppi;
 	
 	public Asiakas(){
 	    id = i++;
 	    
 		saapumisaika = Kello.getInstance().getAika();
-		Trace.out(Trace.Level.INFO, "Uusi asiakas nro " + id + " saapui klo "+saapumisaika);
+		Trace.out(Trace.Level.INFO, "Uusi asiakas:" + id + ":"+saapumisaika);
 	}
 
 	public double getPoistumisaika() {
@@ -36,18 +37,21 @@ public class Asiakas {
 		this.saapumisaika = saapumisaika;
 	}
 	
-	public int getId() {
-		return id;
-	}
-	
 	public void raportti(){
-		Trace.out(Trace.Level.INFO, "\nAsiakas "+id+ " valmis! ");
-		Trace.out(Trace.Level.INFO, "Asiakas "+id+ " saapui: " +saapumisaika);
-		Trace.out(Trace.Level.INFO,"Asiakas "+id+ " poistui: " +poistumisaika);
-		Trace.out(Trace.Level.INFO,"Asiakas "+id+ " viipyi: " +(poistumisaika-saapumisaika));
+		Trace.out(Trace.Level.INFO, "Asiakas "+id+ " saapui:" +saapumisaika);
+		Trace.out(Trace.Level.INFO,"Asiakas "+id+ " poistui:" +poistumisaika);
+		Trace.out(Trace.Level.INFO,"Asiakas "+id+ " viipyi:" +(poistumisaika-saapumisaika));
 		sum += (poistumisaika-saapumisaika);
 		double keskiarvo = sum/id;
-		System.out.println("Asiakkaiden läpimenoaikojen keskiarvo tähän asti "+ keskiarvo);
+		System.out.println("Asiakkaiden läpimenoaikojen keskiarvo "+ keskiarvo);
+	}
+	
+	public void setTapahtuma(TapahtumanTyyppi tyyppi) {
+		this.tyyppi = tyyppi;
+	}
+	
+	public TapahtumanTyyppi getTapahtuma() {
+		return tyyppi;
 	}
 
 }

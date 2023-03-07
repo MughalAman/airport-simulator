@@ -6,7 +6,6 @@ import eduni.distributions.ContinuousGenerator;
 import simu.framework.Kello;
 import simu.framework.Tapahtuma;
 import simu.framework.Tapahtumalista;
-import simu.framework.Trace;
 
 public class Palvelupiste {
 
@@ -19,10 +18,9 @@ public class Palvelupiste {
 	//JonoStartegia strategia; //optio: asiakkaiden järjestys
 	
 	private boolean varattu = false;
-	
+
 	private int aktiiviaika = 0;
 	private int oleskeluaika = 0;
-
 
 	public Palvelupiste(ContinuousGenerator generator, Tapahtumalista tapahtumalista, TapahtumanTyyppi tyyppi){
 		this.tapahtumalista = tapahtumalista;
@@ -34,7 +32,6 @@ public class Palvelupiste {
 
 	public void lisaaJonoon(Asiakas a){   // Jonon 1. asiakas aina palvelussa
 		jono.add(a);
-		
 	}
 
 	public Asiakas otaJonosta(){  // Poistetaan palvelussa ollut
@@ -42,12 +39,10 @@ public class Palvelupiste {
 		Asiakas a = jono.peek();
 		oleskeluaika += (int) (Kello.getInstance().getAika()-a.getSaapumisaika());
 		return jono.poll();
+		
 	}
 
 	public void aloitaPalvelu(){  //Aloitetaan uusi palvelu, asiakas on jonossa palvelun aikana
-		
-		Trace.out(Trace.Level.INFO, "Aloitetaan uusi palvelu asiakkaalle " + jono.peek().getId());
-		
 		varattu = true;
 		double palveluaika = generator.sample();
 		aktiiviaika += palveluaika;
@@ -59,7 +54,6 @@ public class Palvelupiste {
 		return varattu;
 	}
 
-
 	public boolean onJonossa(){
 		return jono.size() != 0;
 	}
@@ -67,11 +61,11 @@ public class Palvelupiste {
 	public int getAktiiviaika() {
 		return aktiiviaika;
 	}
-	
+
 	public int getOleskeluaika() {
 		return oleskeluaika;
 	}
-	
+
 	public int getViiveaika() {
 		return oleskeluaika-aktiiviaika;
 	}
