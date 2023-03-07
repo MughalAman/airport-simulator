@@ -1,13 +1,14 @@
 package simu.model;
 
 import java.util.LinkedList;
-
 import eduni.distributions.ContinuousGenerator;
 import simu.framework.Kello;
 import simu.framework.Tapahtuma;
 import simu.framework.Tapahtumalista;
 
-public class Palvelupiste {
+// TODO:
+// Palvelupistekohtaiset toiminnallisuudet, laskutoimitukset (+ tarvittavat muuttujat) ja raportointi koodattava
+public class Palvelupiste implements Comparable<Palvelupiste>{
 
 	private LinkedList<Asiakas> jono = new LinkedList<Asiakas>(); // Tietorakennetoteutus
 	
@@ -21,7 +22,9 @@ public class Palvelupiste {
 
 	private int aktiiviaika = 0;
 	private int oleskeluaika = 0;
-
+	
+	private int id = 0;
+	
 	public Palvelupiste(ContinuousGenerator generator, Tapahtumalista tapahtumalista, TapahtumanTyyppi tyyppi){
 		this.tapahtumalista = tapahtumalista;
 		this.generator = generator;
@@ -35,13 +38,13 @@ public class Palvelupiste {
 	}
 
 	public Asiakas otaJonosta(){  // Poistetaan palvelussa ollut
+		Asiakas a = jono.poll();
 		varattu = false;
-		Asiakas a = jono.peek();
 		oleskeluaika += (int) (Kello.getInstance().getAika()-a.getSaapumisaika());
-		return jono.poll();
-		
+		return a;		
 	}
 
+	
 	public void aloitaPalvelu(){  //Aloitetaan uusi palvelu, asiakas on jonossa palvelun aikana
 		varattu = true;
 		double palveluaika = generator.sample();
@@ -69,5 +72,20 @@ public class Palvelupiste {
 	public int getViiveaika() {
 		return oleskeluaika-aktiiviaika;
 	}
+	
+	public void setId(int id) {
+		this.id = id;
+	}
+	
+	public int getId() {
+		return id;
+	}
+
+
+	@Override
+	public int compareTo(Palvelupiste arg) {
+		return arg.jono.size() - this.jono.size();
+	}
+	
 
 }
