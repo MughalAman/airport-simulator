@@ -28,7 +28,6 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import simu.framework.Trace;
 import simu.framework.Trace.Level;
-import simu.model.Tulos;
 
 public class SimulaattorinGUI extends Application implements ISimulaattorinUI{
 
