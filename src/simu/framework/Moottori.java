@@ -2,6 +2,7 @@ package simu.framework;
 
 import controller.IKontrolleri;
 import simu.model.Palvelupiste;
+import simu.model.Palvelupisteryhma;
 
 public abstract class Moottori extends Thread implements IMoottori{  // UUDET MÄÄRITYKSET
 	
@@ -11,7 +12,7 @@ public abstract class Moottori extends Thread implements IMoottori{  // UUDET M�
 	private Kello kello;
 	
 	protected Tapahtumalista tapahtumalista;
-	protected Palvelupiste[] palvelupisteet;
+	protected Palvelupisteryhma[] palvelupisteet;
 	
 	protected IKontrolleri kontrolleri; // UUSI
 	
@@ -63,10 +64,12 @@ public abstract class Moottori extends Thread implements IMoottori{  // UUDET M�
 		}
 	}
 
-	private void yritaCTapahtumat(){    // määrittele protectediksi, josa haluat ylikirjoittaa
-		for (Palvelupiste p: palvelupisteet){
-			if (!p.onVarattu() && p.onJonossa()){
-				p.aloitaPalvelu();
+	protected void yritaCTapahtumat(){    // määrittele protectediksi, josa haluat ylikirjoittaa
+		for (Palvelupisteryhma r: palvelupisteet){
+			for (Palvelupiste p: r.getList()) {
+				if (!p.onVarattu() && p.onJonossa()){
+					p.aloitaPalvelu();
+				}
 			}
 		}
 	}
