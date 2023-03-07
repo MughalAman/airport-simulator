@@ -88,19 +88,19 @@ public class OmaMoottori extends Moottori{
 				break;
 				
 		case CHECKINMANUAL: a = palvelupisteet[2].otaJonosta();
-            		palvelupisteet[3].lisaaJonoon(a); 
+					palvelupisteet[3].lisaaJonoon(a); 
             	break;
          
 	        case SECURITY: a = palvelupisteet[3].otaJonosta();
-            		palvelupisteet[4].lisaaJonoon(a); 
+	        		palvelupisteet[4].lisaaJonoon(a); 
             		break;
             	
 	        case SECURITYGATE: a = palvelupisteet[4].otaJonosta();
-            		palvelupisteet[5].lisaaJonoon(a); 
+	        		palvelupisteet[5].lisaaJonoon(a); 
             		break;
     
 	        case GATE: a = palvelupisteet[5].otaJonosta();
-            		palvelupisteet[6].lisaaJonoon(a); 
+	        		palvelupisteet[6].lisaaJonoon(a); 
             		break;
 
 	        case PLANE: a = palvelupisteet[6].otaJonosta();
@@ -234,4 +234,10 @@ public class OmaMoottori extends Moottori{
 	public void setCheckinJakauma(double jakauma) {
 		checkinJakauma = jakauma;
 	}
+	
+	public Palvelupisteryhma[] getPalvelupisteet() {
+		return palvelupisteet;
+	}
+
+
 }

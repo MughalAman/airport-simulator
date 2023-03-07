@@ -4,6 +4,7 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import simu.model.Palvelupisteryhma;
 
 public class Visualisointi2 extends Canvas implements IVisualisointi{
 	
@@ -32,6 +33,13 @@ public class Visualisointi2 extends Canvas implements IVisualisointi{
 		gc.setFill(Color.RED);
 		gc.setFont(new Font(20));
 		gc.fillText("Asiakas " + asiakasLkm, 100, 100);
+		
+	}
+
+
+	@Override
+	public void uusiAsiakas(Palvelupisteryhma[] p) {
+		// TODO Auto-generated method stub
 		
 	}
 	

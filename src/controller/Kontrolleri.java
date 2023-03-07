@@ -9,7 +9,6 @@ public class Kontrolleri implements IKontrolleri{   // UUSI
 	
 	private IMoottori moottori; 
 	private ISimulaattorinUI ui;
-
 	
 	public Kontrolleri(ISimulaattorinUI ui) {
 		this.ui = ui;
@@ -89,7 +88,7 @@ public class Kontrolleri implements IKontrolleri{   // UUSI
 	public void visualisoiAsiakas() {
 		Platform.runLater(new Runnable(){
 			public void run(){
-				ui.getVisualisointi().uusiAsiakas();
+				ui.getVisualisointi().uusiAsiakas(moottori.getPalvelupisteet());
 			}
 		});
 	}

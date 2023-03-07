@@ -16,10 +16,15 @@ public class Palvelupisteryhma {
 	private PriorityQueue<Palvelupiste> palvelupisteet;
 	private LinkedList<Integer> jono = new LinkedList<Integer>();
 	
+	private TapahtumanTyyppi asiakasPalvelupisteeseen;
+	
+
 	public Palvelupisteryhma(ContinuousGenerator generator, Tapahtumalista tapahtumalista, TapahtumanTyyppi tyyppi) {
 		this.tapahtumalista = tapahtumalista;
 		this.generator = generator;
 		this.skeduloitavanTapahtumanTyyppi = tyyppi;
+		
+		asiakasPalvelupisteeseen = skeduloitavanTapahtumanTyyppi;
 		
 		palvelupisteet = new PriorityQueue<Palvelupiste>();
 		palvelupisteet.add(new Palvelupiste(generator, tapahtumalista, skeduloitavanTapahtumanTyyppi));
@@ -49,6 +54,7 @@ public class Palvelupisteryhma {
 			jono.add(palvelupisteet.peek().getId());
 			palvelupisteet.peek().lisaaJonoon(a);
 		}
+		asiakasPalvelupisteeseen = a.getTapahtuma();
 		
 	}
 	
@@ -56,7 +62,9 @@ public class Palvelupisteryhma {
 		int id = jono.poll();
 		for(Palvelupiste p : palvelupisteet) {
 			if(id == p.getId()) {
-				return p.otaJonosta();
+				Asiakas a = p.otaJonosta();
+				a.setTapahtuma(skeduloitavanTapahtumanTyyppi);
+				return a;
 			}
 		}
 		return null;
@@ -64,6 +72,16 @@ public class Palvelupisteryhma {
 	
 	public Palvelupiste getFirst() {
 		return palvelupisteet.peek();
+	}
+	
+	public TapahtumanTyyppi getTapahtuma() {
+		return skeduloitavanTapahtumanTyyppi;
+	}
+	
+	public TapahtumanTyyppi teeLiike() {
+		TapahtumanTyyppi tyyppi = asiakasPalvelupisteeseen;
+		asiakasPalvelupisteeseen = skeduloitavanTapahtumanTyyppi;
+		return tyyppi;
 	}
 	
 	public PriorityQueue<Palvelupiste> getList() {
@@ -89,5 +107,5 @@ public class Palvelupisteryhma {
 	public int getViiveaika() {
 		return getOleskeluaika()-getAktiiviaika();
 	}
-
+	
 }
