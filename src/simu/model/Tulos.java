@@ -109,4 +109,22 @@ public class Tulos {
 	public void setTurvatarkastusJononPituus(double TurvatarkastusJononPituus) {
 		this.TurvatarkastusJononPituus = TurvatarkastusJononPituus;
 	}
+
+
+	@Override
+	public String toString() {
+		return "{" +
+			" Loppuaika='" + getLoppuaika() + "'" +
+			", AsiakasMaara='" + getAsiakasMaara() + "'" +
+			", CheckAktiiviAika='" + getCheckAktiiviAika() + "'" +
+			", TurvaTarkastus='" + getTurvaTarkastus() + "'" +
+			", OleskeluAikaTurvaTarkastus='" + getOleskeluAikaTurvaTarkastus() + "'" +
+			", CheckInKayttoaste='" + getCheckInKayttoaste() + "'" +
+			", LentokentanTeho='" + getLentokentanTeho() + "'" +
+			", CheckinPalveluaika='" + getCheckinPalveluaika() + "'" +
+			", TurvatarkastusJono='" + getTurvatarkastusJono() + "'" +
+			", TurvatarkastusJononPituus='" + getTurvatarkastusJononPituus() + "'" +
+			"}";
+	}
+
 }

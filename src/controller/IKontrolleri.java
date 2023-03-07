@@ -7,8 +7,8 @@ public interface IKontrolleri {
 		public void kaynnistaSimulointi();
 		public void nopeuta();
 		public void hidasta();
-		public void tallennaTulokset();
-		public void naytaTulokset();
+		public void tallennaTulokset(double Loppuaika, int AsiakasMaara, double CheckAktiiviAika, double TurvaTarkastus, double OleskeluAikaTurvaTarkastus, double CheckInKayttoaste, double LentokentanTeho, double CheckinPalveluaika, double TurvatarkastusJono, double TurvatarkastusJononPituus);
+		public abstract String[] naytaTulokset();
 
 		// Rajapinta, joka tarjotaan moottorille:
 

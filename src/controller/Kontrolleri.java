@@ -1,13 +1,16 @@
 package controller;
 
 import javafx.application.Platform;
+
 import simu.framework.IMoottori;
-import simu.model.OmaMoottori;
+import simu.model.*;
 import view.ISimulaattorinUI;
 
 public class Kontrolleri implements IKontrolleri{   // UUSI
+	static ITulosDAO tulosDAO = new TulosAccessObject();
 
 	private IMoottori moottori;
+	private ITuloskone tuloskone;
 	private ISimulaattorinUI ui;
 
 
@@ -105,12 +108,12 @@ public class Kontrolleri implements IKontrolleri{   // UUSI
 	}
 	
 	@Override
-	public void tallennaTulokset() {
-		
+	public void tallennaTulokset(double Loppuaika, int AsiakasMaara, double CheckAktiiviAika, double TurvaTarkastus, double OleskeluAikaTurvaTarkastus, double CheckInKayttoaste, double LentokentanTeho, double CheckinPalveluaika, double TurvatarkastusJono, double TurvatarkastusJononPituus) {
+		tulosDAO.createTulos(new Tulos(Loppuaika, AsiakasMaara, CheckAktiiviAika, TurvaTarkastus, OleskeluAikaTurvaTarkastus, CheckInKayttoaste, LentokentanTeho, CheckinPalveluaika, TurvatarkastusJono, TurvatarkastusJononPituus));
 	}
 	
 	@Override
-	public void naytaTulokset() {
-		
+	public String[] naytaTulokset() {
+		return tuloskone.getTulokset();
 	}
 }

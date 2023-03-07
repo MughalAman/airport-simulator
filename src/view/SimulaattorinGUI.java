@@ -16,8 +16,7 @@ import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.GridPane;
@@ -124,56 +123,20 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI{
 	            @Override
 	            public void handle(ActionEvent event) {
 	                GridPane addPane = new GridPane();
-	                TableView tableView = new TableView();
+	                ListView<String> tulosList = new ListView<String>();
 
 	                Text text = new Text();
 	                text.setText("Entiset Tulokset: ");
 
 	                addPane.add(text,2,2);
 	               
-	                TableColumn<Tulos, Double> Loppuaika = new TableColumn<>("Loppuaika: ");
-	                TableColumn<Tulos, Integer> AsiakasMaara = new TableColumn<>("AsiakasMaara:");
-	                TableColumn<Tulos, Double> CheckAktiiviAika = new TableColumn<>("CheckAktiiviAika");
-	                TableColumn<Tulos, Double> TurvaTarkastus = new TableColumn<>("TurvaTarkastus: ");
-	                TableColumn<Tulos, Double> OleskeluAikaTurvaTarkastus = new TableColumn<>("OleskeluAikaTurvaTarkastus:");
-	                TableColumn<Tulos, Double> CheckInKayttoaste = new TableColumn<>("CheckInKayttoaste");
-	                TableColumn<Tulos, Double> LentokentanTeho = new TableColumn<>("LentokentanTeho: ");
-	                TableColumn<Tulos, Double> CheckinPalveluaika = new TableColumn<>("CheckinPalveluaika:");
-	                TableColumn<Tulos, Double> TurvatarkastusJono = new TableColumn<>("TurvatarkastusJono"); 
-	                TableColumn<Tulos, Double> TurvatarkastusJononPituus = new TableColumn<>("TurvatarkastusJononPituus: ");
-	               
+	                ObservableList<String> tulokset = FXCollections.observableArrayList();
 	                
-	                tableView.getColumns().addAll(Loppuaika, AsiakasMaara, CheckAktiiviAika, TurvaTarkastus, OleskeluAikaTurvaTarkastus,
-	                		CheckInKayttoaste, LentokentanTeho, CheckinPalveluaika, TurvatarkastusJono, TurvatarkastusJononPituus);
-
-
+	                for (int i = 0; i < kontrolleri.naytaTulokset().length; i++) {
+	    				tulokset.add(kontrolleri.naytaTulokset()[i]);
+	    			}
 	                
-	                
-//	                ObservableList<Tulos> data = FXCollections.observableArrayList(
-//	                		  new Tulos("John", "Doe", 30),
-//	                		    new Tulos("Jane", "Doe", 25),
-//	                		    new Tulos("Bob", "Smith", 40)
-//	                	);
-
-	                	// Set the cell value factories for each column
-	                 Loppuaika.setCellValueFactory(new PropertyValueFactory<>("Loppuaika:"));
-	                AsiakasMaara.setCellValueFactory(new PropertyValueFactory<>("AsiakasMaara:"));
-	                CheckAktiiviAika.setCellValueFactory(new PropertyValueFactory<>("CheckAktiiviAika:"));
-	                TurvaTarkastus.setCellValueFactory(new PropertyValueFactory<>("TurvaTarkastus:"));
-	                OleskeluAikaTurvaTarkastus.setCellValueFactory(new PropertyValueFactory<>("OleskeluAikaTurvaTarkastus:"));
-	                CheckInKayttoaste.setCellValueFactory(new PropertyValueFactory<>("CheckInKayttoaste:"));
-	                LentokentanTeho.setCellValueFactory(new PropertyValueFactory<>("LentokentanTeho:"));
-	                CheckinPalveluaika.setCellValueFactory(new PropertyValueFactory<>("CheckinPalveluaika:"));
-	                TurvatarkastusJono.setCellValueFactory(new PropertyValueFactory<>("TurvatarkastusJono:"));
-	                TurvatarkastusJononPituus.setCellValueFactory(new PropertyValueFactory<>("TurvatarkastusJononPituus:"));
-
-
-	                	// Add the data to the table
-//	                	tableView.setItems(data);
-	       
-
-
-
+	                tulosList.setItems(tulokset);
 	                
 	                
 	                
