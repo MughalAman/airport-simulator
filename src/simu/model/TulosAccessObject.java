@@ -7,7 +7,7 @@ public class TulosAccessObject implements ITulosDAO {
 	private Connection conn;
 
 	public TulosAccessObject() {
-        final String URL = "jdbc:mysql://10.114.34.11/airportsim_tulokset";
+        final String URL = "jdbc:mysql://10.114.34.11/mysql";
         final String USERNAME = "username";
         final String PWD = "password";
 
