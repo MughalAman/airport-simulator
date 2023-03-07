@@ -7,6 +7,8 @@ public interface IKontrolleri {
 		public void kaynnistaSimulointi();
 		public void nopeuta();
 		public void hidasta();
+		public void tallennaTulokset();
+		public void naytaTulokset();
 
 		// Rajapinta, joka tarjotaan moottorille:
 

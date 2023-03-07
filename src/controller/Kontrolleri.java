@@ -103,4 +103,14 @@ public class Kontrolleri implements IKontrolleri{   // UUSI
 			}
 		});
 	}
+	
+	@Override
+	public void tallennaTulokset() {
+		
+	}
+	
+	@Override
+	public void naytaTulokset() {
+		
+	}
 }
