@@ -48,31 +48,31 @@ public class Visualisointi extends Canvas implements IVisualisointi{
 	    //Aman korjaa jos pystyt
 
 	    if(a.getTapahtuma() == TapahtumanTyyppi.ENTRANCE) {
-	        gc.fillText("1. ", 120, 450);
+	        gc.fillText("1.", 120, 450);
 	    }
 
 	    if(a.getTapahtuma() == TapahtumanTyyppi.INFO) {
-	    	gc.fillText("2. ", 120, 300);
+	    	gc.fillText("2.", 120, 300);
 	    }
 
 	    if(a.getTapahtuma() == TapahtumanTyyppi.CHECKINAUTO) {
-	    	gc.fillText("3. ", 200, 730);
+	    	gc.fillText("3.", 200, 730);
 	    }
 
 	    if(a.getTapahtuma() == TapahtumanTyyppi.CHECKINMANUAL) {
-	    	gc.fillText("4. ", 260, 220);
+	    	gc.fillText("4.", 260, 220);
 	    }
 
 	    if(a.getTapahtuma() == TapahtumanTyyppi.SECURITY) {
-	    	gc.fillText("5. ", 350, 580);
+	    	gc.fillText("5.", 350, 580);
 	    }
 
 	    if(a.getTapahtuma() == TapahtumanTyyppi.SECURITYGATE) {
-	    	gc.fillText("6. ", 450, 580);
+	    	gc.fillText("6.", 450, 580);
 	    }
 
 	    if(a.getTapahtuma() == TapahtumanTyyppi.GATE) {
-	    	gc.fillText("7. ", 700, 700);
+	    	gc.fillText("7.", 700, 700);
 	    }
 
 	    if(a.getTapahtuma() == TapahtumanTyyppi.PLANE) {
