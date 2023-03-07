@@ -242,4 +242,8 @@ public class OmaMoottori extends Moottori{
 	public void setCheckinJakauma(double jakauma) {
 		checkinJakauma = jakauma;
 	}
+	
+	public Palvelupisteryhma[] getPalvelupisteet() {
+		return palvelupisteet;
+	}
 }

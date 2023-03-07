@@ -103,7 +103,7 @@ public class Kontrolleri implements IKontrolleri{   // UUSI
 		Platform.runLater(new Runnable(){
 			@Override
 			public void run(){
-				ui.getVisualisointi().uusiAsiakas();
+				ui.getVisualisointi().uusiAsiakas(moottori.getPalvelupisteet());
 			}
 		});
 	}

@@ -8,7 +8,7 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Java FX"/>
-	<classpathentry kind="lib" path="C:/Java/maria jdbc/mysql-connector-j-8.0.32.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/JavaFX"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/MySQL connector"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
