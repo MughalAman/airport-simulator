@@ -4,6 +4,7 @@ public interface ISimulaattorinUI {
 
 	// Kontrolleri tarvitsee syötteitä, jotka se välittää Moottorille
 	public double getAika();
+	public double getT();
 	public int getC();
 	public double getB();
 	public double getRi();
