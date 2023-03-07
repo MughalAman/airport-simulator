@@ -1,13 +1,12 @@
 package testi;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.assertEquals;
+
 import org.junit.jupiter.api.Test;
 
-import simu.model.Asiakas;
 import simu.framework.Kello;
 import simu.framework.Trace;
-
-import static org.junit.Assert.assertEquals;
+import simu.model.Asiakas;
 
 public class AsiakasTest {
     @Test

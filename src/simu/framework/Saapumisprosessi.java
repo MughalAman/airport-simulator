@@ -1,8 +1,8 @@
 package simu.framework;
-import eduni.distributions.*;
+import eduni.distributions.ContinuousGenerator;
 import simu.model.TapahtumanTyyppi;
 public class Saapumisprosessi {
-	
+
 	private ContinuousGenerator generaattori;
 	private Tapahtumalista tapahtumalista;
 	private TapahtumanTyyppi tyyppi;

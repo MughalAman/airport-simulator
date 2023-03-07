@@ -11,13 +11,13 @@ public class Asiakas {
 	private double poistumisaika;
 	private int id;
 	private static int i = 1;
-	private static long sum = 0;	
+	private static long sum = 0;
 	private TapahtumanTyyppi tyyppi;
 
-	
+
 	public Asiakas(){
 	    id = i++;
-	    
+
 		saapumisaika = Kello.getInstance().getAika();
 		Trace.out(Trace.Level.INFO, "Uusi asiakas:" + id + ":"+saapumisaika);
 	}
@@ -37,7 +37,7 @@ public class Asiakas {
 	public void setSaapumisaika(double saapumisaika) {
 		this.saapumisaika = saapumisaika;
 	}
-	
+
 	public void raportti(){
 		Trace.out(Trace.Level.INFO, "Asiakas "+id+ " saapui:" +saapumisaika);
 		Trace.out(Trace.Level.INFO,"Asiakas "+id+ " poistui:" +poistumisaika);
@@ -46,11 +46,11 @@ public class Asiakas {
 		double keskiarvo = sum/id;
 		System.out.println("Asiakkaiden läpimenoaikojen keskiarvo "+ keskiarvo);
 	}
-	
+
 	public void setTapahtuma(TapahtumanTyyppi tyyppi) {
 		this.tyyppi = tyyppi;
 	}
-	
+
 	public TapahtumanTyyppi getTapahtuma() {
 		return tyyppi;
 	}
