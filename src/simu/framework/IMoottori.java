@@ -10,4 +10,6 @@ public interface IMoottori { // UUSI
 	public void setViive(long aika);
 	public long getViive();
 	public Palvelupisteryhma[] getPalvelupisteet();
+	public void setSisaankayntiJakauma(double sisJakauma);
+	public void setCheckinJakauma(double cheJakauma);
 }

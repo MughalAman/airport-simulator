@@ -23,14 +23,14 @@ public class Visualisointi extends Canvas implements IVisualisointi{
 		super(w, h);
 		gc = this.getGraphicsContext2D();
 		pisteet = new Piste[8];
-		pisteet[0] = new Piste(150, 500, TapahtumanTyyppi.ENTRANCE);
-		pisteet[1] = new Piste(190, 300, TapahtumanTyyppi.INFO);
-		pisteet[2] = new Piste(200, 695, TapahtumanTyyppi.CHECKINAUTO);
-		pisteet[3] = new Piste(330, 695, TapahtumanTyyppi.CHECKINMANUAL);
-		pisteet[4] = new Piste(365, 520, TapahtumanTyyppi.SECURITY);
-		pisteet[5] = new Piste(475, 520, TapahtumanTyyppi.SECURITYGATE);
-		pisteet[6] = new Piste(695, 520, TapahtumanTyyppi.GATE);
-		pisteet[7] = new Piste(880, 520, TapahtumanTyyppi.PLANE);
+		pisteet[0] = new Piste((215/2), (580/2), TapahtumanTyyppi.ENTRANCE);
+		pisteet[1] = new Piste((345/2), (395/2), TapahtumanTyyppi.INFO);
+		pisteet[2] = new Piste((345/2), (845/2), TapahtumanTyyppi.CHECKINAUTO);
+		pisteet[3] = new Piste((625/2), (845/2), TapahtumanTyyppi.CHECKINMANUAL);
+		pisteet[4] = new Piste((605/2), (635/2), TapahtumanTyyppi.SECURITY);
+		pisteet[5] = new Piste((900/2), (635/2), TapahtumanTyyppi.SECURITYGATE);
+		pisteet[6] = new Piste((1325/2), (625/2), TapahtumanTyyppi.GATE);
+		pisteet[7] = new Piste((1520/2), (705/2), TapahtumanTyyppi.PLANE);
 		tyhjennaNaytto();
 	}
 	

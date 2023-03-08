@@ -15,6 +15,8 @@ public interface ISimulaattorinUI {
 	public double getA();
 	public double getR();
 	public long getViive();
+	public double getSisJakauma();
+	public double getCheJakauma();
 
 	//Kontrolleri antaa käyttöliittymälle tuloksia, joita Moottori tuottaa
 	public void setLoppuaika(double aika);

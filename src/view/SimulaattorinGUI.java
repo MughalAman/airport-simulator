@@ -23,9 +23,6 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import simu.framework.Trace;
@@ -51,6 +48,8 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI{
 	// Käyttöliittymäkomponentit:
 	private TextField aika;
 	private TextField viive;
+	private TextField sisaankayntiJakauma;
+	private TextField checkinJakauma; 
 	private Label tulos;
 	private Label tulos2;
 	private Label tulos3;
@@ -63,6 +62,8 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI{
 	private Label tulos10;
 	private Label aikaLabel;
 	private Label viiveLabel;
+	private Label jakauma1Label;
+	private Label jakauma2Label;
 	private Label tulosLabel;
 	private Label tulosLabel2;
 	private Label tulosLabel3;
@@ -184,7 +185,7 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI{
 
 			nopeutaButton.setOnAction(e -> kontrolleri.nopeuta());
 
-			aikaLabel = new Label("Simulointiaika:");
+			aikaLabel = new Label("Simulointiaika (min):");
 
 
 	        aika = new TextField("Syötä aika");
@@ -193,8 +194,16 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI{
 	        viiveLabel = new Label("Viive:");
 	        viive = new TextField("Syötä viive");
 	        viive.setPrefWidth(150);
+	        
+	        jakauma1Label = new Label("Sisäänkäynti jakauma (0-1):");
+	        sisaankayntiJakauma = new TextField("Jakauma");
+	        sisaankayntiJakauma.setPrefWidth(150);
+	        
+	        jakauma2Label = new Label("Check-in jakauma (0-1):");
+	        checkinJakauma = new TextField("Jakauma");
+	        checkinJakauma.setPrefWidth(150);
 
-	        tulosLabel = new Label("Kokonaisaika:");
+	        tulosLabel = new Label("Kokonaisaika (min):");
 	        tulos = new Label();
 	        tulos.setPrefWidth(150);
 
@@ -247,36 +256,40 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI{
 	        grid.add(aika, 1, 0);          // sarake, rivi
 	        grid.add(viiveLabel, 0, 1);      // sarake, rivi
 	        grid.add(viive, 1, 1);           // sarake, rivi
-	        grid.add(tulosLabel, 0, 2);      // sarake, rivi
-	        grid.add(tulosLabel2, 0, 3);      // sarake, rivi
-	        grid.add(tulosLabel3, 0, 4);      // sarake, rivi
-	        grid.add(tulosLabel4, 0, 5);      // sarake, rivi
-	        grid.add(tulosLabel5, 0, 6);      // sarake, rivi
-	        grid.add(tulosLabel6, 0, 7);      // sarake, rivi
-	        grid.add(tulosLabel7, 0, 8);      // sarake, rivi
-	        grid.add(tulosLabel8, 0, 9);      // sarake, rivi
-	        grid.add(tulosLabel9, 0, 10);      // sarake, rivi
-	        grid.add(tulosLabel10, 0, 11);      // sarake, rivi
-	        grid.add(tulos, 1, 2);           // sarake, rivi
-	        grid.add(tulos2, 1, 3);           // sarake, rivi
-	        grid.add(tulos3, 1, 4);           // sarake, rivi
-	        grid.add(tulos4, 1, 5);           // sarake, rivi
-	        grid.add(tulos5, 1, 6);           // sarake, rivi
-	        grid.add(tulos6, 1, 7);           // sarake, rivi
-	        grid.add(tulos7, 1, 8);           // sarake, rivi
-	        grid.add(tulos8, 1, 9);           // sarake, rivi
-	        grid.add(tulos9, 1, 10);           // sarake, rivi
-	        grid.add(tulos10, 1, 11);           // sarake, rivi
-	        grid.add(kaynnistaButton,0, 12);  // sarake, rivi
-	        grid.add(nopeutaButton, 0, 13);   // sarake, rivi
-	        grid.add(hidastaButton, 1, 13);   // sarake, rivi
+	        grid.add(jakauma1Label, 0, 2);          // sarake, rivi
+	        grid.add(sisaankayntiJakauma, 1, 2);          // sarake, rivi
+	        grid.add(jakauma2Label, 0, 3);          // sarake, rivi
+	        grid.add(checkinJakauma, 1, 3);          // sarake, rivi
+	        grid.add(tulosLabel, 0, 4);      // sarake, rivi
+	        grid.add(tulosLabel2, 0, 5);      // sarake, rivi
+	        grid.add(tulosLabel3, 0, 6);      // sarake, rivi
+	        grid.add(tulosLabel4, 0, 7);      // sarake, rivi
+	        grid.add(tulosLabel5, 0, 8);      // sarake, rivi
+	        grid.add(tulosLabel6, 0, 9);      // sarake, rivi
+	        grid.add(tulosLabel7, 0, 10);      // sarake, rivi
+	        grid.add(tulosLabel8, 0, 11);      // sarake, rivi
+	        grid.add(tulosLabel9, 0, 12);      // sarake, rivi
+	        grid.add(tulosLabel10, 0, 13);      // sarake, rivi
+	        grid.add(tulos, 1, 4);           // sarake, rivi
+	        grid.add(tulos2, 1, 5);           // sarake, rivi
+	        grid.add(tulos3, 1, 6);           // sarake, rivi
+	        grid.add(tulos4, 1, 7);           // sarake, rivi
+	        grid.add(tulos5, 1, 8);           // sarake, rivi
+	        grid.add(tulos6, 1, 9);           // sarake, rivi
+	        grid.add(tulos7, 1, 10);           // sarake, rivi
+	        grid.add(tulos8, 1, 11);           // sarake, rivi
+	        grid.add(tulos9, 1, 12);           // sarake, rivi
+	        grid.add(tulos10, 1, 13);           // sarake, rivi
+	        grid.add(kaynnistaButton,0, 14);  // sarake, rivi
+	        grid.add(nopeutaButton, 0, 15);   // sarake, rivi
+	        grid.add(hidastaButton, 1, 14);   // sarake, rivi
 	        grid.add(uus, 1 , 17);   // sarake, rivi
 
 	        grid.add(tallenna, 1 , 18);   // sarake, rivi
 
 
 
-	        naytto = new Visualisointi(1000,900);
+	        naytto = new Visualisointi((1920/2),(1080/2));
 
 
 	        // Täytetään boxi:
@@ -312,6 +325,16 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI{
 	@Override
 	public long getViive(){
 		return Long.parseLong(viive.getText());
+	}
+	
+	@Override
+	public double getSisJakauma(){
+		return Double.parseDouble(checkinJakauma.getText());
+	}
+	
+	@Override
+	public double getCheJakauma(){
+		return Double.parseDouble(sisaankayntiJakauma.getText());
 	}
 
 	@Override

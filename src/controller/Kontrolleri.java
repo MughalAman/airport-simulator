@@ -27,9 +27,20 @@ public class Kontrolleri implements IKontrolleri{   // UUSI
 		moottori = new OmaMoottori(this); // luodaan uusi moottorisäie jokaista simulointia varten
 		moottori.setSimulointiaika(ui.getAika());
 		moottori.setViive(ui.getViive());
+		moottori.setSisaankayntiJakauma(ui.getSisJakauma());
+		moottori.setCheckinJakauma(ui.getCheJakauma());
 		ui.getVisualisointi().tyhjennaNaytto();
 		((Thread)moottori).start();
 		//((Thread)moottori).run(); // Ei missään tapauksessa näin. Miksi?
+//		@Override
+//		public void checkInJakauma(double checkinJakauma) {
+//			
+//		}
+//		
+//		@Override
+//		public void sisaanKayntiJakauma(double sisaankayntiJakauma) {
+//			
+//		}
 	}
 
 	@Override
