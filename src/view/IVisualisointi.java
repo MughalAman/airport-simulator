@@ -1,6 +1,6 @@
 package view;
 
-import simu.model.Palvelupisteryhma;
+import simu.model.TapahtumanTyyppi;
 
 public interface IVisualisointi {
 
@@ -8,7 +8,7 @@ public interface IVisualisointi {
 	
 	public void uusiAsiakas();
 	
-	public void uusiAsiakas(Palvelupisteryhma[] p);
+	public void uusiAsiakas(TapahtumanTyyppi uusi, TapahtumanTyyppi vanha);
 		
 }
 

@@ -63,7 +63,6 @@ public class Palvelupisteryhma {
 		for(Palvelupiste p : palvelupisteet) {
 			if(id == p.getId()) {
 				Asiakas a = p.otaJonosta();
-				a.setTapahtuma(skeduloitavanTapahtumanTyyppi);
 				return a;
 			}
 		}
@@ -99,7 +98,7 @@ public class Palvelupisteryhma {
 	public int getOleskeluaika() {
 		int oleskeluaika = 0;
 		for(Palvelupiste p: palvelupisteet) {
-			oleskeluaika += p.getAktiiviaika();
+			oleskeluaika += p.getOleskeluaika();
 		}
 		return oleskeluaika;
 	}

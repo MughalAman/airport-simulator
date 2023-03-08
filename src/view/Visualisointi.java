@@ -58,27 +58,23 @@ public class Visualisointi extends Canvas implements IVisualisointi{
 		if (i==0) j+=10;			
 	}
 
-	public void uusiAsiakas(Palvelupisteryhma[] p) {
-		TapahtumanTyyppi tyyppi;
+	public synchronized void uusiAsiakas(TapahtumanTyyppi uusi, TapahtumanTyyppi vanha) {
 		double oldY = 0, oldX = 0, newY = 0, newX = 0;
-		for(Palvelupisteryhma r: p) {
-			tyyppi = r.teeLiike();
-			if(tyyppi != r.getTapahtuma()) {
-				for(Piste g: pisteet) {
-					if(tyyppi == g.getTapahtuma()) {
-						oldX = g.getX();
-						oldY = g.getY();
-					}
-					if(r.getTapahtuma() == g.getTapahtuma()) {
-						newX = g.getX();
-						newY = g.getY();
-					}
-				}
+
+		for(Piste p: pisteet) {
+			if(vanha == p.getTapahtuma()) {
+				oldX = p.getX();
+				oldY = p.getY();
+			}
+			if(uusi == p.getTapahtuma()) {
+				newX = p.getX();
+				newY = p.getY();
 			}
 		}
+		
 		double eroX = (newX-oldX)/10-1;
 		double eroY = (newY-oldY)/10-1;
-
+		
 		Kello.getPallot().add(new Liike(oldX, oldY, eroX, eroY, gc, img, this.getWidth(), this.getHeight()));
 		
 

@@ -41,7 +41,14 @@ public class OmaMoottori extends Moottori{
 	@Override
 	protected void alustukset() {
 		//Tänne lisäpalvelupisteet esim.
-		palvelupisteet[2].setPalvelupisteetLkm(5);
+		palvelupisteet[0].setPalvelupisteetLkm(10);
+		palvelupisteet[1].setPalvelupisteetLkm(10);
+		palvelupisteet[2].setPalvelupisteetLkm(10);
+		palvelupisteet[3].setPalvelupisteetLkm(10);
+		palvelupisteet[4].setPalvelupisteetLkm(10);
+		palvelupisteet[5].setPalvelupisteetLkm(10);
+		palvelupisteet[6].setPalvelupisteetLkm(10);
+		
 		saapumisprosessi.generoiSeuraava(); // Ensimmäinen saapuminen järjestelmään
 	}
 
@@ -53,26 +60,29 @@ public class OmaMoottori extends Moottori{
 		switch (t.getTyyppi()){
 
 		case ENTRANCE:
+				a = new Asiakas();
+        		a.setTapahtuma(t.getTyyppi());
 				switch((int)(new Bernoulli(sisaankayntiJakauma).sample())) {
 
-        			case 0: palvelupisteet[0].lisaaJonoon(new Asiakas());
+        			case 0: palvelupisteet[0].lisaaJonoon(a);
 					break;
 
 				case 1: switch((int)(new Bernoulli(checkinJakauma).sample())) {
 
-					case 0: palvelupisteet[1].lisaaJonoon(new Asiakas());
+					case 0: palvelupisteet[1].lisaaJonoon(a);
 						break;
 
-					case 1: palvelupisteet[2].lisaaJonoon(new Asiakas());
+					case 1: palvelupisteet[2].lisaaJonoon(a);
 						break;
 					}
 					break;
         			}
-        			saapumisprosessi.generoiSeuraava();
-        			kontrolleri.visualisoiAsiakas(); // UUSI
+				saapumisprosessi.generoiSeuraava();
 				break;
 
 		case INFO: a = palvelupisteet[0].otaJonosta();
+			kontrolleri.visualisoiAsiakas(t.getTyyppi() , a.getTapahtuma()); // UUSI
+    		a.setTapahtuma(t.getTyyppi());
 			switch((int)(new Bernoulli(checkinJakauma).sample())) {
 
 			case 0: palvelupisteet[1].lisaaJonoon(a);
@@ -84,27 +94,38 @@ public class OmaMoottori extends Moottori{
 			break;
 
 		case CHECKINAUTO: a = palvelupisteet[1].otaJonosta();
+					kontrolleri.visualisoiAsiakas(t.getTyyppi() , a.getTapahtuma()); // UUSI
+	        		a.setTapahtuma(t.getTyyppi());
 					palvelupisteet[3].lisaaJonoon(a);
-				break;
+					break;
 
 		case CHECKINMANUAL: a = palvelupisteet[2].otaJonosta();
+					kontrolleri.visualisoiAsiakas(t.getTyyppi() , a.getTapahtuma()); // UUSI
+	        		a.setTapahtuma(t.getTyyppi());
             		palvelupisteet[3].lisaaJonoon(a);
-            	break;
+            		break;
 
 	        case SECURITY: a = palvelupisteet[3].otaJonosta();
+	        		kontrolleri.visualisoiAsiakas(t.getTyyppi() , a.getTapahtuma()); // UUSI
+	        		a.setTapahtuma(t.getTyyppi());
             		palvelupisteet[4].lisaaJonoon(a);
             		break;
 
 	        case SECURITYGATE: a = palvelupisteet[4].otaJonosta();
+	        		kontrolleri.visualisoiAsiakas(t.getTyyppi() , a.getTapahtuma()); // UUSI
+	        		a.setTapahtuma(t.getTyyppi());
             		palvelupisteet[5].lisaaJonoon(a);
             		break;
 
 	        case GATE: a = palvelupisteet[5].otaJonosta();
+	        		kontrolleri.visualisoiAsiakas(t.getTyyppi() , a.getTapahtuma()); // UUSI
+	        		a.setTapahtuma(t.getTyyppi());
             		palvelupisteet[6].lisaaJonoon(a);
             		break;
 
 	        case PLANE: a = palvelupisteet[6].otaJonosta();
 	        	a.setPoistumisaika(Kello.getInstance().getAika());
+	        	kontrolleri.visualisoiAsiakas(t.getTyyppi() , a.getTapahtuma()); // UUSI
 	        	C++;
 	        	a.raportti();
 	        	break;

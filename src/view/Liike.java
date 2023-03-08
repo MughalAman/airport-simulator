@@ -12,8 +12,8 @@ public class Liike {
 	
 	
 	public Liike(double x, double y, double eroX, double eroY, GraphicsContext gc, Image img, double width, double height) {
-		this.x = x;
-		this.y = y;
+		this.x = x+eroX;
+		this.y = y+eroY;
 		this.eroX = eroX;
 		this.eroY = eroY;
 		this.gc = gc;
@@ -25,9 +25,10 @@ public class Liike {
 	
 	public void paivita() {
 		if(i<10) {
-			gc.clearRect(x-eroX, y-eroY, 10, 10);
+			gc.setFill(Color.WHITE);
+			gc.fillOval(x-eroX, y-eroY, 12, 12);
 			gc.setFill(Vari);
-			gc.fillOval(x,y,10,10);
+			gc.fillOval(x,y,12,12);
 			x+=eroX;
 			y+=eroY;
 			i++;
@@ -35,7 +36,10 @@ public class Liike {
 			
 		} 
 		
-		if(isValmis()) gc.clearRect(x-eroX, y-eroY, 10, 10);
+		if(isValmis()) {
+			gc.setFill(Color.WHITE);
+			gc.fillOval(x-eroX, y-eroY, 12, 12);
+		}
 	}
 	
 	public boolean isValmis() {

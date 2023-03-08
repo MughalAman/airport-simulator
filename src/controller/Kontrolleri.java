@@ -110,11 +110,11 @@ public class Kontrolleri implements IKontrolleri{   // UUSI
 	}
 
 	@Override
-	public void visualisoiAsiakas() {
+	public void visualisoiAsiakas(TapahtumanTyyppi uusi, TapahtumanTyyppi vanha) {
 		Platform.runLater(new Runnable(){
 			@Override
 			public void run(){
-				ui.getVisualisointi().uusiAsiakas(moottori.getPalvelupisteet());
+				ui.getVisualisointi().uusiAsiakas(uusi, vanha);
 			}
 		});
 	}
@@ -128,4 +128,6 @@ public class Kontrolleri implements IKontrolleri{   // UUSI
 	public String[] naytaTulokset() {
 		return tuloskone.getTulokset();
 	}
+
+
 }

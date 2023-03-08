@@ -1,5 +1,7 @@
 package controller;
 
+import simu.model.TapahtumanTyyppi;
+
 public interface IKontrolleri {
 
 		// Rajapinta, joka tarjotaan  käyttöliittymälle:
@@ -13,7 +15,7 @@ public interface IKontrolleri {
 		// Rajapinta, joka tarjotaan moottorille:
 
 		public void naytaLoppuaika(double aika);
-		public void visualisoiAsiakas();
+		//public void visualisoiAsiakas();
 
 		public void naytaAsiakasMaara(int C);
 		public void checkAktiiviAika(double B);
@@ -25,5 +27,6 @@ public interface IKontrolleri {
 		public void checkinPalveluaika(double P);
 		public void turvatarkastusJono(double A);
 		public void turvatarkastusJononPituus(double R);
+		public void visualisoiAsiakas(TapahtumanTyyppi uusi, TapahtumanTyyppi vanha);
 
 }

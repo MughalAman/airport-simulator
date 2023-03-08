@@ -5,6 +5,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import simu.model.Palvelupisteryhma;
+import simu.model.TapahtumanTyyppi;
 
 public class Visualisointi2 extends Canvas implements IVisualisointi{
 
@@ -40,10 +41,12 @@ public class Visualisointi2 extends Canvas implements IVisualisointi{
 
 
 	@Override
-	public void uusiAsiakas(Palvelupisteryhma[] p) {
+	public void uusiAsiakas(TapahtumanTyyppi uusi, TapahtumanTyyppi vanha) {
 		// TODO Auto-generated method stub
 		
 	}
+
+
 
 
 }
