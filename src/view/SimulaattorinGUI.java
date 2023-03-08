@@ -19,6 +19,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -90,6 +91,11 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI{
 
 	@Override
 	public void start(Stage primaryStage) {
+		Image image  = new Image("/img/applogo.png");
+		primaryStage.getIcons().add(image);
+		
+		
+		
 		// Käyttöliittymän rakentaminen
 		try {
 
@@ -132,7 +138,7 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI{
 	    			}
 
 	                tulosList.setItems(tulokset);
-	    			tulosList.setPrefSize(1920, 1080);
+	    			tulosList.setPrefSize(920, 800);
 
 	                
 	                HBox hBox = new HBox();
@@ -147,6 +153,9 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI{
 	                Stage addStage = new Stage();
 	                Scene addScene = new Scene(hBox);
 
+	            	Image image  = new Image("/img/applogo.png");
+	            	addStage.getIcons().add(image);
+	        		
 
 
 	                addStage.setTitle("SQL HISTORIA");
