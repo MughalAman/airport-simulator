@@ -21,14 +21,18 @@ public class Liike {
 		
 	}
 	
+	private Color Vari = (Color) Color.RED;
+	
 	public void paivita() {
 		if(i<10) {
 			gc.clearRect(x-eroX, y-eroY, 10, 10);
-			gc.setFill(Color.RED);
+			gc.setFill(Vari);
 			gc.fillOval(x,y,10,10);
 			x+=eroX;
 			y+=eroY;
 			i++;
+			
+			
 		} 
 		
 		if(isValmis()) gc.clearRect(x-eroX, y-eroY, 10, 10);
@@ -38,5 +42,10 @@ public class Liike {
 		return i>=10;
 	}
 
+	
+	public Color getVari() {
+		return Vari ;
+		
+	}
 
 }
