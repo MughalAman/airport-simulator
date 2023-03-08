@@ -1,17 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Merriweather+Sans&family=Work+Sans&display=swap');
 
+/*Color palette: #222E50, #007991, #439A86, #BCD8C1, #E9D985*/
+
 .button {
-    -fx-background-color: #C5D1EB;
+    -fx-background-color: #E9D985;
     -fx-font-family: 'Work Sans'; 
     -fx-font-size: 20;
 }
 
 .root {
-	-fx-background-color: #5A7684;	
+	-fx-background-color: #222E50;	
 }
 
 .text-field {
-	-fx-text-fill:  black;
+	-fx-text-fill:  white;
+	-fx-background-color: #439A86;
 	-fx-font-family: 'Work Sans';
 	-fx-font-size: 20;
 }
@@ -20,6 +23,7 @@
     -fx-text-fill: #0D1F2D;
     -fx-font-family: 'Merriweather Sans'; 
     -fx-font-size: 20;
+    -fx-text-fill: #BCD8C1;
 }
 
 .title {
