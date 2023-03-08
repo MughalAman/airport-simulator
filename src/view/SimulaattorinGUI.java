@@ -138,8 +138,9 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI{
 	    				tulokset.add(kontrolleri.naytaTulokset()[i]);
 	    			}
 
+	               
 	                tulosList.setItems(tulokset);
-	    			tulosList.setPrefSize(920, 800);
+	    			tulosList.setPrefSize(900, 500);
 
 	                
 	                HBox hBox = new HBox();
