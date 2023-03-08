@@ -152,10 +152,6 @@ public class OmaMoottori extends Moottori{
 		kontrolleri.turvatarkastusJononPituus(R);
 
 	}
-	
-	public double getT() {
-		return T;
-	}
 
 	public int getC() {
 		return C;
@@ -191,10 +187,6 @@ public class OmaMoottori extends Moottori{
 
 	public double getR() {
 		return R;
-	}
-	
-	public void setT(double T) {
-		this.T = T;
 	}
 
 	public void setC(int C){
@@ -242,7 +234,7 @@ public class OmaMoottori extends Moottori{
 	public void setCheckinJakauma(double jakauma) {
 		checkinJakauma = jakauma;
 	}
-	
+
 	public Palvelupisteryhma[] getPalvelupisteet() {
 		return palvelupisteet;
 	}

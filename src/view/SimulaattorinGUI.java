@@ -105,7 +105,6 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI{
 
 			kaynnistaButton = new Button();
 			kaynnistaButton.setText("Käynnistä simulointi");
-			kaynnistaButton.setFont(Font.font("Tahoma", FontWeight.BOLD, 20));
 
 			kaynnistaButton.setOnAction(new EventHandler<ActionEvent>() {
 	            @Override
@@ -119,7 +118,6 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI{
 
 			Button uus = new Button();
 			uus.setText("Historia");
-			uus.setFont(Font.font("Tahoma", FontWeight.BOLD, 20));
 
 			uus.setOnAction(new EventHandler<ActionEvent>() {
 	            @Override
@@ -162,7 +160,6 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI{
 
 			Button tallenna = new Button();
 			tallenna.setText("Tallenna");
-			tallenna.setFont(Font.font("Tahoma", FontWeight.BOLD, 20));
 
 			tallenna.setOnAction(e -> kontrolleri.tallennaTulokset(loppuaika, asiakasmaara, checkaktiiviaika, turvatarkastus, oleskeluaikaturvatarkastus, checkinkayttoaste, lentokentanteho, checkinpalveluaika, turvatarkastusjono, turvatarkastusjononpituus));
 
@@ -170,88 +167,62 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI{
 
 			hidastaButton = new Button();
 			hidastaButton.setText("Hidasta");
-			hidastaButton.setFont(Font.font("Tahoma", FontWeight.BOLD, 20));
 
 			hidastaButton.setOnAction(e -> kontrolleri.hidasta());
 
 			nopeutaButton = new Button();
 			nopeutaButton.setText("Nopeuta");
-			nopeutaButton.setFont(Font.font("Tahoma", FontWeight.BOLD, 20));
 
 			nopeutaButton.setOnAction(e -> kontrolleri.nopeuta());
 
 			aikaLabel = new Label("Simulointiaika:");
 
 
-			aikaLabel.setFont(Font.font("Tahoma", FontWeight.BOLD, 20));
 	        aika = new TextField("Syötä aika");
-	        aika.setFont(Font.font("Tahoma", FontWeight.BOLD, 20));
 	        aika.setPrefWidth(150);
 
 	        viiveLabel = new Label("Viive:");
-			viiveLabel.setFont(Font.font("Tahoma", FontWeight.BOLD, 20));
 	        viive = new TextField("Syötä viive");
-	        viive.setFont(Font.font("Tahoma", FontWeight.BOLD, 20));
 	        viive.setPrefWidth(150);
 
 	        tulosLabel = new Label("Kokonaisaika:");
-			tulosLabel.setFont(Font.font("Tahoma", FontWeight.BOLD, 20));
 	        tulos = new Label();
-	        tulos.setFont(Font.font("Tahoma", FontWeight.BOLD, 20));
 	        tulos.setPrefWidth(150);
 
 	        tulosLabel2 = new Label("Asiakas määrä:");
-			tulosLabel2.setFont(Font.font("Tahoma", FontWeight.BOLD, 20));
 	        tulos2 = new Label();
-	        tulos2.setFont(Font.font("Tahoma", FontWeight.BOLD, 20));
 	        tulos2.setPrefWidth(150);
 
 	        tulosLabel3 = new Label("Check-in aktiiviaika:");
-			tulosLabel3.setFont(Font.font("Tahoma", FontWeight.BOLD, 20));
 	        tulos3 = new Label();
-	        tulos3.setFont(Font.font("Tahoma", FontWeight.BOLD, 20));
 	        tulos3.setPrefWidth(150);
 
 	        tulosLabel4 = new Label("Turvatarkastuksen läpimenoaika:");
-			tulosLabel4.setFont(Font.font("Tahoma", FontWeight.BOLD, 20));
 	        tulos4 = new Label();
-	        tulos4.setFont(Font.font("Tahoma", FontWeight.BOLD, 20));
 	        tulos4.setPrefWidth(150);
 
 	        tulosLabel5 = new Label("Turvatarkastuksen oleskeluaika:");
-			tulosLabel5.setFont(Font.font("Tahoma", FontWeight.BOLD, 20));
 	        tulos5 = new Label();
-	        tulos5.setFont(Font.font("Tahoma", FontWeight.BOLD, 20));
 	        tulos5.setPrefWidth(150);
 
 	        tulosLabel6 = new Label("Check-in käyttöaste:");
-			tulosLabel6.setFont(Font.font("Tahoma", FontWeight.BOLD, 20));
 	        tulos6 = new Label();
-	        tulos6.setFont(Font.font("Tahoma", FontWeight.BOLD, 20));
 	        tulos6.setPrefWidth(150);
 
 	        tulosLabel7 = new Label("Lentokentän suoritusteho:");
-			tulosLabel7.setFont(Font.font("Tahoma", FontWeight.BOLD, 20));
 	        tulos7 = new Label();
-	        tulos7.setFont(Font.font("Tahoma", FontWeight.BOLD, 20));
 	        tulos7.setPrefWidth(150);
 
 	        tulosLabel8 = new Label("Check-in keskimääräinen palveluaika:");
-			tulosLabel8.setFont(Font.font("Tahoma", FontWeight.BOLD, 20));
 	        tulos8 = new Label();
-	        tulos8.setFont(Font.font("Tahoma", FontWeight.BOLD, 20));
 	        tulos8.setPrefWidth(150);
 
 	        tulosLabel9 = new Label("Turvatarkastuksen keskimääräinen läpimenoaika:");
-			tulosLabel9.setFont(Font.font("Tahoma", FontWeight.BOLD, 20));
 	        tulos9 = new Label();
-	        tulos9.setFont(Font.font("Tahoma", FontWeight.BOLD, 20));
 	        tulos9.setPrefWidth(150);
 
 	        tulosLabel10 = new Label("Turvatarkastuksen keskimääräinen jononpituus:");
-			tulosLabel10.setFont(Font.font("Tahoma", FontWeight.BOLD, 20));
 	        tulos10 = new Label();
-	        tulos10.setFont(Font.font("Tahoma", FontWeight.BOLD, 20));
 	        tulos10.setPrefWidth(150);
 
 	        HBox hBox = new HBox();
