@@ -1,5 +1,4 @@
 package view;
-import simu.framework.Kello;
 import simu.framework.Pallot;
 import simu.model.*;
 
@@ -59,7 +58,7 @@ public class Visualisointi extends Canvas implements IVisualisointi{
 		if (i==0) j+=10;			
 	}
 
-	public synchronized void uusiAsiakas(TapahtumanTyyppi uusi, TapahtumanTyyppi vanha) {
+	public void uusiAsiakas(TapahtumanTyyppi uusi, TapahtumanTyyppi vanha) {
 		double oldY = 0, oldX = 0, newY = 0, newX = 0;
 
 		for(Piste p: pisteet) {
