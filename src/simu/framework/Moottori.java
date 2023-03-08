@@ -10,6 +10,7 @@ public abstract class Moottori extends Thread implements IMoottori{  // UUDET MÃ
 	private long viive = 0;
 	
 	private Kello kello;
+	private Pallot pallot;
 	
 	protected Tapahtumalista tapahtumalista;
 	protected Palvelupisteryhma[] palvelupisteet;
@@ -22,6 +23,8 @@ public abstract class Moottori extends Thread implements IMoottori{  // UUDET MÃ
 		this.kontrolleri = kontrolleri;  //UUSI
 
 		kello = Kello.getInstance(); // Otetaan kello muuttujaan yksinkertaistamaan koodia
+		
+		pallot = Pallot.getInstance();
 		
 		tapahtumalista = new Tapahtumalista();
 		
@@ -51,6 +54,7 @@ public abstract class Moottori extends Thread implements IMoottori{  // UUDET MÃ
 		while (simuloidaan()){
 			viive(); // UUSI
 			kello.setAika(nykyaika());
+			pallot.paivita();
 			suoritaBTapahtumat();
 			yritaCTapahtumat();
 		}
