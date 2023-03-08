@@ -43,6 +43,11 @@ public class Visualisointi extends Canvas implements IVisualisointi{
 	    gc.setFill(Color.BLACK);
 	 
 	}
+	public Image Getimg() {
+		
+
+		return this.img;
+	}
 	
 	public void uusiAsiakas() {
 		gc.setFill(Color.RED);

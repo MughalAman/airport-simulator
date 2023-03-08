@@ -31,9 +31,7 @@ public class LiikeTest1 {
 
     @Test
     public void testIsValmis() {
-       //Onko liike valmis
-    	
-    	
+       //liikkuuko pallo
     	boolean i = liike.isValmis();
     	
     	
