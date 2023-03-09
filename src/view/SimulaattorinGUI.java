@@ -17,8 +17,8 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -48,8 +48,9 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI{
 	// Käyttöliittymäkomponentit:
 	private TextField aika;
 	private TextField viive;
-	private TextField sisaankayntiJakauma;
-	private TextField checkinJakauma; 
+	private Slider sisaankayntiJakauma;
+	private Slider checkinJakauma; 
+	private Slider infoLkm, manualLkm, autoLkm, securityLkm, sgateLkm, gateLkm, planeLkm;
 	private Label tulos;
 	private Label tulos2;
 	private Label tulos3;
@@ -218,13 +219,19 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI{
 	        viive = new TextField("Syötä viive");
 	        viive.setPrefWidth(150);
 	        
-	        jakauma1Label = new Label("Sisäänkäynti jakauma (0-1):");
-	        sisaankayntiJakauma = new TextField("Jakauma");
-	        sisaankayntiJakauma.setPrefWidth(150);
+	        jakauma1Label = new Label("Sisäänkäynti jakauma (Info/Check-in):");
+	        sisaankayntiJakauma = new Slider(0, 1, 0.5);
+	        sisaankayntiJakauma.setShowTickMarks(true);
+	        sisaankayntiJakauma.setMajorTickUnit(0.25f);
+	        sisaankayntiJakauma.setBlockIncrement(0.1f);
+	        sisaankayntiJakauma.setShowTickLabels(true);
 	        
-	        jakauma2Label = new Label("Check-in jakauma (0-1):");
-	        checkinJakauma = new TextField("Jakauma");
-	        checkinJakauma.setPrefWidth(150);
+	        jakauma2Label = new Label("Check-in jakauma (CHECKINAUTO/CHECKIMANUAL):");
+	        checkinJakauma = new Slider(0, 1, 0.5);
+	        checkinJakauma.setShowTickMarks(true);
+	        checkinJakauma.setMajorTickUnit(0.25f);
+	        checkinJakauma.setBlockIncrement(0.1f);
+	        checkinJakauma.setShowTickLabels(true);
 
 	        tulosLabel = new Label("Kokonaisaika (min):");
 	        tulos = new Label();
@@ -265,6 +272,48 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI{
 	        tulosLabel10 = new Label("Turvatarkastuksen keskimääräinen jononpituus:");
 	        tulos10 = new Label();
 	        tulos10.setPrefWidth(150);
+	        
+	        infoLkm = new Slider(0, 10, 1);
+	        infoLkm.setShowTickMarks(true);
+	        infoLkm.setMajorTickUnit(1);
+	        infoLkm.setBlockIncrement(1);
+	        infoLkm.setShowTickLabels(true);
+	        
+	        manualLkm = new Slider(0, 10, 1);
+	        manualLkm.setShowTickMarks(true);
+	        manualLkm.setMajorTickUnit(1);
+	        manualLkm.setBlockIncrement(1);
+	        manualLkm.setShowTickLabels(true);
+	        
+	        autoLkm = new Slider(0, 10, 1);
+	        autoLkm.setShowTickMarks(true);
+	        autoLkm.setMajorTickUnit(1);
+	        autoLkm.setBlockIncrement(1);
+	        autoLkm.setShowTickLabels(true);
+	        
+	        securityLkm = new Slider(0, 10, 1);
+	        securityLkm.setShowTickMarks(true);
+	        securityLkm.setMajorTickUnit(1);
+	        securityLkm.setBlockIncrement(1);
+	        securityLkm.setShowTickLabels(true);
+	        
+	        sgateLkm = new Slider(0, 10, 1);
+	        sgateLkm.setShowTickMarks(true);
+	        sgateLkm.setMajorTickUnit(1);
+	        sgateLkm.setBlockIncrement(1);
+	        sgateLkm.setShowTickLabels(true);
+	        
+	        gateLkm = new Slider(0, 10, 1);
+	        gateLkm.setShowTickMarks(true);
+	        gateLkm.setMajorTickUnit(1);
+	        gateLkm.setBlockIncrement(1);
+	        gateLkm.setShowTickLabels(true);
+	        
+	        planeLkm = new Slider(0, 10, 1);
+	        planeLkm.setShowTickMarks(true);
+	        planeLkm.setMajorTickUnit(1);
+	        planeLkm.setBlockIncrement(1);
+	        planeLkm.setShowTickLabels(true);
 
 	        HBox hBox = new HBox();
 	        hBox.setPadding(new Insets(15, 12, 15, 12)); // marginaalit ylä, oikea, ala, vasen
@@ -352,12 +401,12 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI{
 	
 	@Override
 	public double getSisJakauma(){
-		return Double.parseDouble(checkinJakauma.getText());
+		return sisaankayntiJakauma.getValue();
 	}
 	
 	@Override
 	public double getCheJakauma(){
-		return Double.parseDouble(sisaankayntiJakauma.getText());
+		return checkinJakauma.getValue();
 	}
 
 	@Override
@@ -489,6 +538,48 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI{
 
 	public static void main(String[] args) {
 		launch(args);
+	}
+
+	@Override
+	public int getInfoLkm() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int getManualLkm() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int getAutoLkm() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int getSecurityLkm() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int getSgateLkm() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int getGateLkm() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int getPlaneLkm() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }
