@@ -216,10 +216,12 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI{
 			aikaLabel = new Label("Simulointiaika (min):");
 
 	        aika = new TextField("Syötä aika");
+	        aika.setOnMouseClicked(e -> aika.clear());
 	        aika.setPrefWidth(150);
 
 	        viiveLabel = new Label("Viive:");
 	        viive = new TextField("Syötä viive");
+	        viive.setOnMouseClicked(e -> viive.clear());
 	        viive.setPrefWidth(150);
 	        
 	        jakauma1Label = new Label("Sisäänkäynti jakauma (Info/Check-in):");
