@@ -18,6 +18,7 @@ public class OmaMoottori extends Moottori{
 	private double B, T, Ri, W, K, S, P, A, R;
 	private int C = 0;
 	private double checkinJakauma = 0.5, sisaankayntiJakauma = 0.5; // Jakaumat oletuksena 50/50
+	private int infoLkm = 1, manualLkm = 1, autoLkm = 1, securityLkm = 1, sgateLkm = 1, gateLkm = 1, planeLkm = 1;
 
 	public OmaMoottori(IKontrolleri kontrolleri){ // UUSI
 
@@ -40,14 +41,14 @@ public class OmaMoottori extends Moottori{
 
 	@Override
 	protected void alustukset() {
-		//Tänne lisäpalvelupisteet esim.
-		palvelupisteet[0].setPalvelupisteetLkm(10);
-		palvelupisteet[1].setPalvelupisteetLkm(10);
-		palvelupisteet[2].setPalvelupisteetLkm(10);
-		palvelupisteet[3].setPalvelupisteetLkm(10);
-		palvelupisteet[4].setPalvelupisteetLkm(10);
-		palvelupisteet[5].setPalvelupisteetLkm(10);
-		palvelupisteet[6].setPalvelupisteetLkm(10);
+		//Tänne lisäpalvelupisteet
+		palvelupisteet[0].setPalvelupisteetLkm(infoLkm);
+		palvelupisteet[1].setPalvelupisteetLkm(manualLkm);
+		palvelupisteet[2].setPalvelupisteetLkm(autoLkm);
+		palvelupisteet[3].setPalvelupisteetLkm(securityLkm);
+		palvelupisteet[4].setPalvelupisteetLkm(sgateLkm);
+		palvelupisteet[5].setPalvelupisteetLkm(gateLkm);
+		palvelupisteet[6].setPalvelupisteetLkm(planeLkm);
 		
 		saapumisprosessi.generoiSeuraava(); // Ensimmäinen saapuminen järjestelmään
 	}
@@ -254,6 +255,16 @@ public class OmaMoottori extends Moottori{
 	// Check-in jakauma CHECKINAUTO/CHECKIMANUAL
 	public void setCheckinJakauma(double jakauma) {
 		checkinJakauma = jakauma;
+	}
+	
+	public void setPalvelupisteetLkm(int infoLkm, int manualLkm, int autoLkm, int securityLkm, int sgateLkm, int gateLkm, int planeLkm) {
+		this.infoLkm = infoLkm;
+		this.manualLkm = manualLkm;
+		this.autoLkm = autoLkm;
+		this.securityLkm = securityLkm;
+		this.sgateLkm = sgateLkm;
+		this.gateLkm = gateLkm;
+		this.planeLkm = planeLkm;
 	}
 
 	public Palvelupisteryhma[] getPalvelupisteet() {

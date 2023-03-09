@@ -32,5 +32,12 @@ public interface ISimulaattorinUI {
 
 	// Kontrolleri tarvitsee
 	public IVisualisointi getVisualisointi();
+	public int getInfoLkm();
+	public int getManualLkm();
+	public int getAutoLkm();
+	public int getSecurityLkm();
+	public int getSgateLkm();
+	public int getGateLkm();
+	public int getPlaneLkm();
 
 }

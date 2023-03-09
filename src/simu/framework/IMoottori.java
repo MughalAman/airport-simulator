@@ -12,4 +12,5 @@ public interface IMoottori { // UUSI
 	public Palvelupisteryhma[] getPalvelupisteet();
 	public void setSisaankayntiJakauma(double sisJakauma);
 	public void setCheckinJakauma(double cheJakauma);
+	public void setPalvelupisteetLkm(int infoLkm, int manualLkm, int autoLkm, int securityLkm, int sgateLkm, int gateLkm, int planeLkm);
 }
