@@ -17,4 +17,5 @@ public class Tuloskone implements ITuloskone{
         }
         return tuloksetStr;
 	}
+	
 }

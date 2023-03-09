@@ -126,7 +126,20 @@ public class Kontrolleri implements IKontrolleri{   // UUSI
 	
 	@Override
 	public String[] naytaTulokset() {
+		this.tuloskone = new Tuloskone();
+//		String[] t = tuloskone.getTulokset();
+//		
+//		for(String v:t ) {
+//			System.out.println(v + "Näytä tulokset");
+//			
+//		}
+//		System.out.println("");
+		
+		
 		return tuloskone.getTulokset();
+		
+		
+	
 	}
 
 

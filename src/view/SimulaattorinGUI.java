@@ -133,11 +133,14 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI{
 	                ListView<String> tulosList = new ListView<String>();
 
 	                ObservableList<String> tulokset = FXCollections.observableArrayList();
-
+	                System.out.println(kontrolleri.naytaTulokset());
+	                kontrolleri.naytaTulokset();
 	                for (int i = 0; i < kontrolleri.naytaTulokset().length; i++) {
 	    				tulokset.add(kontrolleri.naytaTulokset()[i]);
+	    				System.out.println("data: \n"+kontrolleri.naytaTulokset()[i]);
 	    			}
 
+	                
 	                
 	                
 	               
