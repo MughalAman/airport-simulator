@@ -543,43 +543,43 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI{
 	@Override
 	public int getInfoLkm() {
 		// TODO Auto-generated method stub
-		return 0;
+		return (int)infoLkm.getValue();
 	}
 
 	@Override
 	public int getManualLkm() {
 		// TODO Auto-generated method stub
-		return 0;
+		return (int)manualLkm.getValue();
 	}
 
 	@Override
 	public int getAutoLkm() {
 		// TODO Auto-generated method stub
-		return 0;
+		return (int)autoLkm.getValue();
 	}
 
 	@Override
 	public int getSecurityLkm() {
 		// TODO Auto-generated method stub
-		return 0;
+		return (int)securityLkm.getValue();
 	}
 
 	@Override
 	public int getSgateLkm() {
 		// TODO Auto-generated method stub
-		return 0;
+		return (int)sgateLkm.getValue();
 	}
 
 	@Override
 	public int getGateLkm() {
 		// TODO Auto-generated method stub
-		return 0;
+		return (int)gateLkm.getValue();
 	}
 
 	@Override
 	public int getPlaneLkm() {
 		// TODO Auto-generated method stub
-		return 0;
+		return (int)planeLkm.getValue();
 	}
 
 }
