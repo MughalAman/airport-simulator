@@ -119,7 +119,7 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI{
 	            @Override
 	            public void handle(ActionEvent event) {
 	                kontrolleri.kaynnistaSimulointi();
-	                kaynnistaButton.setDisable(true);
+	                kaynnistaButton.setDisable(false);
 	            }
 	        });
 
@@ -363,6 +363,10 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI{
 	        hBox.getChildren().addAll(grid, (Canvas)naytto);
 
 
+	       
+
+	        
+	       
 
 
 	        Scene scene = new Scene(hBox);
