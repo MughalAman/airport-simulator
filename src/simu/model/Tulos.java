@@ -114,16 +114,16 @@ public class Tulos {
 	@Override
 	public String toString() {
 		return "{" +
-			" Loppuaika='" + getLoppuaika() + "'" +
-			", AsiakasMaara='" + getAsiakasMaara() + "'" +
-			", CheckAktiiviAika='" + getCheckAktiiviAika() + "'" +
-			", TurvaTarkastus='" + getTurvaTarkastus() + "'" +
-			", OleskeluAikaTurvaTarkastus='" + getOleskeluAikaTurvaTarkastus() + "'" +
-			", CheckInKayttoaste='" + getCheckInKayttoaste() + "'" +
-			", LentokentanTeho='" + getLentokentanTeho() + "'" +
-			", CheckinPalveluaika='" + getCheckinPalveluaika() + "'" +
-			", TurvatarkastusJono='" + getTurvatarkastusJono() + "'" +
-			", TurvatarkastusJononPituus='" + getTurvatarkastusJononPituus() + "'" +
+			" \"Loppuaika\":" + getLoppuaika() +
+			", \"AsiakasMaara\":" + getAsiakasMaara() +
+			", \"CheckAktiiviAika\":" + getCheckAktiiviAika() +
+			", \"TurvaTarkastus\":" + getTurvaTarkastus() +
+			", \"OleskeluAikaTurvaTarkastus\":" + getOleskeluAikaTurvaTarkastus() +
+			", \"CheckInKayttoaste\":" + getCheckInKayttoaste() +
+			", \"LentokentanTeho\":" + getLentokentanTeho() +
+			", \"CheckinPalveluaika\":" + getCheckinPalveluaika() +
+			", \"TurvatarkastusJono\":" + getTurvatarkastusJono() +
+			", \"TurvatarkastusJononPituus\":" + getTurvatarkastusJononPituus() +
 			"}";
 	}
 
