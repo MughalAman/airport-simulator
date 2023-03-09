@@ -60,6 +60,7 @@ public class TulosAccessObject implements ITulosDAO {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        System.out.println("Read tulokset: " + tulokset.size());
         Tulos[] t = new Tulos[tulokset.size()];
         return (Tulos[]) tulokset.toArray(t);
     }
