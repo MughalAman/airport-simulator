@@ -29,3 +29,7 @@
 .title {
 	-fx-font-family: 'Merriweather Sans';
 }
+
+.slider .axis {
+	-fx-tick-label-fill: #BCD8C1;
+}
