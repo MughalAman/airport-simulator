@@ -50,7 +50,8 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI{
 	private TextField viive;
 	private Slider sisaankayntiJakauma;
 	private Slider checkinJakauma; 
-	private Slider infoLkm, manualLkm, autoLkm, securityLkm, sgateLkm, gateLkm, planeLkm;
+	private Slider infoLkm, manualLkm, autoLkm;
+	private Label infoLabel, manualLabel, autoLabel;
 	private Label tulos;
 	private Label tulos2;
 	private Label tulos3;
@@ -211,7 +212,6 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI{
 
 			aikaLabel = new Label("Simulointiaika (min):");
 
-
 	        aika = new TextField("Syötä aika");
 	        aika.setPrefWidth(150);
 
@@ -226,12 +226,33 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI{
 	        sisaankayntiJakauma.setBlockIncrement(0.1f);
 	        sisaankayntiJakauma.setShowTickLabels(true);
 	        
-	        jakauma2Label = new Label("Check-in jakauma (CHECKINAUTO/CHECKIMANUAL):");
+	        jakauma2Label = new Label("Check-in jakauma (AUTO/MANUAL):");
 	        checkinJakauma = new Slider(0, 1, 0.5);
 	        checkinJakauma.setShowTickMarks(true);
 	        checkinJakauma.setMajorTickUnit(0.25f);
 	        checkinJakauma.setBlockIncrement(0.1f);
 	        checkinJakauma.setShowTickLabels(true);
+	        
+	        infoLabel = new Label("Infon palvelupistettein lkm:");
+	        infoLkm = new Slider(1, 10, 1);
+	        infoLkm.setShowTickMarks(true);
+	        infoLkm.setMajorTickUnit(1);
+	        infoLkm.setBlockIncrement(1);
+	        infoLkm.setShowTickLabels(true);
+	        
+	        manualLabel = new Label("Manual check-in palvelupisteitten lkm:");
+	        manualLkm = new Slider(1, 10, 1);
+	        manualLkm.setShowTickMarks(true);
+	        manualLkm.setMajorTickUnit(1);
+	        manualLkm.setBlockIncrement(1);
+	        manualLkm.setShowTickLabels(true);
+	        
+	        autoLabel = new Label("Auto check-in palvelupisteitten lkm:");
+	        autoLkm = new Slider(1, 10, 1);
+	        autoLkm.setShowTickMarks(true);
+	        autoLkm.setMajorTickUnit(1);
+	        autoLkm.setBlockIncrement(1);
+	        autoLkm.setShowTickLabels(true);
 
 	        tulosLabel = new Label("Kokonaisaika (min):");
 	        tulos = new Label();
@@ -272,48 +293,6 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI{
 	        tulosLabel10 = new Label("Turvatarkastuksen keskimääräinen jononpituus:");
 	        tulos10 = new Label();
 	        tulos10.setPrefWidth(150);
-	        
-	        infoLkm = new Slider(0, 10, 1);
-	        infoLkm.setShowTickMarks(true);
-	        infoLkm.setMajorTickUnit(1);
-	        infoLkm.setBlockIncrement(1);
-	        infoLkm.setShowTickLabels(true);
-	        
-	        manualLkm = new Slider(0, 10, 1);
-	        manualLkm.setShowTickMarks(true);
-	        manualLkm.setMajorTickUnit(1);
-	        manualLkm.setBlockIncrement(1);
-	        manualLkm.setShowTickLabels(true);
-	        
-	        autoLkm = new Slider(0, 10, 1);
-	        autoLkm.setShowTickMarks(true);
-	        autoLkm.setMajorTickUnit(1);
-	        autoLkm.setBlockIncrement(1);
-	        autoLkm.setShowTickLabels(true);
-	        
-	        securityLkm = new Slider(0, 10, 1);
-	        securityLkm.setShowTickMarks(true);
-	        securityLkm.setMajorTickUnit(1);
-	        securityLkm.setBlockIncrement(1);
-	        securityLkm.setShowTickLabels(true);
-	        
-	        sgateLkm = new Slider(0, 10, 1);
-	        sgateLkm.setShowTickMarks(true);
-	        sgateLkm.setMajorTickUnit(1);
-	        sgateLkm.setBlockIncrement(1);
-	        sgateLkm.setShowTickLabels(true);
-	        
-	        gateLkm = new Slider(0, 10, 1);
-	        gateLkm.setShowTickMarks(true);
-	        gateLkm.setMajorTickUnit(1);
-	        gateLkm.setBlockIncrement(1);
-	        gateLkm.setShowTickLabels(true);
-	        
-	        planeLkm = new Slider(0, 10, 1);
-	        planeLkm.setShowTickMarks(true);
-	        planeLkm.setMajorTickUnit(1);
-	        planeLkm.setBlockIncrement(1);
-	        planeLkm.setShowTickLabels(true);
 
 	        HBox hBox = new HBox();
 	        hBox.setPadding(new Insets(15, 12, 15, 12)); // marginaalit ylä, oikea, ala, vasen
@@ -326,38 +305,51 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI{
 
 	        grid.add(aikaLabel, 0, 0);   // sarake, rivi
 	        grid.add(aika, 1, 0);          // sarake, rivi
+	        
 	        grid.add(viiveLabel, 0, 1);      // sarake, rivi
 	        grid.add(viive, 1, 1);           // sarake, rivi
+	        
 	        grid.add(jakauma1Label, 0, 2);          // sarake, rivi
 	        grid.add(sisaankayntiJakauma, 1, 2);          // sarake, rivi
+	        
 	        grid.add(jakauma2Label, 0, 3);          // sarake, rivi
 	        grid.add(checkinJakauma, 1, 3);          // sarake, rivi
-	        grid.add(tulosLabel, 0, 4);      // sarake, rivi
-	        grid.add(tulosLabel2, 0, 5);      // sarake, rivi
-	        grid.add(tulosLabel3, 0, 6);      // sarake, rivi
-	        grid.add(tulosLabel4, 0, 7);      // sarake, rivi
-	        grid.add(tulosLabel5, 0, 8);      // sarake, rivi
-	        grid.add(tulosLabel6, 0, 9);      // sarake, rivi
-	        grid.add(tulosLabel7, 0, 10);      // sarake, rivi
-	        grid.add(tulosLabel8, 0, 11);      // sarake, rivi
-	        grid.add(tulosLabel9, 0, 12);      // sarake, rivi
-	        grid.add(tulosLabel10, 0, 13);      // sarake, rivi
-	        grid.add(tulos, 1, 4);           // sarake, rivi
-	        grid.add(tulos2, 1, 5);           // sarake, rivi
-	        grid.add(tulos3, 1, 6);           // sarake, rivi
-	        grid.add(tulos4, 1, 7);           // sarake, rivi
-	        grid.add(tulos5, 1, 8);           // sarake, rivi
-	        grid.add(tulos6, 1, 9);           // sarake, rivi
-	        grid.add(tulos7, 1, 10);           // sarake, rivi
-	        grid.add(tulos8, 1, 11);           // sarake, rivi
-	        grid.add(tulos9, 1, 12);           // sarake, rivi
-	        grid.add(tulos10, 1, 13);           // sarake, rivi
-	        grid.add(kaynnistaButton,0, 14);  // sarake, rivi
-	        grid.add(nopeutaButton, 0, 15);   // sarake, rivi
-	        grid.add(hidastaButton, 1, 15);   // sarake, rivi
-	        grid.add(uus, 1, 18);   // sarake, rivi
+	        
+	        grid.add(infoLabel, 0, 4);
+	        grid.add(infoLkm, 1, 4);
+	        
+	        grid.add(manualLabel, 0, 5);
+	        grid.add(manualLkm, 1, 5);
+	        
+	        grid.add(autoLabel, 0, 6);
+	        grid.add(autoLkm, 1, 6);
+	        
+	        grid.add(tulosLabel, 0, 7);      // sarake, rivi
+	        grid.add(tulosLabel2, 0, 8);      // sarake, rivi
+	        grid.add(tulosLabel3, 0, 9);      // sarake, rivi
+	        grid.add(tulosLabel4, 0, 10);      // sarake, rivi
+	        grid.add(tulosLabel5, 0, 11);      // sarake, rivi
+	        grid.add(tulosLabel6, 0, 12);      // sarake, rivi
+	        grid.add(tulosLabel7, 0, 13);      // sarake, rivi
+	        grid.add(tulosLabel8, 0, 14);      // sarake, rivi
+	        grid.add(tulosLabel9, 0, 15);      // sarake, rivi
+	        grid.add(tulosLabel10, 0, 16);      // sarake, rivi
+	        grid.add(tulos, 1, 7);           // sarake, rivi
+	        grid.add(tulos2, 1, 8);           // sarake, rivi
+	        grid.add(tulos3, 1, 9);           // sarake, rivi
+	        grid.add(tulos4, 1, 10);           // sarake, rivi
+	        grid.add(tulos5, 1, 11);           // sarake, rivi
+	        grid.add(tulos6, 1, 12);           // sarake, rivi
+	        grid.add(tulos7, 1, 13);           // sarake, rivi
+	        grid.add(tulos8, 1, 14);           // sarake, rivi
+	        grid.add(tulos9, 1, 15);           // sarake, rivi
+	        grid.add(tulos10, 1, 16);           // sarake, rivi
+	        grid.add(kaynnistaButton,0, 17);  // sarake, rivi
+	        grid.add(nopeutaButton, 0, 18);   // sarake, rivi
+	        grid.add(hidastaButton, 1, 18);   // sarake, rivi
+	        grid.add(uus, 1, 19);   // sarake, rivi
 
-	        grid.add(tallenna, 0 , 18);   // sarake, rivi
+	        grid.add(tallenna, 0, 19);   // sarake, rivi
 
 
 
@@ -542,44 +534,17 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI{
 
 	@Override
 	public int getInfoLkm() {
-		// TODO Auto-generated method stub
 		return (int)infoLkm.getValue();
 	}
 
 	@Override
 	public int getManualLkm() {
-		// TODO Auto-generated method stub
 		return (int)manualLkm.getValue();
 	}
 
 	@Override
 	public int getAutoLkm() {
-		// TODO Auto-generated method stub
 		return (int)autoLkm.getValue();
-	}
-
-	@Override
-	public int getSecurityLkm() {
-		// TODO Auto-generated method stub
-		return (int)securityLkm.getValue();
-	}
-
-	@Override
-	public int getSgateLkm() {
-		// TODO Auto-generated method stub
-		return (int)sgateLkm.getValue();
-	}
-
-	@Override
-	public int getGateLkm() {
-		// TODO Auto-generated method stub
-		return (int)gateLkm.getValue();
-	}
-
-	@Override
-	public int getPlaneLkm() {
-		// TODO Auto-generated method stub
-		return (int)planeLkm.getValue();
 	}
 
 }

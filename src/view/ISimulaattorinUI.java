@@ -35,9 +35,5 @@ public interface ISimulaattorinUI {
 	public int getInfoLkm();
 	public int getManualLkm();
 	public int getAutoLkm();
-	public int getSecurityLkm();
-	public int getSgateLkm();
-	public int getGateLkm();
-	public int getPlaneLkm();
 
 }

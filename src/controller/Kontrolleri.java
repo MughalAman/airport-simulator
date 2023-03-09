@@ -29,7 +29,7 @@ public class Kontrolleri implements IKontrolleri{   // UUSI
 		moottori.setViive(ui.getViive());
 		moottori.setSisaankayntiJakauma(ui.getSisJakauma());
 		moottori.setCheckinJakauma(ui.getCheJakauma());
-		moottori.setPalvelupisteetLkm(ui.getInfoLkm(), ui.getManualLkm(), ui.getAutoLkm(), ui.getSecurityLkm(), ui.getSgateLkm(), ui.getGateLkm(), ui.getPlaneLkm());
+		moottori.setPalvelupisteetLkm(ui.getInfoLkm(), ui.getManualLkm(), ui.getAutoLkm());
 		ui.getVisualisointi().tyhjennaNaytto();
 		((Thread)moottori).start();
 		//((Thread)moottori).run(); // Ei missään tapauksessa näin. Miksi?
