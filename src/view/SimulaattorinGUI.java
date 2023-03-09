@@ -305,10 +305,10 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI{
 	        grid.add(tulos10, 1, 13);           // sarake, rivi
 	        grid.add(kaynnistaButton,0, 14);  // sarake, rivi
 	        grid.add(nopeutaButton, 0, 15);   // sarake, rivi
-	        grid.add(hidastaButton, 1, 14);   // sarake, rivi
-	        grid.add(uus, 1 , 17);   // sarake, rivi
+	        grid.add(hidastaButton, 1, 15);   // sarake, rivi
+	        grid.add(uus, 1, 18);   // sarake, rivi
 
-	        grid.add(tallenna, 1 , 18);   // sarake, rivi
+	        grid.add(tallenna, 0 , 18);   // sarake, rivi
 
 
 
