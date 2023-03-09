@@ -110,7 +110,7 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI{
 			    }
 			});
 
-			primaryStage.setTitle("Simulaattori");
+			primaryStage.setTitle("Lentokenttä Simulaattori");
 
 			kaynnistaButton = new Button();
 			kaynnistaButton.setText("Käynnistä simulointi");
