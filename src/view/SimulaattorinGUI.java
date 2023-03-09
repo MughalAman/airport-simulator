@@ -148,11 +148,11 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI{
 	                tulosList.setItems(tulokset);
 	    			tulosList.setPrefSize(900, 500);
 
-	    			
+//	    			ei TARTE päivittyy itestää
 	    			//Päivitä GUI
-	    			Button refresh1 = new Button();
-	    			refresh1.setText("Päivitä");
-	    			
+//	    			Button refresh1 = new Button();
+//	    			refresh1.setText("Päivitä");
+//	    			
 
 	                
 	                HBox hBox = new HBox();
@@ -162,7 +162,7 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI{
 	    			
 	    			addPane.add(tulosBox, 0, 0);
 	    			
-	    			hBox.getChildren().addAll(addPane,refresh1);
+	    			hBox.getChildren().addAll(addPane);
 
 	                Stage addStage = new Stage();
 	                Scene addScene = new Scene(hBox);
@@ -180,15 +180,15 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI{
 	                
 	                
 	                
-	                refresh1.setOnAction(e -> {
-		                addStage.close();
-
-
-		                
-		      
-		                addStage.show();
-
-	                });
+//	                refresh1.setOnAction(e -> {
+//		                addStage.close();
+//
+//
+//		                
+//		      
+//		                addStage.show();
+//
+//	                });
 
 	                
 	            }
