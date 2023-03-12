@@ -9,7 +9,7 @@ import simu.framework.Tapahtumalista;
 
 
 /**
- * @author 
+ * @author Amin Salamatin
 *Palvelupisteryhmä sisältää useita palvelupisteitä ja jonon asiakkaita, jotka odottavat palvelua.
 *Palvelupisteet ovat tallennettuna PriorityQueueen, jossa palvelupisteet ovat järjestetty niiden käyttöasteen mukaan.
 */
@@ -70,6 +70,7 @@ public class Palvelupisteryhma {
 	*Lisää asiakkaan jonoon.
 	*Jos jokin palvelupiste on vapaa, lisätään asiakas sen jonoon.
 	*Muussa tapauksessa asiakas lisätään jonoon ja palvelupiste, joka on ensimmäisenä käytössä, hoitaa asiakkaan.
+	*Muistaa palvelupisteen, johon asiakas on lisätty, ja lisää sen ID:n omaan listaan.
 	*@param a lisättävä asiakas
 	*/
 	public void lisaaJonoon(Asiakas a) {
@@ -90,6 +91,10 @@ public class Palvelupisteryhma {
 		
 	}
 	
+	
+	/**
+	*Ottaa asiakkaan siitä palvelupisteestä, jonka ID täsmää jonossa ensimmäistä olevaa.
+	*/
 	public Asiakas otaJonosta() {
 		int id = jono.poll();
 		for(Palvelupiste p : palvelupisteet) {

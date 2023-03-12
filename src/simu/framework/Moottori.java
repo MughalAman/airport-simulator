@@ -68,7 +68,7 @@ public abstract class Moottori extends Thread implements IMoottori{  // UUDET M�
 		}
 	}
 
-	protected void yritaCTapahtumat(){    // määrittele protectediksi, josa haluat ylikirjoittaa
+	private void yritaCTapahtumat(){    // määrittele protectediksi, josa haluat ylikirjoittaa
 		for (Palvelupisteryhma r: palvelupisteet){
 			for (Palvelupiste p: r.getList()) {
 				if (!p.onVarattu() && p.onJonossa()){

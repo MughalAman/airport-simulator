@@ -81,7 +81,7 @@ public class Palvelupiste implements Comparable<Palvelupiste>{
 		return id;
 	}
 
-
+    //Vertaa, kuinka monta ihmistä on palvelupisteen jonossa, ja sen mukaan palauttaa järjestyksen.
 	@Override
 	public int compareTo(Palvelupiste arg) {
 		return arg.jono.size() - this.jono.size();
