@@ -4,7 +4,7 @@ package simu.model;
 
 
 /**
- * @author Aman
+ * @author Aman Mughal
  * Tulos-luokka kuvaa lentokentän toiminnan tuloksia simuloinnin aikana.
  * @version 1.1
  */

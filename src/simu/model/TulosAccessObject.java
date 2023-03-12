@@ -6,8 +6,9 @@ import java.util.ArrayList;
 
 
 /**
- * @author Aman 
+ * @author Aman Mughal
  *TulosAccessObject-luokka toteuttaa ITulosDAO-rajapinnan ja vastaa tulostietojen tallentamisesta ja hakemisesta tietokannasta.
+ *@version 1.1
  */
 public class TulosAccessObject implements ITulosDAO {
 	private Connection conn;

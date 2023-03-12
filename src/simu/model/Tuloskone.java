@@ -4,7 +4,7 @@ package simu.model;
 /**
  * @author Aman
  * Tämä Luokka luo uuden Tuloskone-olion, alustaa tulokset DAO:sta ja Palauttaa tuloskoneen tulokset merkkijonotaulukossa.
- * @version 1.1
+ * @version 1.0
  */
 
 public class Tuloskone implements ITuloskone{
