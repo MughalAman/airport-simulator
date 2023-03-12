@@ -3,9 +3,18 @@ package simu.model;
 import java.sql.*;
 import java.util.ArrayList;
 
+
+
+/**
+ * @author Aman 
+ *TulosAccessObject-luokka toteuttaa ITulosDAO-rajapinnan ja vastaa tulostietojen tallentamisesta ja hakemisesta tietokannasta.
+ */
 public class TulosAccessObject implements ITulosDAO {
 	private Connection conn;
 
+	/**
+	 *Konstruktori luo tietokantayhteyden luokan sisäisesti.
+	 */
 	public TulosAccessObject() {
         final String URL = "jdbc:mysql://10.114.34.11/mysql";
         final String USERNAME = "username";
@@ -20,6 +29,13 @@ public class TulosAccessObject implements ITulosDAO {
             e.printStackTrace();
         }
 	}
+	
+	
+	  /**
+		*Metodi tallentaa annetun tuloksen tietokantaan.
+		*@param tulos tallennettava tulos
+	 	*@return true, jos tallennus onnistui, muuten false
+	   */
 
     @Override
     public boolean createTulos(Tulos tulos) {
@@ -44,6 +60,11 @@ public class TulosAccessObject implements ITulosDAO {
         }
         return false;
     }
+    
+    /**
+    *Metodi lukee kaikki tietokantaan tallennetut tulokset ja palauttaa ne taulukossa.
+    *@return tietokannan kaikki tulokset Tulos-taulukkona
+    */
 
     @Override
     public Tulos[] readTulokset() {
@@ -67,6 +88,9 @@ public class TulosAccessObject implements ITulosDAO {
 
 
 
+    /**
+     *viestit, tilakoodi ja virhekoodi
+     */
     private void printSQLExceptions(String methodName, SQLException e) {
         System.err.println("Metodi: " + methodName);
         do {

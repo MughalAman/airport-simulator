@@ -1,14 +1,28 @@
 package simu.model;
 
+
+/**
+ * @author Aman
+ * Tämä Luokka luo uuden Tuloskone-olion, alustaa tulokset DAO:sta ja Palauttaa tuloskoneen tulokset merkkijonotaulukossa.
+ * @version 1.1
+ */
+
 public class Tuloskone implements ITuloskone{
 	private ITulosDAO tulosDAO;
 	private Tulos[] tulokset;
-	
+	/**
+	 * Luo uuden Tuloskone-olion ja alustaa tulokset DAO:sta.
+	 */
 	public Tuloskone() {
 		tulosDAO = new TulosAccessObject();
 		tulokset = tulosDAO.readTulokset();
 	}
-	
+
+	/**
+	 * Palauttaa tuloskoneen tulokset merkkijonotaulukossa.
+	 *
+	 * @return tuloskoneen tulokset merkkijonotaulukossa
+	 */
 	@Override
 	public String[] getTulokset() {
 		String[] tuloksetStr = new String[tulokset.length];
@@ -19,3 +33,5 @@ public class Tuloskone implements ITuloskone{
 	}
 	
 }
+
+
