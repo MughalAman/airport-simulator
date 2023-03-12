@@ -28,69 +28,74 @@ import javafx.stage.WindowEvent;
 import simu.framework.Trace;
 import simu.framework.Trace.Level;
 
+/**
+ * Simulaattorin käyttöliittymä.
+ */
 public class SimulaattorinGUI extends Application implements ISimulaattorinUI{
 
-	//Kontrollerin esittely (tarvitaan käyttöliittymässä)
-	private IKontrolleri kontrolleri;
+    // Kontrollerin esittely (tarvitaan käyttöliittymässä)
+    private IKontrolleri kontrolleri;
 
-	//Tallenusta varten
-	private double loppuaika;
-	private int asiakasmaara;
-	private double checkaktiiviaika;
-	private double turvatarkastus;
-	private double oleskeluaikaturvatarkastus;
-	private double checkinkayttoaste;
-	private double lentokentanteho;
-	private double checkinpalveluaika;
-	private double turvatarkastusjono;
-	private double turvatarkastusjononpituus;
+    // Tallennusta varten
+    private double loppuaika;
+    private int asiakasmaara;
+    private double checkaktiiviaika;
+    private double turvatarkastus;
+    private double oleskeluaikaturvatarkastus;
+    private double checkinkayttoaste;
+    private double lentokentanteho;
+    private double checkinpalveluaika;
+    private double turvatarkastusjono;
+    private double turvatarkastusjononpituus;
 
-	// Käyttöliittymäkomponentit:
-	private TextField aika;
-	private TextField viive;
-	private Slider sisaankayntiJakauma;
-	private Slider checkinJakauma; 
-	private Slider infoLkm, manualLkm, autoLkm;
-	private Label infoLabel, manualLabel, autoLabel;
-	private Label tulos;
-	private Label tulos2;
-	private Label tulos3;
-	private Label tulos4;
-	private Label tulos5;
-	private Label tulos6;
-	private Label tulos7;
-	private Label tulos8;
-	private Label tulos9;
-	private Label tulos10;
-	private Label aikaLabel;
-	private Label viiveLabel;
-	private Label jakauma1Label;
-	private Label jakauma2Label;
-	private Label tulosLabel;
-	private Label tulosLabel2;
-	private Label tulosLabel3;
-	private Label tulosLabel4;
-	private Label tulosLabel5;
-	private Label tulosLabel6;
-	private Label tulosLabel7;
-	private Label tulosLabel8;
-	private Label tulosLabel9;
-	private Label tulosLabel10;
+    // Käyttöliittymäkomponentit:
+    private TextField aika;
+    private TextField viive;
+    private Slider sisaankayntiJakauma;
+    private Slider checkinJakauma; 
+    private Slider infoLkm, manualLkm, autoLkm;
+    private Label infoLabel, manualLabel, autoLabel;
+    private Label tulos;
+    private Label tulos2;
+    private Label tulos3;
+    private Label tulos4;
+    private Label tulos5;
+    private Label tulos6;
+    private Label tulos7;
+    private Label tulos8;
+    private Label tulos9;
+    private Label tulos10;
+    private Label aikaLabel;
+    private Label viiveLabel;
+    private Label jakauma1Label;
+    private Label jakauma2Label;
+    private Label tulosLabel;
+    private Label tulosLabel2;
+    private Label tulosLabel3;
+    private Label tulosLabel4;
+    private Label tulosLabel5;
+    private Label tulosLabel6;
+    private Label tulosLabel7;
+    private Label tulosLabel8;
+    private Label tulosLabel9;
+    private Label tulosLabel10;
 
-	private Button kaynnistaButton;
-	private Button hidastaButton;
-	private Button nopeutaButton;
+    private Button kaynnistaButton;
+    private Button hidastaButton;
+    private Button nopeutaButton;
 
-	private IVisualisointi naytto;
+    private IVisualisointi naytto;
 
+    /**
+     * Metodi alustaa käyttöliittymän.
+     */
+    @Override
+    public void init(){
 
-	@Override
-	public void init(){
+        Trace.setTraceLevel(Level.INFO);
 
-		Trace.setTraceLevel(Level.INFO);
-
-		kontrolleri = new Kontrolleri(this);
-	}
+        kontrolleri = new Kontrolleri(this);
+    }
 
 	@Override
 	public void start(Stage primaryStage) {

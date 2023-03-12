@@ -1,12 +1,27 @@
+
+
 package testi;
 
+
+
 import javafx.scene.canvas.GraphicsContext;
+
 import javafx.scene.paint.Color;
 import view.Liike;
 
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+
+/**
+* testata Liike luokkaa
+*
+* @author Muhammed Özturk
+* @version 1.1
+*/
+
+
+
 
 public class LiikeTest1 {
 
@@ -15,10 +30,22 @@ public class LiikeTest1 {
 
 
     @Test
+    
+    /**
+    * Metodin tarkoitus
+    *
+    * @param testPaivita paivittaa väria
+    * @param testIsValmis liikkuuko pallo
+    */
+    // 
+
     public void testPaivita() {
         
         
-        
+    	/**
+    	* tässä tarkistetaan onko liike luokan pallon väri punainen
+    	*/
+
         //onko väri punainen?
         liike.getVari();
         Color expectedColor = Color.RED;
