@@ -1,14 +1,15 @@
 package simu.model;
 
-// TODO:
-// Tapahtumien tyypit määritellään simulointimallin vaatimusten perusteella
+/**
+ * Tämä luokka määrittelee tapahtumien tyypit simulointimallin vaatimusten perusteella.
+ */
 public enum TapahtumanTyyppi {
-	ENTRANCE,
-	INFO,
-	CHECKINAUTO,
-	CHECKINMANUAL,
-	SECURITY,
-	SECURITYGATE,
-	GATE,
-	PLANE
+    ENTRANCE, // Lentoaseman sisäänkäynti
+    INFO, // Lentoaseman tiedotus
+    CHECKINAUTO, // Automatisoitu sisäänkirjautuminen
+    CHECKINMANUAL, // Manuaalinen sisäänkirjautuminen
+    SECURITY, // Turvatarkastus
+    SECURITYGATE, // Turvaportti
+    GATE, // Portti
+    PLANE // Lentokone
 }

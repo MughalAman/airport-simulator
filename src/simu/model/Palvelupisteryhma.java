@@ -7,6 +7,13 @@ import eduni.distributions.ContinuousGenerator;
 import simu.framework.Tapahtumalista;
 
 
+
+/**
+ * @author 
+*Palvelupisteryhmä sisältää useita palvelupisteitä ja jonon asiakkaita, jotka odottavat palvelua.
+*Palvelupisteet ovat tallennettuna PriorityQueueen, jossa palvelupisteet ovat järjestetty niiden käyttöasteen mukaan.
+*/
+
 public class Palvelupisteryhma {
 	
 	private ContinuousGenerator generator;
@@ -19,6 +26,14 @@ public class Palvelupisteryhma {
 	private TapahtumanTyyppi asiakasPalvelupisteeseen;
 	
 
+	/**
+	*Palvelupisteryhmän konstruktori, joka luo yhden palvelupisteen ja lisää sen PriorityQueueen.
+	*@param generator ContinuousGenerator-tyyppinen satunnaislukugeneraattori
+	*@param tapahtumalista Tapahtumalista, johon tapahtumat lisätään
+	*@param tyyppi TapahtumanTyyppi-tyyppinen tapahtuman tyyppi
+	*/
+	
+	
 	public Palvelupisteryhma(ContinuousGenerator generator, Tapahtumalista tapahtumalista, TapahtumanTyyppi tyyppi) {
 		this.tapahtumalista = tapahtumalista;
 		this.generator = generator;
@@ -30,6 +45,13 @@ public class Palvelupisteryhma {
 		palvelupisteet.add(new Palvelupiste(generator, tapahtumalista, skeduloitavanTapahtumanTyyppi));
 	}
 	
+	
+	/**
+	*Asettaa palvelupisteiden määrän halutuksi ja luo uudet palvelupisteet.
+	*@param uusiMaara haluttu palvelupisteiden määrä
+	*/
+	
+	
 	public void setPalvelupisteetLkm(int uusiMaara) {
 		palvelupisteet = new PriorityQueue<Palvelupiste>();
 		for(int i = 0; i<uusiMaara; i++) {
@@ -40,6 +62,16 @@ public class Palvelupisteryhma {
 
 	}
 
+	
+	
+	
+	
+	/**
+	*Lisää asiakkaan jonoon.
+	*Jos jokin palvelupiste on vapaa, lisätään asiakas sen jonoon.
+	*Muussa tapauksessa asiakas lisätään jonoon ja palvelupiste, joka on ensimmäisenä käytössä, hoitaa asiakkaan.
+	*@param a lisättävä asiakas
+	*/
 	public void lisaaJonoon(Asiakas a) {
 		boolean lisatty = false;
 		for(Palvelupiste p: palvelupisteet) {
