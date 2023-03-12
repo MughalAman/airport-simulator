@@ -1,8 +1,4 @@
-
-
 package testi;
-
-
 
 import javafx.scene.canvas.GraphicsContext;
 
@@ -12,11 +8,6 @@ import view.Liike;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
-
-/**
-@author [tekijä]
-@version [versionumero]
-*/
 
 public class LiikeTest1 {
 	/**
