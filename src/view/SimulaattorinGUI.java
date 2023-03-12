@@ -29,7 +29,16 @@ import simu.framework.Trace;
 import simu.framework.Trace.Level;
 
 /**
- * Simulaattorin käyttöliittymä.
+* ohjelman käyttöliittymä
+*
+* @author Muhammed Özturk, Jeremia Kekkonen, Amin Salamatin
+* @version 1.1
+*/
+
+
+
+/**
+ * Impelementoi Simulaattorin rajapintaa.
  */
 public class SimulaattorinGUI extends Application implements ISimulaattorinUI{
 
@@ -97,6 +106,10 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI{
         kontrolleri = new Kontrolleri(this);
     }
 
+    
+    /**
+     * Metodi alustaa scenen primaryStage.
+     */
 	@Override
 	public void start(Stage primaryStage) {
 		Image image  = new Image("/img/applogo.png");
@@ -132,7 +145,10 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI{
 
 			Button uus = new Button();
 			uus.setText("Historia");
-
+			
+			 /**
+	    	* uusi scene napin klikkaamisella
+	    	*/
 			uus.setOnAction(new EventHandler<ActionEvent>() {
 	            @Override
 	            public void handle(ActionEvent event) {
@@ -375,12 +391,23 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI{
 	        
 	       
 
+	        /**
+	    	* luodaan scene
+	    	*/
 
 	        Scene scene = new Scene(hBox);
+
+	        /**
+	    	* liitetään css tiedosto
+	    	*/
 
 	        scene.getStylesheets().add("view/style.css");
 
 
+
+	        /**
+	    	* primaryStage asetetaan scene
+	    	*/
 
 	        primaryStage.setScene(scene);
 	        primaryStage.show();
