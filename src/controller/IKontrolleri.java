@@ -48,7 +48,6 @@ public interface IKontrolleri {
 		
 		/**
 	    Palauttaa tallennetut tulokset merkkijonomuodossa.
-	    
 	    @return Merkkijonomuotoinen esitys tallennetuista tuloksista.
 	    */
 		public abstract String[] naytaTulokset();
@@ -57,7 +56,6 @@ public interface IKontrolleri {
 		
 		/**
 	    Näyttää simuloinnin lopetushetken.
-	    
 	    @param aika Simuloinnin lopetushetki.
 	    */
 		public void naytaLoppuaika(double aika);
@@ -65,70 +63,60 @@ public interface IKontrolleri {
 
 		/**
 	    Asettaa asiakasmäärän käyttöliittymässä näytettäväksi.
-	    
 	    @param C Asiakasmäärä, joka näytetään käyttöliittymässä.
 	    */
 		public void naytaAsiakasMaara(int C);
 		
 		/**
 	    Asettaa Check-in aktiiviajan käyttöliittymässä näytettäväksi.
-	    
 	    @param B Check-in aktiiviaika, joka näytetään käyttöliittymässä.
 	    */
 		public void checkAktiiviAika(double B);
 		
 		/**
 	    Asettaa turvatarkastuksen läpäisyajan käyttöliittymässä näytettäväksi.
-	    
 	    @param Ri Turvatarkastuksen läpäisyajan keskimääräinen arvo, joka näytetään käyttöliittymässä.
 	    */
 		public void turvaTarkastus(double Ri);
 		
 		/**
 		Asettaa oleskeluajan turvatarkastuksessa käyttöliittymässä näytettäväksi.
-		
 	    @param W Oleskeluaika turvatarkastuksessa, joka näytetään käyttöliittymässä.
 	    */
 		public void oleskeluAikaTurvaTarkastus(double W);
 
 		/**
 	    Asettaa Check-in -jonon käyttöasteen käyttöliittymässä näytettäväksi.
-	    
 	    @param K Check-in -jonon käyttöaste, joka näytetään käyttöliittymässä.
 	    */
 		public void checkInKayttoaste(double K);
 		
 		/**
 	    Asettaa lentokentän tehon käyttöliittymässä näytettäväksi.
-	    
 	    @param S Lentokentän teho, joka näytetään käyttöliittymässä.
 	    */
 		public void lentokentanTeho(double S);
 		
 		/**
 	    Asettaa Check-in -palveluajan käyttöliittymässä näytettäväksi.
-	    
 	    @param P Check-in -palveluaika, joka näytetään käyttöliittymässä.
 	    */
 		public void checkinPalveluaika(double P);
 		
 		/**
 	    Asettaa turvatarkastusjonon pituuden käyttöliittymässä näytettäväksi.
-	    
 	    @param A Turvatarkastusjonon pituus, joka näytetään käyttöliittymässä.
 	    */
 		public void turvatarkastusJono(double A);
 		
 		/**
 	    Asettaa turvatarkastusjonon odotusajan käyttöliittymässä näytettäväksi.
-	    
 	    @param R Turvatarkastusjonon odotusaika, joka näytetään käyttöliittymässä.
 	    */
 		public void turvatarkastusJononPituus(double R);
 
 		/**
  		* Metodi visualisoi asiakkaan nykyisen ja edellisen tapahtuman
- 		*
  		* @param uusi uusi tapahtuma
  		* @param vanha vanha tapahtuma
  		*/
