@@ -4,6 +4,7 @@ import java.util.LinkedList;
 
 /**
  * @author Amin Salamatin
+ * @version 1.0
  *Piste-luokka kuvaa pistettä kartalla, jolla voi olla asiakkaiden jono.
  *Jokaisella pisteellä on x- ja y-koordinaatit, tyyppi sekä jonoon liittyvät asiakkaat.
 */

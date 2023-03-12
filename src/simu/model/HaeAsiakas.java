@@ -1,9 +1,11 @@
 package simu.model;
 
 /**
- * @author 
- *HaeAsiakas-luokka, joka kuvaa tapahtumia, joilla haetaan asiakkaita tiettyyn tapahtumaan.
- */
+@author [tekijä]
+@version [versionumero]
+*/
+
+// HaeAsiakas-luokka, joka kuvaa tapahtumia, joilla haetaan asiakkaita tiettyyn tapahtumaan.
 public class HaeAsiakas {
 
 	private TapahtumanTyyppi tyyppi;

@@ -2,8 +2,8 @@ package simu.model;
 
 
 /**
- * @author Aman
  * Tämä Luokka luo uuden Tuloskone-olion, alustaa tulokset DAO:sta ja Palauttaa tuloskoneen tulokset merkkijonotaulukossa.
+ * @author Aman Mughal
  * @version 1.0
  */
 

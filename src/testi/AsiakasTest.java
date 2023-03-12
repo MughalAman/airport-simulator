@@ -9,6 +9,11 @@ import simu.framework.Trace;
 import simu.model.Asiakas;
 
 public class AsiakasTest {
+	/**
+	* Testaa Asiakas-luokkaa
+	* @author Jeremia Kekkonen
+	* @version 1.1
+	*/
     @Test
     public void testAsiakasProperties() {
     	Trace.setTraceLevel(Trace.Level.INFO);

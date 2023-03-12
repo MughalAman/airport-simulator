@@ -1,14 +1,10 @@
 package simu.model;
 
-
-
-
 /**
- * @author Aman Mughal
  * Tulos-luokka kuvaa lentokentän toiminnan tuloksia simuloinnin aikana.
+ * @author Aman Mughal
  * @version 1.1
  */
-
 
 public class Tulos {
 	private double Loppuaika;

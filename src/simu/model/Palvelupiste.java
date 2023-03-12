@@ -6,8 +6,10 @@ import simu.framework.Kello;
 import simu.framework.Tapahtuma;
 import simu.framework.Tapahtumalista;
 
-// TODO:
-// Palvelupistekohtaiset toiminnallisuudet, laskutoimitukset (+ tarvittavat muuttujat) ja raportointi koodattava
+/**
+@author [tekijä]
+@version [versionumero]
+*/
 public class Palvelupiste implements Comparable<Palvelupiste>{
 
 	private LinkedList<Asiakas> jono = new LinkedList<Asiakas>(); // Tietorakennetoteutus

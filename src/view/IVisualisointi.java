@@ -7,6 +7,7 @@ import simu.model.TapahtumanTyyppi;
 
 
 /**
+* @author
 * @version 1.1
 */
 

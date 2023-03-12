@@ -14,16 +14,16 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 /**
-* testata Liike luokkaa
-*
-* @author Muhammed Özturk
-* @version 1.1
+@author [tekijä]
+@version [versionumero]
 */
 
-
-
-
 public class LiikeTest1 {
+	/**
+	* Testaa Liike-luokkaa
+	* @author Muhammed Özturk
+	* @version 1.2
+	*/
 
 	private GraphicsContext gc;
     Liike liike = new Liike(50, 50, 2, 2, gc, 200, 200);

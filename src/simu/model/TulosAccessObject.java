@@ -4,10 +4,9 @@ import java.sql.*;
 import java.util.ArrayList;
 
 
-
 /**
+ * TulosAccessObject-luokka toteuttaa ITulosDAO-rajapinnan ja vastaa tulostietojen tallentamisesta ja hakemisesta tietokannasta.
  * @author Aman Mughal
- *TulosAccessObject-luokka toteuttaa ITulosDAO-rajapinnan ja vastaa tulostietojen tallentamisesta ja hakemisesta tietokannasta.
  *@version 1.1
  */
 public class TulosAccessObject implements ITulosDAO {

@@ -1,8 +1,8 @@
 package simu.model;
 
 /**
-*@Aman Mughal
 *Rajapinta tuloskoneen toiminnoille.
+*@Author Aman Mughal
 *@version 1.0
 */
 

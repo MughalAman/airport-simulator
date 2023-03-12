@@ -29,13 +29,10 @@ import simu.framework.Trace;
 import simu.framework.Trace.Level;
 
 /**
-* ohjelman käyttöliittymä
-*
+* Ohjelman käyttöliittymä
 * @author Muhammed Özturk, Jeremia Kekkonen, Amin Salamatin
 * @version 1.1
 */
-
-
 
 /**
  * Impelementoi Simulaattorin rajapintaa.

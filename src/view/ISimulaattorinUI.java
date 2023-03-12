@@ -4,6 +4,7 @@ package view;
  * Tämä rajapinta määrittelee simulaattorin käyttöliittymän (UI) tarvittavat
  * metodit. Kontrolleri käyttää näitä metodeja käyttöliittymän kautta syötteen
  * välittämiseen Moottorille ja tulosten vastaanottamiseen Moottorilta.
+ * @author 
  * @version 1.1
  */
 public interface ISimulaattorinUI {

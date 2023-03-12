@@ -20,7 +20,6 @@ import javafx.scene.text.FontWeight;
 /**
 * Luokka, joka vastaa graafisen käyttöliittymän piirtämisestä ja
 * päivittämisestä.
-*
 * @author Amin salamatin, Muhammed Özturk, Jeremia Kekkonen
 * @version 1.1
 */

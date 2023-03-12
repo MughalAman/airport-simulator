@@ -10,12 +10,12 @@ import simu.framework.Saapumisprosessi;
 import simu.framework.Tapahtuma;
 
 /**
- *  OmaMoottori-luokka laajentaa Moottori-luokkaa ja toteuttaa simulointimallin.
- *	Luokassa on tarvittavat metodit ja attribuutit simuloinnin alustamiseen,
- *	tapahtumien suorittamiseen ja simuloinnin tilan päivittämiseen.
- * @author
- *
- */
+*  OmaMoottori-luokka laajentaa Moottori-luokkaa ja toteuttaa simulointimallin.
+*	Luokassa on tarvittavat metodit ja attribuutit simuloinnin alustamiseen,
+*	tapahtumien suorittamiseen ja simuloinnin tilan päivittämiseen.
+* @author [tekijä]
+* @version [versionumero]
+*/
 
 public class OmaMoottori extends Moottori{
 

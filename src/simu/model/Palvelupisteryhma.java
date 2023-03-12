@@ -10,6 +10,7 @@ import simu.framework.Tapahtumalista;
 
 /**
  * @author Amin Salamatin
+ * @version 1.0
 *Palvelupisteryhmä sisältää useita palvelupisteitä ja jonon asiakkaita, jotka odottavat palvelua.
 *Palvelupisteet ovat tallennettuna PriorityQueueen, jossa palvelupisteet ovat järjestetty niiden käyttöasteen mukaan.
 */
