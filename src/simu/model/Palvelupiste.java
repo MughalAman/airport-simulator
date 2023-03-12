@@ -7,8 +7,8 @@ import simu.framework.Tapahtuma;
 import simu.framework.Tapahtumalista;
 
 /**
-@author [tekijä]
-@version [versionumero]
+@author Jeremia Kekkonen, Aman Mughal ja Amin Salamatin
+@version 2.0
 */
 public class Palvelupiste implements Comparable<Palvelupiste>{
 

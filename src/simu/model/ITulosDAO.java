@@ -3,7 +3,7 @@ package simu.model;
 /**
 *Rajapinta tulosten tallennus- ja lukemistoiminnoille.
 *@author Aman Mughal
-*@version 1.0
+*@version 1.5
 */
 
 public interface ITulosDAO {

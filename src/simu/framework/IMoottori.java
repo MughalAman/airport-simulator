@@ -4,8 +4,8 @@ import simu.model.Palvelupisteryhma;
 
 /**
 Tämä rajapinta määrittelee metodit, joita kontrolleri käyttää yhteyden muodostamiseen moottorin kanssa.
-@author [tekijä]
-@version [versionumero]
+@author Jeremia Kekkonen, Aman Mughal ja Amin Salamatin
+@version 1.9
 */
 public interface IMoottori { // UUSI
 		

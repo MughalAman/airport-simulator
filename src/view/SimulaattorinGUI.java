@@ -30,8 +30,8 @@ import simu.framework.Trace.Level;
 
 /**
 * Ohjelman käyttöliittymä
-* @author Muhammed Özturk, Jeremia Kekkonen, Amin Salamatin
-* @version 1.1
+* @author Jeremia Kekkonen, Aman Mughal, Amin Salamatin ja Muhammed Özturk
+* @version 5.0
 */
 
 /**

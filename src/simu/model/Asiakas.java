@@ -3,10 +3,12 @@ package simu.model;
 import simu.framework.Kello;
 import simu.framework.Trace;
 
-
-// TODO:
-// Asiakas koodataan simulointimallin edellyttämällä tavalla (data!)
 public class Asiakas {
+/**
+Tämä luokka määrittää asiakkaan metodit ja muuttuja
+@author Aman Mughal ja Amin Salamatin
+@version 1.8
+*/
 	private double saapumisaika;
 	private double poistumisaika;
 	private int id;

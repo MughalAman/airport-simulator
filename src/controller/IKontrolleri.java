@@ -13,8 +13,8 @@ Moottori voi käyttää tätä rajapintaa välittääkseen tietoja simuloinnin t
 
 Tämän rajapinnan toteuttavan luokan pitää toteuttaa kaikki rajapinnassa määritellyt metodit.
 
-@author [tekijä]
-@version [versionumero]
+@author Jeremia Kekkonen, Aman Mughal, Amin Salamatin ja Muhammed Özturk
+@version 2.0
 */
 
 public interface IKontrolleri {

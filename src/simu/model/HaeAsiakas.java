@@ -1,8 +1,8 @@
 package simu.model;
 
 /**
-@author [tekijä]
-@version [versionumero]
+@author Jeremia Kekkonen, Aman Mughal ja Muhammed Özturk
+@version 1.5
 */
 
 // HaeAsiakas-luokka, joka kuvaa tapahtumia, joilla haetaan asiakkaita tiettyyn tapahtumaan.

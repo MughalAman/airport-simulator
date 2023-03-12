@@ -10,8 +10,8 @@ import view.ISimulaattorinUI;
 Kontrolleri-luokka hallinnoi simulaattorin toimintaa ja kommunikoi käyttöliittymän ja moottorin kanssa.
 Se myös ylläpitää yhteyttä tuloskoneeseen ja tuloskantaan.
 
-@author tekijä
-@version versionumero
+@author Jeremia Kekkonen, Aman Mughal, Amin Salamatin ja Muhammed Özturk
+@version 3.0
 */
 public class Kontrolleri implements IKontrolleri{   // UUSI
 	
