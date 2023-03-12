@@ -26,7 +26,7 @@ import static org.junit.Assert.assertEquals;
 public class LiikeTest1 {
 
 	private GraphicsContext gc;
-    Liike liike = new Liike(50, 50, 2, 2, gc, null, 200, 200);
+    Liike liike = new Liike(50, 50, 2, 2, gc, 200, 200);
 
 
     @Test

@@ -110,7 +110,7 @@ public class Visualisointi extends Canvas implements IVisualisointi{
 		double eroX = (newX-oldX)/10-1;
 		double eroY = (newY-oldY)/10-1;
 		
-		Pallot.getInstance().getPallot().add(new Liike(oldX, oldY, eroX, eroY, gc, img, this.getWidth(), this.getHeight()));
+		Pallot.getInstance().getPallot().add(new Liike(oldX, oldY, eroX, eroY, gc, this.getWidth(), this.getHeight()));
 		
 
 	}

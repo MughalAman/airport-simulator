@@ -28,11 +28,10 @@ public class Liike {
 	 * @param eroX X-suuntainen nopeus.
 	 * @param eroY Y-suuntainen nopeus.
 	 * @param gc GraphicsContext-olio, johon liikkeen piirto tapahtuu.
-	 * @param img Kuvan Image-olio, joka liikkuu.
 	 * @param width Kuvan leveys.
 	 * @param height Kuvan korkeus.
 	 */
-	public Liike(double x, double y, double eroX, double eroY, GraphicsContext gc, Image img, double width, double height) {
+	public Liike(double x, double y, double eroX, double eroY, GraphicsContext gc, double width, double height) {
 		this.x = x+eroX;
 		this.y = y+eroY;
 		this.eroX = eroX;
@@ -43,7 +42,7 @@ public class Liike {
 	}
 	
 	/**
-	 * Liikuttaa kuvaa ja piirtää sen uuteen paikkaan.
+	 * Liikuttaa asiakkaan(pallon) ja piirtää sen uuteen paikkaan, kunnes liike on valmis.
 	 */
 	private Color Vari = (Color) Color.RED;
 	
