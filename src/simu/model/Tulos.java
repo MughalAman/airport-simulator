@@ -1,5 +1,15 @@
 package simu.model;
 
+
+
+
+/**
+ * @author Aman
+ * Tulos-luokka kuvaa lentokentän toiminnan tuloksia simuloinnin aikana.
+ * @version 1.1
+ */
+
+
 public class Tulos {
 	private double Loppuaika;
 	private int AsiakasMaara;
@@ -13,9 +23,27 @@ public class Tulos {
 	private double TurvatarkastusJononPituus;
 
 
+    /**
+     * Tulos-luokan parametritön konstruktori.
+     */
+	
 	public Tulos() {
 
 	}
+	
+	   /**
+     * Tulos-luokan parametrillinen konstruktori.
+     * @param Loppuaika lentokentän sulkemisaika.
+     * @param AsiakasMaara asiakkaiden määrä.
+     * @param CheckAktiiviAika turvatarkastuspisteen aktiiviaika.
+     * @param TurvaTarkastus turvatarkastuspisteen kapasiteetti.
+     * @param OleskeluAikaTurvaTarkastus turvatarkastuspisteen läpimenoaika.
+     * @param CheckInKayttoaste check-in tiskin käyttöaste.
+     * @param LentokentanTeho lentokentän kokonaiskapasiteetti.
+     * @param CheckinPalveluaika check-in tiskin palveluaika.
+     * @param TurvatarkastusJono turvatarkastusjonon pituus.
+     * @param TurvatarkastusJononPituus turvatarkastusjonon pituus suhteessa kapasiteettiin.
+     */
 
 	public Tulos(double Loppuaika, int AsiakasMaara, double CheckAktiiviAika, double TurvaTarkastus, double OleskeluAikaTurvaTarkastus, double CheckInKayttoaste, double LentokentanTeho, double CheckinPalveluaika, double TurvatarkastusJono, double TurvatarkastusJononPituus) {
 		this.setLoppuaika(Loppuaika);
@@ -110,6 +138,10 @@ public class Tulos {
 		this.TurvatarkastusJononPituus = TurvatarkastusJononPituus;
 	}
 
+	
+    /**
+     * Palauttaa tiedot toStringillä
+     */
 
 	@Override
 	public String toString() {
